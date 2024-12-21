@@ -1,31 +1,49 @@
 import { Lock } from 'lucide-react'
 import { cn } from '@/lib/utils'
 
-interface ClueProps {
+interface ClueData {
   title: string
-  content: string
-  isLocked: boolean
+  description: string
+  location?: string
 }
 
-export function Clue({ title, content, isLocked }: ClueProps) {
+export interface ClueProps {
+  number: number
+  isLocked: boolean
+  data: ClueData
+}
+
+export function Clue({ number, isLocked, data }: ClueProps) {
   return (
-    <div className={cn(
-      "p-6 rounded-lg border",
-      isLocked 
-        ? "bg-gray-50 border-gray-200" 
-        : "bg-amber-50 border-amber-200"
-    )}>
-      <div className="flex items-center justify-between mb-4">
-        <h3 className="text-xl font-semibold text-amber-800">{title}</h3>
-        {isLocked && (
-          <Lock className="text-gray-400" size={20} />
-        )}
+    <div className={`p-4 rounded-lg border transition-colors ${
+      isLocked ? 'bg-gray-100 border-gray-200' : 'bg-white border-amber-200'
+    }`}>
+      <div className="flex flex-col md:flex-row gap-4">
+        <div className="flex items-center md:w-1/4">
+          <h3 className={`text-lg font-medium ${
+            isLocked ? 'text-gray-400' : 'text-amber-800'
+          }`}>
+            {data.title} {isLocked && '🔒'}
+          </h3>
+        </div>
+        
+        <div className="md:w-3/4">
+          {isLocked ? (
+            <p className="text-gray-400">
+              This clue is locked. Enter the verification code to unlock it.
+            </p>
+          ) : (
+            <div className="space-y-2">
+              <p className="text-gray-700">{data.description}</p>
+              {data.location && (
+                <p className="text-sm text-gray-500">Location: {data.location}</p>
+              )}
+            </div>
+          )}
+        </div>
       </div>
-      {isLocked ? (
-        <p className="text-gray-500">This clue is locked. Complete the previous challenges to unlock.</p>
-      ) : (
-        <p className="text-amber-900">{content}</p>
-      )}
     </div>
   )
-} 
+}
+
+export type { ClueData } 

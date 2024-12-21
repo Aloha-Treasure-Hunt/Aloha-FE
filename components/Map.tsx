@@ -1,19 +1,43 @@
 'use client'
 
-import dynamic from 'next/dynamic'
+import { MapContainer, TileLayer, Circle } from 'react-leaflet'
+import 'leaflet/dist/leaflet.css'
 
-const MapComponent = dynamic(
-  () => import('./MapComponent').then((mod) => mod.MapComponent),
-  { 
-    ssr: false,
-    loading: () => <div className="h-[400px] w-full bg-gray-100 flex items-center justify-center">Loading map...</div>
-  }
-)
+interface MapProps {
+  center: [number, number]
+  zoom: number
+  markers: Array<{
+    position: [number, number]
+    radius: number
+    color: string
+  }>
+}
 
-export function Map() {
-  const position: [number, number] = [16.0544, 108.2022] // Da Nang, Vietnam coordinates
-  const searchRadius = 2000 // 10km radius (in meters)
-
-  return <MapComponent center={position} searchRadius={searchRadius} />
+export function Map({ center, zoom, markers }: MapProps) {
+  return (
+    <MapContainer
+      center={center}
+      zoom={zoom}
+      scrollWheelZoom={false}
+      className="w-full h-full"
+    >
+      <TileLayer
+        attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
+        url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+      />
+      {markers.map((marker, index) => (
+        <Circle
+          key={index}
+          center={marker.position}
+          radius={marker.radius}
+          pathOptions={{ 
+            color: marker.color,
+            fillColor: marker.color,
+            fillOpacity: 0.2
+          }}
+        />
+      ))}
+    </MapContainer>
+  )
 }
 

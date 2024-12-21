@@ -1,26 +1,30 @@
 import { create } from 'zustand'
-import { persist } from 'zustand/middleware'
 
-interface VerificationStore {
-  isVerified: boolean
+type VerificationStore = {
+  unlockedClues: number[]
   verify: (code: string) => Promise<void>
 }
 
-export const useVerification = create<VerificationStore>()(
-  persist(
-    (set) => ({
-      isVerified: false,
-      verify: async (code: string) => {
-        // In a real app, you would verify this code with your backend
-        if (code === 'TREASURE2024') { // Example verification code
-          set({ isVerified: true })
-        } else {
-          throw new Error('Invalid code')
-        }
-      },
-    }),
-    {
-      name: 'verification-storage',
+// Simple verification codes for testing
+const VERIFICATION_CODES = {
+  'UNLOCK2': 2,
+  'UNLOCK3': 3,
+  'UNLOCK4': 4,
+  'UNLOCK5': 5,
+}
+
+export const useVerification = create<VerificationStore>((set) => ({
+  unlockedClues: [1], // Clue 1 is unlocked by default
+  verify: async (code: string) => {
+    const normalizedCode = code.trim().toUpperCase()
+    const clueNumber = VERIFICATION_CODES[normalizedCode as keyof typeof VERIFICATION_CODES]
+
+    if (!clueNumber) {
+      throw new Error('Invalid verification code')
     }
-  )
-) 
+
+    set((state) => ({
+      unlockedClues: [...new Set([...state.unlockedClues, clueNumber])]
+    }))
+  }
+})) 

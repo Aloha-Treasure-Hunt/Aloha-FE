@@ -13,31 +13,27 @@ const leaderboardData = [
 
 export function Leaderboard() {
   return (
-    <Card>
-      <CardHeader>
-        <CardTitle>Leaderboard</CardTitle>
-      </CardHeader>
-      <CardContent>
-        <Table>
-          <TableHeader>
-            <TableRow>
-              <TableHead>Rank</TableHead>
-              <TableHead>Name</TableHead>
-              <TableHead>Score</TableHead>
+    <div className="p-6">
+      <h2 className="heading-medium mb-4">Top Hunters</h2>
+      <Table>
+        <TableHeader>
+          <TableRow>
+            <TableHead>Rank</TableHead>
+            <TableHead>Name</TableHead>
+            <TableHead>Score</TableHead>
+          </TableRow>
+        </TableHeader>
+        <TableBody>
+          {leaderboardData.map((player) => (
+            <TableRow key={player.rank}>
+              <TableCell>{player.rank}</TableCell>
+              <TableCell>{player.name}</TableCell>
+              <TableCell>{player.score}</TableCell>
             </TableRow>
-          </TableHeader>
-          <TableBody>
-            {leaderboardData.map((player) => (
-              <TableRow key={player.rank}>
-                <TableCell>{player.rank}</TableCell>
-                <TableCell>{player.name}</TableCell>
-                <TableCell>{player.score}</TableCell>
-              </TableRow>
-            ))}
-          </TableBody>
-        </Table>
-      </CardContent>
-    </Card>
+          ))}
+        </TableBody>
+      </Table>
+    </div>
   )
 }
 
