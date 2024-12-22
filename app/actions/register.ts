@@ -50,9 +50,12 @@ export async function registerUser(formData: {
     if (authError) throw authError
     if (!user) throw new Error('No user data returned')
 
-    // Send magic link email
+    // Send magic link email with redirect
     const { error: signInError } = await adminClient.auth.signInWithOtp({
       email: formData.email,
+      options: {
+        emailRedirectTo: `${process.env.NEXT_PUBLIC_SITE_URL}/auth/callback`,
+      },
     })
 
     if (signInError) throw signInError

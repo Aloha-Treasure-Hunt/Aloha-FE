@@ -14,7 +14,7 @@ export async function middleware(request: NextRequest) {
     {
       cookies: {
         get(name: string) {
-          return request.cookies.get(name)?.value ?? ''
+          return request.cookies.get(name)?.value
         },
         set(name: string, value: string, options: CookieOptions) {
           response.cookies.set({
@@ -33,27 +33,21 @@ export async function middleware(request: NextRequest) {
     }
   )
 
-  const { data: { session } } = await supabase.auth.getSession()
+  try {
+    const { data: { session } } = await supabase.auth.getSession()
 
-  // Protect dashboard and related routes
-  if (request.nextUrl.pathname.startsWith('/dashboard')) {
-    if (!session) {
-      return NextResponse.redirect(new URL('/landing', request.url))
+    // Protect dashboard and related routes
+    if (request.nextUrl.pathname.startsWith('/dashboard')) {
+      if (!session) {
+        return NextResponse.redirect(new URL('/landing', request.url))
+      }
     }
 
-    // Check if user has completed registration
-    const { data: profile } = await supabase
-      .from('profiles')
-      .select('id')
-      .eq('id', session.user.id)
-      .single()
-
-    if (!profile) {
-      return NextResponse.redirect(new URL('/landing', request.url))
-    }
+    return response
+  } catch (error) {
+    console.error('Middleware error:', error)
+    return NextResponse.redirect(new URL('/landing', request.url))
   }
-
-  return response
 }
 
 export const config = {
