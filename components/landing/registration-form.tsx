@@ -1,52 +1,47 @@
 'use client'
 
 import { useState } from 'react'
-import { createBrowserClient } from '@supabase/ssr'
-import { useRouter } from 'next/navigation'
+import { registerUser } from '@/app/actions/register'
 
 export function RegistrationForm() {
-  const router = useRouter()
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     instagramHandle: '',
-    teamOption: 'join',
+    teamOption: 'join' as const,
     teamName: '',
     donationAmount: '',
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
-
-  const supabase = createBrowserClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
-  )
+  const [successMessage, setSuccessMessage] = useState('')
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
     setLoading(true)
     setError('')
+    setSuccessMessage('')
 
     try {
-      const { error: authError } = await supabase.auth.signUp({
-        email: formData.email,
-        password: crypto.randomUUID(),
-        options: {
-          data: {
-            name: formData.name,
-            instagram_handle: formData.instagramHandle,
-            team_name: formData.teamOption === 'create' ? formData.teamName : null,
-            donation_amount: parseFloat(formData.donationAmount),
-          }
-        }
-      })
+      const result = await registerUser(formData)
 
-      if (authError) throw authError
+      if (!result.success) {
+        setError(result.error || 'Registration failed')
+        return
+      }
       
-      router.push('/dashboard')
+      setSuccessMessage(result.message)
+      // Clear form
+      setFormData({
+        name: '',
+        email: '',
+        instagramHandle: '',
+        teamOption: 'join',
+        teamName: '',
+        donationAmount: '',
+      })
     } catch (err) {
-      setError('Registration failed. Please try again.')
-      console.error(err)
+      setError(err instanceof Error ? err.message : 'Registration failed')
     } finally {
       setLoading(false)
     }
@@ -158,6 +153,10 @@ export function RegistrationForm() {
 
       {error && (
         <p className="text-red-600 text-sm">{error}</p>
+      )}
+
+      {successMessage && (
+        <p className="text-green-600 text-sm">{successMessage}</p>
       )}
 
       <button
