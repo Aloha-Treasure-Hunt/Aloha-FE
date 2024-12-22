@@ -88,7 +88,7 @@ export function RegistrationForm() {
 
       <div>
         <label htmlFor="donation" className="block text-sm font-medium text-gray-700">
-          Donation Amount *
+          Expected Donation Amount (It's OK if its 0!) *
         </label>
         <div className="mt-1 relative rounded-md shadow-sm">
           <div className="absolute inset-y-0 left-0 pl-3 flex items-center pointer-events-none">
