@@ -1,0 +1,1 @@
+export type TeamOption = 'join' | 'create' 

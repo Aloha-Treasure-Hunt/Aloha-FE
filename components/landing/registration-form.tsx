@@ -1,20 +1,43 @@
 'use client'
 
-import { useState } from 'react'
+import { useState, useEffect } from 'react'
 import { registerUser } from '@/app/actions/register'
+import { getTeams, type Team } from '@/app/actions/get-teams'
+import type { TeamOption } from '@/app/types'
 
 export function RegistrationForm() {
   const [formData, setFormData] = useState({
     name: '',
     email: '',
     instagramHandle: '',
-    teamOption: 'join' as const,
+    teamOption: 'join' as TeamOption,
     teamName: '',
+    selectedTeamId: '',
     donationAmount: '',
   })
   const [loading, setLoading] = useState(false)
   const [error, setError] = useState('')
   const [successMessage, setSuccessMessage] = useState('')
+  const [teams, setTeams] = useState<Team[]>([])
+
+  useEffect(() => {
+    async function loadTeams() {
+      const availableTeams = await getTeams()
+      console.log('Loaded teams:', availableTeams) // Debug log
+      setTeams(availableTeams)
+    }
+    loadTeams()
+  }, [])
+
+  const handleTeamOptionChange = (option: TeamOption) => {
+    setFormData({
+      ...formData,
+      teamOption: option,
+      // Clear the other field when switching
+      teamName: option === 'join' ? '' : formData.teamName,
+      selectedTeamId: option === 'create' ? '' : formData.selectedTeamId,
+    })
+  }
 
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault()
@@ -23,14 +46,17 @@ export function RegistrationForm() {
     setSuccessMessage('')
 
     try {
-      const result = await registerUser(formData)
+      const result = await registerUser({
+        ...formData,
+        teamId: formData.teamOption === 'join' ? formData.selectedTeamId : undefined,
+      })
 
       if (!result.success) {
         setError(result.error || 'Registration failed')
         return
       }
       
-      setSuccessMessage(result.message)
+      setSuccessMessage(result.message || 'Registration successful!')
       // Clear form
       setFormData({
         name: '',
@@ -38,6 +64,7 @@ export function RegistrationForm() {
         instagramHandle: '',
         teamOption: 'join',
         teamName: '',
+        selectedTeamId: '',
         donationAmount: '',
       })
     } catch (err) {
@@ -116,7 +143,7 @@ export function RegistrationForm() {
               name="teamOption"
               value="join"
               checked={formData.teamOption === 'join'}
-              onChange={(e) => setFormData({ ...formData, teamOption: e.target.value })}
+              onChange={() => handleTeamOptionChange('join')}
               className="form-radio text-amber-600"
             />
             <span className="ml-2">Join a Team</span>
@@ -127,13 +154,41 @@ export function RegistrationForm() {
               name="teamOption"
               value="create"
               checked={formData.teamOption === 'create'}
-              onChange={(e) => setFormData({ ...formData, teamOption: e.target.value })}
+              onChange={() => handleTeamOptionChange('create')}
               className="form-radio text-amber-600"
             />
             <span className="ml-2">Create a Team</span>
           </label>
         </div>
       </fieldset>
+
+      {formData.teamOption === 'join' && teams.length > 0 && (
+        <div>
+          <label htmlFor="selectedTeam" className="block text-sm font-medium text-gray-700">
+            Select Team *
+          </label>
+          <select
+            id="selectedTeam"
+            required
+            className="mt-1 block w-full rounded-md border-gray-300 shadow-sm focus:border-amber-500 focus:ring-amber-500"
+            value={formData.selectedTeamId}
+            onChange={(e) => setFormData({ ...formData, selectedTeamId: e.target.value })}
+          >
+            <option value="">Select a team...</option>
+            {teams.map((team) => (
+              <option key={team.id} value={team.id}>
+                {team.name}
+              </option>
+            ))}
+          </select>
+        </div>
+      )}
+
+      {formData.teamOption === 'join' && teams.length === 0 && (
+        <p className="text-amber-600 text-sm">
+          No teams available to join. Please create a new team instead.
+        </p>
+      )}
 
       {formData.teamOption === 'create' && (
         <div>
