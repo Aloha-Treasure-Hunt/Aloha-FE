@@ -1,6 +1,6 @@
 import { MapComponent } from '@/components/MapComponent'
 import { Leaderboard } from '@/components/Leaderboard'
-// import { InstagramFeed } from '@/components/InstagramFeed'
+import { MasonryGallery } from '@/components/gallery/masonry-gallery'
 
 export default function Dashboard() {
   return (
@@ -9,16 +9,18 @@ export default function Dashboard() {
         Treasure Hunt Dashboard
       </h1>
       
-      <div className="space-y-8">
+      <div className="space-y-12">
         <div className="grid grid-cols-1 lg:grid-cols-2 gap-8">
           <MapComponent />
           <Leaderboard />
         </div>
-        {/* Instagram feed temporarily disabled
-        <div className="w-full">
-          <InstagramFeed />
-        </div>
-        */}
+        
+        <section className="bg-amber-50 rounded-lg p-8">
+          <h2 className="text-2xl font-bold text-amber-800 mb-6 text-center">
+            Adventure Gallery
+          </h2>
+          <MasonryGallery />
+        </section>
       </div>
     </main>
   )
