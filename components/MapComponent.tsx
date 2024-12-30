@@ -1,6 +1,17 @@
 'use client'
 
-import { Map } from './Map'
+import dynamic from 'next/dynamic'
+import { LoadingSpinner } from './ui/loading-spinner'
+
+// Dynamically import Map with no SSR
+const Map = dynamic(() => import('./Map').then(mod => mod.Map), {
+  ssr: false,
+  loading: () => (
+    <div className="w-full h-[400px] flex items-center justify-center bg-amber-50">
+      <LoadingSpinner />
+    </div>
+  )
+})
 
 // Da Nang coordinates
 const DANANG_CENTER: [number, number] = [16.0544, 108.2022]

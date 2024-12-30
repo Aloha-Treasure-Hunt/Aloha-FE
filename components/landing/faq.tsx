@@ -10,7 +10,7 @@ export function FAQ() {
             <li>• The Treasure Hunt is a donation-based event</li>
             <li>• To enter, participants make a donation of their choice</li>
             <li>• 25% of all entrance fees will be donated to a local charity</li>
-            <li>• The charity will be selected through a community vote (If you are a local charity who wants to be listed or you want to nominate your favorite charity, please send us a message over WhatsApp or Instagram. The vote will take place over an Instagram poll.</li>
+            <li>• The charity will be selected through a community vote (If you are a local charity who wants to be listed or you want to nominate your favorite charity, please send us a message over WhatsApp or Instagram. The vote will take place over an Instagram poll.)</li>
           </ul>
         </section>
 
