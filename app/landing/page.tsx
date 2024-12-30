@@ -31,7 +31,7 @@ const Page: FC = () => {
                 <li>Solve clues to unlock new locations</li>
                 <li>Visit locations to find verification codes</li>
                 <li>Enter codes to unlock more clues</li>
-                <li>Share your adventure on Instagram with #CityTreasureHunt</li>
+                <li>Share your adventure on Instagram with #AVNTreasureHunt</li>
               </ol>
             </div>
           </section>
