@@ -3,18 +3,20 @@ import { Button } from "@/components/ui/button"
 
 export function Header() {
   return (
-    <header className="bg-amber-100 py-4">
-      <nav className="container mx-auto flex justify-between items-center">
-        <Link href="/" className="text-2xl font-bold text-amber-800">Danang Treasure Hunt</Link>
-        <div className="space-x-4">
-          <Button variant="ghost" asChild>
+    <header className="bg-white/70 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
+      <nav className="container mx-auto flex justify-between items-center py-4">
+        <Link href="/" className="text-2xl font-semibold gradient-text">
+          Danang Treasure Hunt
+        </Link>
+        <div className="space-x-2">
+          <Button variant="ghost" asChild className="text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50">
+            <Link href="/dashboard">Dashboard</Link>
+          </Button>
+          <Button variant="ghost" asChild className="text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50">
             <Link href="/clues">Clues</Link>
           </Button>
-          <Button variant="ghost" asChild>
+          <Button variant="ghost" asChild className="text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50">
             <Link href="/challenges">Challenges</Link>
-          </Button>
-          <Button variant="ghost" asChild>
-            <Link href="/mini-tasks">Mini-Tasks</Link>
           </Button>
         </div>
       </nav>

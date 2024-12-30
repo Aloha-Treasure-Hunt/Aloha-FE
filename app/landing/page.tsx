@@ -9,10 +9,10 @@ export const metadata = {
 
 const Page: FC = () => {
   return (
-    <main className="min-h-screen bg-gradient-to-b from-amber-50 to-white">
+    <main className="min-h-screen bg-gray-100">
       <div className="container mx-auto px-4 py-12 space-y-16">
         <section className="text-center space-y-4">
-          <h1 className="text-4xl md:text-5xl font-bold text-amber-800">
+          <h1 className="heading-large">
             City Treasure Hunt
           </h1>
           <p className="text-xl text-amber-700 max-w-2xl mx-auto">
@@ -21,8 +21,8 @@ const Page: FC = () => {
         </section>
 
         <div className="grid md:grid-cols-2 gap-8">
-          <section className="bg-white rounded-lg shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-amber-800 mb-6">
+          <section className="card p-8">
+            <h2 className="heading-medium mb-6">
               How to Play
             </h2>
             <div className="prose">
@@ -36,8 +36,8 @@ const Page: FC = () => {
             </div>
           </section>
 
-          <section className="bg-white rounded-lg shadow-lg p-8">
-            <h2 className="text-2xl font-bold text-amber-800 mb-6">
+          <section className="card p-8">
+            <h2 className="heading-medium mb-6">
               Latest Updates
             </h2>
             <InstagramFeed />
