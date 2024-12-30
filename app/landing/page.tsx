@@ -1,6 +1,6 @@
 import { FC } from 'react'
 import { FAQ } from '@/components/landing/faq'
-import { MapComponent } from '@/components/MapComponent'
+import { LandingMapComponent } from '@/components/LandingMapComponent'
 
 export const metadata = {
   title: 'City Treasure Hunt - Join the Adventure',
@@ -27,14 +27,14 @@ const Page: FC = () => {
             </h2>
             <div className="prose">
               <ol className="list-decimal list-inside space-y-4">
-                <li>Message us on WhatsApp or Instagram to join the hunt as an individual or team</li>
-                <li>Once we receive your message, we will send you the first clue or you can check the 'Clues' link at the top of the page</li>
-                <li>Visit the Dashboard to see the map and Teams Leaderboard</li>
+                <li>Message us on <a href="https://wa.me/message/OSXOZZSAAUXCP1" className="text-amber-700 hover:underline">WhatsApp</a> or <a href="https://www.instagram.com/alohavietnamretreat/profilecard/?igsh=M2hwaWFoODF2ZnM0" className="text-amber-700 hover:underline">Instagram</a> to join the hunt as an individual or team</li>
+                <li>Once we receive your message, we will send you the first clue or you can check the <a href="/clues" className="text-amber-700 hover:underline">Clues</a> page</li>
+                <li>Visit the <a href="/dashboard" className="text-amber-700 hover:underline">Dashboard</a> to see the map and Teams Leaderboard</li>
                 <li>Solve clues to unlock new locations</li>
                 <li>Visit locations to find verification codes</li>
                 <li>Enter codes to unlock more clues</li>
                 <li>Share your adventure on Instagram with #AVNTreasureHunt</li>
-                <li>Complete Challenges and post them to your story and tag us for additional points</li>
+                <li>Complete <a href="/challenges" className="text-amber-700 hover:underline">Challenges</a> and post them to your story and tag us for additional points</li>
               </ol>
             </div>
           </section>
@@ -43,7 +43,7 @@ const Page: FC = () => {
             <h2 className="heading-medium mb-6">
               Hunt Area
             </h2>
-            <MapComponent />
+            <LandingMapComponent />
           </section>
         </div>
 

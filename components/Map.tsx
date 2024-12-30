@@ -41,3 +41,5 @@ export function Map({ center, zoom, markers }: MapProps) {
   )
 }
 
+export default Map
+
