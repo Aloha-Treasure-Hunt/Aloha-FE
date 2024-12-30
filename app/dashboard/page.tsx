@@ -1,6 +1,6 @@
 import { MapComponent } from '@/components/MapComponent'
 import { Leaderboard } from '@/components/Leaderboard'
-import { InstagramFeed } from '@/components/InstagramFeed'
+// import { InstagramFeed } from '@/components/InstagramFeed'
 
 export default function Dashboard() {
   return (
@@ -14,9 +14,11 @@ export default function Dashboard() {
           <MapComponent />
           <Leaderboard />
         </div>
+        {/* Instagram feed temporarily disabled
         <div className="w-full">
           <InstagramFeed />
         </div>
+        */}
       </div>
     </main>
   )

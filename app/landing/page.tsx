@@ -1,10 +1,10 @@
 import { FC } from 'react'
 import { FAQ } from '@/components/landing/faq'
-import { InstagramFeed } from '@/components/InstagramFeed'
+import { MapComponent } from '@/components/MapComponent'
 
 export const metadata = {
   title: 'City Treasure Hunt - Join the Adventure',
-  description: 'Explore the city, solve clues, and win prizes in this exciting two-day treasure hunt adventure!',
+  description: 'Explore the city, solve clues, complete challenges, and win prizes in this exciting five-day treasure hunt adventure!',
 }
 
 const Page: FC = () => {
@@ -16,7 +16,7 @@ const Page: FC = () => {
             City Treasure Hunt
           </h1>
           <p className="text-xl text-amber-700 max-w-2xl mx-auto">
-            Explore the city, solve clues, and win prizes in this exciting two-day adventure!
+            Explore the city, solve clues, complete challenges and win prizes in this exciting five-day adventure!
           </p>
         </section>
 
@@ -27,20 +27,23 @@ const Page: FC = () => {
             </h2>
             <div className="prose">
               <ol className="list-decimal list-inside space-y-4">
-                <li>Visit the Dashboard to see the map and available clues</li>
+                <li>Message us on WhatsApp or Instagram to join the hunt as an individual or team</li>
+                <li>Once we receive your message, we will send you the first clue or you can check the 'Clues' link at the top of the page</li>
+                <li>Visit the Dashboard to see the map and Teams Leaderboard</li>
                 <li>Solve clues to unlock new locations</li>
                 <li>Visit locations to find verification codes</li>
                 <li>Enter codes to unlock more clues</li>
                 <li>Share your adventure on Instagram with #AVNTreasureHunt</li>
+                <li>Complete Challenges and post them to your story and tag us for additional points</li>
               </ol>
             </div>
           </section>
 
           <section className="card p-8">
             <h2 className="heading-medium mb-6">
-              Latest Updates
+              Hunt Area
             </h2>
-            <InstagramFeed />
+            <MapComponent />
           </section>
         </div>
 
