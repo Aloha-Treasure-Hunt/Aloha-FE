@@ -1,11 +1,4 @@
-import { Lock } from 'lucide-react'
-import { cn } from '@/lib/utils'
-
-interface ClueData {
-  title: string
-  description: string
-  hint: string
-}
+import type { ClueData } from '@/app/api/challenges/types'
 
 export interface ClueProps {
   number: number
@@ -13,7 +6,7 @@ export interface ClueProps {
   data: ClueData
 }
 
-export function Clue({ number, isLocked, data }: ClueProps) {
+export function Clue({ isLocked, data }: ClueProps) {
   return (
     <div className={`p-4 rounded-lg border transition-colors ${
       isLocked ? 'bg-gray-100 border-gray-200' : 'bg-white border-amber-200'

@@ -1,6 +1,7 @@
 'use client'
 
 import { MapContainer, TileLayer, Circle } from 'react-leaflet'
+import { LatLngTuple } from 'leaflet'
 import 'leaflet/dist/leaflet.css'
 
 interface MapProps {
@@ -16,7 +17,7 @@ interface MapProps {
 export function Map({ center, zoom, markers }: MapProps) {
   return (
     <MapContainer
-      center={center}
+      center={center as LatLngTuple}
       zoom={zoom}
       scrollWheelZoom={false}
       className="w-full h-full"
@@ -28,13 +29,13 @@ export function Map({ center, zoom, markers }: MapProps) {
       {markers.map((marker, index) => (
         <Circle
           key={index}
-          center={marker.position}
-          radius={marker.radius}
+          center={marker.position as LatLngTuple}
           pathOptions={{ 
             color: marker.color,
             fillColor: marker.color,
             fillOpacity: 0.2
           }}
+          radius={marker.radius}
         />
       ))}
     </MapContainer>

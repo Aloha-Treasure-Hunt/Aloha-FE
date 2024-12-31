@@ -6,4 +6,10 @@ export interface Challenge {
   completed: boolean
   description?: string
   requirements?: string[]
+}
+
+export interface ClueData {
+  title: string
+  description: string
+  hint?: string
 } 

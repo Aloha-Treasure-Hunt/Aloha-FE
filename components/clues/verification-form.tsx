@@ -16,8 +16,8 @@ export function VerificationForm() {
     
     try {
       await verify(code)
-      setCode('') // Clear input after successful verification
-    } catch (err) {
+      setCode('')
+    } catch {
       setError('Invalid verification code. Please try again.')
     }
   }
