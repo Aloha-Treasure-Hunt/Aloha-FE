@@ -29,7 +29,7 @@ export function Clue({ isLocked, data }: ClueProps) {
             <div className="space-y-2">
               <p className="text-gray-700">{data.description}</p>
               {data.hint && (
-                <p className="text-sm text-gray-500">Location: {data.hint}</p>
+                <p className="text-sm text-gray-500">Hint: {data.hint}</p>
               )}
             </div>
           )}
