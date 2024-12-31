@@ -6,54 +6,33 @@ export default function PrivacyPolicy() {
       <div className="prose max-w-none">
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">1. Information We Collect</h2>
-          <p>We collect the following types of information:</p>
+          <p>We collect minimal information to provide our treasure hunt services:</p>
           <ul className="list-disc ml-6 mb-4">
-            <li>Account information (name, email, profile picture)</li>
-            <li>Location data during treasure hunts (with your permission)</li>
-            <li>Game progress and achievement data</li>
-            <li>Photos and content you share during hunts</li>
-            <li>Instagram content when using hashtags related to our hunts</li>
+            <li>Temporary location data during active treasure hunts (with your permission)</li>
+            <li>Basic game progress for active hunts</li>
           </ul>
+          <p>All hunt data is temporary and is not stored after the hunt ends.</p>
         </section>
 
         <section className="mb-8">
           <h2 className="text-2xl font-semibold mb-4">2. How We Use Your Information</h2>
-          <p>We use your information to:</p>
+          <p>We use this temporary information only to:</p>
           <ul className="list-disc ml-6 mb-4">
-            <li>Operate and improve the treasure hunt experience</li>
-            <li>Track game progress and maintain leaderboards</li>
-            <li>Display user-generated content in our Instagram feed</li>
-            <li>Ensure fair play and prevent cheating</li>
-            <li>Send important updates about hunts and your participation</li>
+            <li>Operate the current treasure hunt experience</li>
+            <li>Verify hunt completion</li>
+            <li>Ensure fair play during active hunts</li>
           </ul>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">3. Data Security</h2>
-          <p>We implement appropriate security measures to protect your personal information, including:</p>
-          <ul className="list-disc ml-6 mb-4">
-            <li>Encryption of sensitive data</li>
-            <li>Regular security assessments</li>
-            <li>Secure access controls</li>
-            <li>Regular backups</li>
-          </ul>
+          <h2 className="text-2xl font-semibold mb-4">3. Data Retention</h2>
+          <p>We do not store any personal information. All hunt-related data is temporary and is automatically deleted when your hunt ends.</p>
         </section>
 
         <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">4. Your Rights</h2>
-          <p>You have the right to:</p>
-          <ul className="list-disc ml-6 mb-4">
-            <li>Access your personal data</li>
-            <li>Request data correction or deletion</li>
-            <li>Opt-out of marketing communications</li>
-            <li>Request your data in a portable format</li>
-          </ul>
-        </section>
-
-        <section className="mb-8">
-          <h2 className="text-2xl font-semibold mb-4">5. Contact Us</h2>
+          <h2 className="text-2xl font-semibold mb-4">4. Contact Us</h2>
           <p>If you have any questions about this Privacy Policy, please contact us at:</p>
-          <p className="mt-2">Email: privacy@treasurehunt.com</p>
+          <p className="mt-2">Email: alohavietnamretreat@gmail.com</p>
         </section>
       </div>
     </div>
