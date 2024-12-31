@@ -4,7 +4,7 @@ import { cn } from '@/lib/utils'
 interface ClueData {
   title: string
   description: string
-  location?: string
+  hint: string
 }
 
 export interface ClueProps {
@@ -35,8 +35,8 @@ export function Clue({ number, isLocked, data }: ClueProps) {
           ) : (
             <div className="space-y-2">
               <p className="text-gray-700">{data.description}</p>
-              {data.location && (
-                <p className="text-sm text-gray-500">Location: {data.location}</p>
+              {data.hint && (
+                <p className="text-sm text-gray-500">Location: {data.hint}</p>
               )}
             </div>
           )}

@@ -14,19 +14,19 @@ const Map = dynamic(() => import('./Map').then(mod => mod.Map), {
 })
 
 // Da Nang coordinates
-const DANANG_CENTER: [number, number] = [16.0544, 108.2022]
+const DANANG_CENTER: [number, number] = [16.0712, 108.2336]
 
 export function MapComponent() {
   return (
     <div className="w-full h-[400px] rounded-lg overflow-hidden border border-amber-200">
       <Map
         center={DANANG_CENTER}
-        zoom={13}
+        zoom={12}
         markers={[
           {
             position: DANANG_CENTER,
-            radius: 1000, // 1km radius
-            color: '#f59e0b' // amber-500
+            radius: 6000, // 1km radius
+            color: '#008080' // teal
           }
         ]}
       />
