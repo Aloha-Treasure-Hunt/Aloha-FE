@@ -14,6 +14,9 @@ interface MapProps {
   }>
 }
 
+// Add your Stadia API key
+const STADIA_API_KEY = process.env.NEXT_PUBLIC_STADIA_API_KEY
+
 export function Map({ center, zoom, markers }: MapProps) {
   return (
     <MapContainer
@@ -24,7 +27,7 @@ export function Map({ center, zoom, markers }: MapProps) {
     >
       <TileLayer
         attribution='&copy; <a href="https://www.openstreetmap.org/copyright">OpenStreetMap</a> contributors'
-        url="https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png"
+        url={`https://tiles.stadiamaps.com/tiles/alidade_smooth/{z}/{x}/{y}{r}.png?api_key=${STADIA_API_KEY}`}
       />
       {markers.map((marker, index) => (
         <Circle
