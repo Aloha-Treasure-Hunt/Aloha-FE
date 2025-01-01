@@ -30,7 +30,7 @@ export function FAQ() {
         <section>
           <h3 className="text-xl font-semibold text-amber-700 mb-4">What Do the Winning Teams Receive?</h3>
           <ul className="space-y-2 text-gray-700">
-            <li>• The top team will win small prizes</li>
+            <li>• The top teams will win small prizes</li>
           </ul>
         </section>
 

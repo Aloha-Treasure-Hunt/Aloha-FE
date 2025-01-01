@@ -7,10 +7,11 @@ type VerificationStore = {
 
 // Simple verification codes for testing
 const VERIFICATION_CODES = {
-  'UNLOCK2': 2,
-  'UNLOCK3': 3,
-  'UNLOCK4': 4,
-  'UNLOCK5': 5,
+  'FATCAT': 2,
+  'SPRINGROLL': 3,
+  'GODANA': 4,
+  'SPACEG': 5,
+  'WOLFY': 6,
 }
 
 export const useVerification = create<VerificationStore>((set) => ({
