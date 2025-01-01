@@ -9,9 +9,8 @@ type VerificationStore = {
 const VERIFICATION_CODES = {
   'FATCAT': 2,
   'SPRINGROLL': 3,
-  'GODANA': 4,
-  'SPACEG': 5,
-  'WOLFY': 6,
+  'SPACEG': 4,
+  'WOLFY': 5,
 }
 
 export const useVerification = create<VerificationStore>((set) => ({
