@@ -28,7 +28,7 @@ const Page: FC = () => {
             <div className="prose">
               <ol className="list-decimal list-inside space-y-4">
                 <li>Message us on <a href="https://wa.me/message/OSXOZZSAAUXCP1" className="text-amber-700 hover:underline">WhatsApp</a> or <a href="https://www.instagram.com/alohavietnamretreat/profilecard/?igsh=M2hwaWFoODF2ZnM0" className="text-amber-700 hover:underline">Instagram</a> to join the hunt as an individual or team</li>
-                <li>Join the <a href="https://discord.gg/9eEdbrgb" className="text-amber-700 hover:underline">Discord Server</a> to find a team, get updates, share hints (or not lol) and more</li>
+                <li>Join the <a href="https://chat.whatsapp.com/Gzff8wsNHlqERDmtD8Bck4" className="text-amber-700 hover:underline">WhatsApp Group</a> to find a team, get updates, share hints (or not lol) and more</li>
                 <li>Once we receive your message, we will send you the first clue or you can check the <a href="/clues" className="text-amber-700 hover:underline">Clues</a> page</li>
                 <li>Visit the <a href="/dashboard" className="text-amber-700 hover:underline">Dashboard</a> to see the map and Teams Leaderboard</li>
                 <li>Solve clues to unlock new locations</li>

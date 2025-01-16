@@ -30,14 +30,14 @@ export function FAQ() {
         <section>
           <h3 className="text-xl font-semibold text-amber-700 mb-4">What Do the Winning Teams Receive?</h3>
           <ul className="space-y-2 text-gray-700">
-            <li>• The top teams will win small prizes</li>
+            <li>• The top teams will win small prizes such as vouchers for surf lessons, yoga classes, and more</li>
           </ul>
         </section>
 
         <section>
           <h3 className="text-xl font-semibold text-amber-700 mb-4">How Long is the Hunt?</h3>
           <ul className="space-y-2 text-gray-700">
-            <li>• The Treasure Hunt lasts for 5 days from January 1 to January 5</li>
+            <li>• The Treasure Hunt lasts until Jan 25</li>
             <li>• The search area will narrow down every 24 hours</li>
             <li>• This decreasing circle adds excitement and focuses the hunt</li>
           </ul>
