@@ -8,8 +8,8 @@ export const cluesData: ClueData[] = [
   },
   {
     title: "Clue 2",
-    description: "A haven for local delicacies",
-    hint: "Located on Nguyễn Văn Thoại Street in beach side, the cart outside is full of fresh vegetables"
+    description: "A haven for rolled local delicacies",
+    hint: "Located on Nguyễn Văn Thoại Street on beach side, the cart outside is full of fresh vegetables"
   },
   {
     title: "Clue 3",
