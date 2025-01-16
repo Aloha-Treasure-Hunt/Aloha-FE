@@ -3,23 +3,23 @@ import { ClueData } from '@/components/clues/clue'
 export const cluesData: ClueData[] = [
   {
     title: "Clue 1",
-    description: "A cozy place where coffee dreams brew, with a name that flickers like a 'flame spot'.",
-    hint: "It's Instagram page features a locally-famous fat orange cat and other furry friends"
+    description: "Vin Diesel's character's name in his most famous movie + caffeinated drinks",
+    hint: "The location's Instagram page features a locally-famous fat orange cat and other furry friends"
   },
   {
     title: "Clue 2",
-    description: "A haven for local delicacies, where flavors of Nam-O sea meet the warmth of tradition.",
-    hint: "Located on Nguyễn Văn Thoại Street, the green and yellow building invites you try authentic Da Nang dishes"
+    description: "A haven for local delicacies",
+    hint: "Located on Nguyễn Văn Thoại Street in beach side, the cart outside is full of fresh vegetables"
   },
   {
     title: "Clue 3",
-    description: "In a Garden high above, where cozy vibes and pop-up art intertwine, find your next clue among the Planets and Stars, divine.",
+    description: "What your partner sometimes needs when they having a bad day + where Eve ate the apple",
     hint: "Super chill place hiding inside a small garden"
   },
   {
     title: "Clue 4",
-    description: "Seek the Den of crafted potions, where the night is alive with unique blends.",
-    hint: "The name suggests a creature known for its cunning nature and loyalty"
+    description: "The opposite of white + an animal that loves the moon",
+    hint: "The name suggests a creature known for its cunning nature"
   },
   {
     title: "Clue 5",
