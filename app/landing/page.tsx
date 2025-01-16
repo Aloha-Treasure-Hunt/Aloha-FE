@@ -16,7 +16,7 @@ const Page: FC = () => {
             City Treasure Hunt
           </h1>
           <p className="text-xl text-amber-700 max-w-2xl mx-auto">
-            Explore the city, solve clues, complete challenges and win prizes in this exciting five-day adventure!
+            Explore the city, solve clues, complete side quests and win prizes in this exciting hunt!
           </p>
         </section>
 
@@ -35,7 +35,7 @@ const Page: FC = () => {
                 <li>Visit locations to find verification codes</li>
                 <li>Enter codes to unlock more clues</li>
                 <li>Share your adventure on Instagram with #AVNTreasureHunt</li>
-                <li>Complete <a href="/challenges" className="text-amber-700 hover:underline">Challenges</a> and post them to your story and tag us for additional points</li>
+                <li>Complete <a href="/challenges" className="text-amber-700 hover:underline">Side Quests</a> and post them to your story and tag us for additional points</li>
               </ol>
             </div>
           </section>

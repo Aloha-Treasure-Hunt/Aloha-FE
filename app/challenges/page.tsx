@@ -212,10 +212,10 @@ const BONUS_CHALLENGE: Challenge = {
 export default function ChallengePage() {
   return (
     <main className="container mx-auto py-8 px-4">
-      <h1 className="text-3xl font-bold text-center mb-4 text-amber-800">Team Challenges</h1>
+      <h1 className="text-3xl font-bold text-center mb-4 text-amber-800">Side Quests</h1>
       <p className="text-center mb-8 text-gray-600 max-w-2xl mx-auto">
-        Complete challenges to earn points and unlock special rewards! Each challenge offers unique points,
-        and the Challenge of the Day comes with bonus points. Document your adventures and share them with
+        Complete side quests to earn points and move up the leaderboard! Each side quest offers unique points,
+        and the Side Quest of the Day comes with bonus points. Document your adventures and share them with
         #AVNTreasureHunt
       </p>
       <BingoCard challenges={CHALLENGES} bonusChallenge={BONUS_CHALLENGE} />

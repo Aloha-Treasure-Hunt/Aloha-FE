@@ -25,7 +25,7 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
             <Card className="p-6 bg-white/95 space-y-3">
               <div className="flex justify-between items-start">
                 <h3 className="text-lg font-bold text-amber-800">
-                  Challenge of the Day
+                  Side Quest of the Day
                 </h3>
                 <span className="bg-amber-500 text-white px-3 py-1 rounded-full text-sm font-semibold">
                   {bonusChallenge.points} pts
