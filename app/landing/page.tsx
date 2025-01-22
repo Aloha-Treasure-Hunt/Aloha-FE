@@ -13,7 +13,7 @@ const Page: FC = () => {
       <div className="container mx-auto px-4 py-12 space-y-16">
         <section className="text-center space-y-4">
           <h1 className="heading-large">
-            City Treasure Hunt
+            The Hunt is On!
           </h1>
           <p className="text-xl text-amber-700 max-w-2xl mx-auto">
             Complete Side Quests & Win Prizes in this free Treasure Hunt!
