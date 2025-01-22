@@ -5,28 +5,26 @@ const CHALLENGES: Challenge[] = [
   // Original challenges
   {
     id: '1',
-    text: "Take a photo with 3 different street food vendors",
-    points: 100,
+    text: "Film someone getting an ice bath for the first time ",
+    points: 200,
     completed: false,
-    description: "Find and interact with local street food vendors around the city.",
+    description: "Get a friend to film you getting an ice bath for the first time or the other way around",
     requirements: [
-      "Photos with 3 different vendors",
-      "Try at least one item from each",
-      "Note the location",
-      "Tag the vendors if possible"
+      "Share the video on Instagram with #AVNTreasureHunt",
     ]
   },
   {
     id: '2',
     text: "Find and photograph a hidden temple",
-    points: 150,
+    points: 75,
     completed: false,
     description: "Discover one of Da Nang's lesser-known temples.",
     requirements: [
       "Find a temple off the tourist track",
       "Take artistic photos",
       "Learn about its history",
-      "Show respect to local customs"
+      "Bonus points for filming yourself or a friend lighting incense and saying a prayer +15",
+      "Share the video on Instagram with #AVNTreasureHunt"
     ]
   },
   {
@@ -39,85 +37,76 @@ const CHALLENGES: Challenge[] = [
       "Learn from locals",
       "Practice the moves",
       "Record a short performance",
-      "Share the experience"
+      "Share the video on Instagram with #AVNTreasureHunt"
     ]
   },
   {
     id: '4',
-    text: "Try 5 different local fruits",
+    text: "Ask a local their favorite fruit in Vietnamese and then get it for them",
     points: 100,
     completed: false,
     description: "Explore Vietnam's diverse fruit offerings.",
     requirements: [
-      "Visit local fruit markets",
-      "Try 5 unique fruits",
-      "Document each fruit",
-      "Rate your favorites"
+      "Learn the name of a fruit in Vietnamese or use your favorite translation app",
+      "Purchase fruit from a local vendor",
+      "Film the interaction",
+      "Share the video on Instagram with #AVNTreasureHunt"
     ]
   },
   {
     id: '5',
-    text: "Take a team photo at Dragon Bridge",
-    points: 100,
+    text: "Invent a new way to take a nap on a motorbike",
+    points: 40,
     completed: false,
-    description: "Capture your team's spirit at this iconic location.",
+    description: "Test your ingenuity and get creative with a motorbike nap",
     requirements: [
-      "Creative group pose",
-      "Include the dragon",
-      "Both day and night photos",
-      "Share the story"
+      "Film the interaction",
+      "Share the video on Instagram with #AVNTreasureHunt"
     ]
   },
   {
     id: '6',
-    text: "Order food in Vietnamese",
+    text: "Film yourself or a friend trying to get the rubber band off of a sauce packet without breaking the the bag or rubber band ",
     points: 120,
     completed: false,
-    description: "Practice your Vietnamese language skills.",
+    description: "Practice your Vietnamese survival skills.",
     requirements: [
-      "Learn basic food vocabulary",
-      "Order without English",
-      "Record the interaction",
-      "Thank the vendor in Vietnamese"
+      "Film the interaction",
+      "Share the video on Instagram with #AVNTreasureHunt"
     ]
   },
   {
     id: '7',
-    text: "Find a local crafts workshop",
-    points: 150,
+    text: "Challenge your friends to a spring roll rolling contest",
+    points: 110,
     completed: false,
-    description: "Discover traditional Vietnamese crafts.",
+    description: "Practice your spring roll rolling skills.",
     requirements: [
-      "Locate a workshop",
-      "Learn about the craft",
-      "Try making something",
-      "Document the process"
+      "Order some spring rolls or make your own",
+      "Film the interaction",
+      "Share the video on Instagram with #AVNTreasureHunt"
     ]
   },
   {
     id: '8',
-    text: "Visit Marble Mountains",
-    points: 200,
+    text: "Take a sunset picture with your teammates",
+    points: 100,
     completed: false,
-    description: "Explore this historic and spiritual site.",
+    description: "Capture the beauty of Da Nang's sunset.",
     requirements: [
-      "Climb to viewpoints",
-      "Visit caves",
-      "Learn about history",
-      "Respectful photography"
+      "Film the interaction",
+      "Share the video on Instagram with #AVNTreasureHunt"
     ]
   },
   {
     id: '9',
-    text: "Complete a beach cleanup challenge",
-    points: 150,
+    text: "Take a sunrise picture with your teammates",
+    points: 160,
     completed: false,
-    description: "Help keep Da Nang's beaches beautiful.",
+    description: "Capture the beauty of Da Nang's sunrise.",
     requirements: [
-      "30 minutes minimum",
-      "Sort recyclables",
-      "Document before/after",
-      "Inspire others to join"
+      "Film the interaction",
+      "Share the video on Instagram with #AVNTreasureHunt"
     ]
   },
   // New challenges
@@ -137,58 +126,38 @@ const CHALLENGES: Challenge[] = [
   },
   {
     id: '11',
-    text: "Cultural Costume Photo Shoot",
+    text: "Take a video of your team doing the Vietnamese Cheers (MOT-HAI-BAI-YO)",
     points: 180,
     completed: false,
-    description: "Find a local shop, rent traditional Vietnamese attire, and take creative photos.",
+    description: "Practice your Vietnamese cheers skills.",
     requirements: [
-      "Wear traditional Ao Dai",
-      "Visit iconic locations",
-      "Group photos in costume",
-      "Learn about the costume's history",
-      "Tag the rental shop"
+      "Film the interaction",
+      "Bonus points for doing a Boomerang +10",
+      "Share the video on Instagram with #AVNTreasureHunt"
     ]
   },
   {
     id: '12',
-    text: "Street Food Sampling",
+    text: "Film yourself doing the the A-P-T dance with your favorite barista",
     points: 120,
     completed: false,
-    description: "Try three different types of street food and document your experience.",
+    description: "Practice your dance skills and make a new memory",
     requirements: [
-      "Try 3 different dishes",
-      "Note dish names",
-      "Document flavors",
-      "Photo with vendors",
-      "Rate each dish"
+      "The APT dance was made popular by Rosie and Bruno Mars",
+      "Film the interaction",
+      "Share the video on Instagram with #AVNTreasureHunt"
     ]
   },
   {
     id: '13',
-    text: "Language Exchange",
+    text: "Get a Surf Lesson",
     points: 150,
     completed: false,
-    description: "Learn and practice five common Vietnamese phrases with locals.",
+    description: "Get some exercise and learn a new skill",
     requirements: [
-      "Learn 5 phrases",
-      "Practice with locals",
-      "Record short videos",
-      "Write down translations",
-      "Use in conversation"
-    ]
-  },
-  {
-    id: '14',
-    text: "Local Recipe Hunt",
-    points: 160,
-    completed: false,
-    description: "Visit a local market and learn a recipe from a vendor.",
-    requirements: [
-      "Find a local vendor",
-      "Get a recipe",
-      "Buy ingredients",
-      "Photo documentation",
-      "Write down recipe steps"
+      "Film the interaction",
+      "Bonus points for a Party Wave +30",
+      "Share the video on Instagram with #AVNTreasureHunt"
     ]
   }
 ]
