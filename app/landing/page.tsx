@@ -27,12 +27,12 @@ const Page: FC = () => {
             </h2>
             <div className="prose">
               <ol className="list-decimal list-inside space-y-4">
-                <li>Join the <a href="https://chat.whatsapp.com/Gzff8wsNHlqERDmtD8Bck4" className="text-amber-700 hover:underline">WhatsApp Group</a> to join the hunt!</li>
-                <li>Check the <a href="/clues" className="text-amber-700 hover:underline">Clues</a> page to see the first clue</li>
-                <li>Visit the <a href="/dashboard" className="text-amber-700 hover:underline">Dashboard</a> to see the map and Teams Leaderboard</li>
+                <li>Join the <a href="https://chat.whatsapp.com/Gzff8wsNHlqERDmtD8Bck4" className="text-amber-700 hover:underline font-bold uppercase">WHATSAPP GROUP</a> to join the hunt!</li>
+                <li>Check the <a href="/clues" className="text-amber-700 hover:underline font-bold uppercase">CLUES</a> page to see the first clue</li>
+                <li>Visit the <a href="/dashboard" className="text-amber-700 hover:underline font-bold uppercase">DASHBOARD</a> to see the map and Teams Leaderboard</li>
                 <li>Solve clues to find cool hidden-gem businesses in the city. Each business has a verification code that you can enter to unlock the next clue</li>
                 <li>Share your adventure on Instagram with #AVNTreasureHunt</li>
-                <li>Complete <a href="/challenges" className="text-amber-700 hover:underline">Side Quests</a> and post them for additional points</li>
+                <li>Complete <a href="/challenges" className="text-amber-700 hover:underline font-bold uppercase">SIDE QUESTS</a> and post them for additional points</li>
                 <li>The top teams will win small prizes such as vouchers for surf lessons, yoga classes, and more</li>
               </ol>
             </div>
