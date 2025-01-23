@@ -1,13 +1,13 @@
 import { Table, TableBody, TableCell, TableHead, TableHeader, TableRow } from "@/components/ui/table"
 
 const leaderboardData = [
-  { rank: 1, name: "My Khe Cuties", score: 420 },
+  { rank: 1, name: "My Khe Cuties", score: 0 },
 ]
 
 export function Leaderboard() {
   return (
     <div className="p-6">
-      <h2 className="heading-medium mb-4">Top Hunters</h2>
+      <h2 className="heading-medium mb-4">Team Leaderboard</h2>
       <Table>
         <TableHeader>
           <TableRow>
