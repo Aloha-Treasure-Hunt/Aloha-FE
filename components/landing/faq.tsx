@@ -20,7 +20,7 @@ export function FAQ() {
             <li>• Use verification code you will receive at locations to access next clues</li>
             <li>• Complete side quests around the city to explore more and have some fun</li>
             <li>• Earn points for completing clues and side quests</li>
-            <li>• Follow the real-time leaderboard to see your teams' points</li>
+            <li>• Follow the real-time leaderboard to see your teams points</li>
             <li>• The hunt leads to a final party location</li>
           </ul>
         </section>
