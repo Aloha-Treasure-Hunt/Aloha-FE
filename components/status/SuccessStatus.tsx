@@ -1,99 +1,159 @@
 'use client'
 import { motion } from 'framer-motion';
-import { ChevronRight } from 'lucide-react';
-import Link from 'next/link';
+import { ChevronRight, Award, Gift, Star } from 'lucide-react';
+import { useState, useEffect } from 'react';
 
 export default function SuccessScreen() {
+  const [showConfetti, setShowConfetti] = useState(true);
+  const [rewardPoints, setRewardPoints] = useState(0);
+  
+  // Animate points counting up
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      const interval = setInterval(() => {
+        setRewardPoints(prev => {
+          if (prev >= 500) {
+            clearInterval(interval);
+            return 500;
+          }
+          return prev + 25;
+        });
+      }, 50);
+      
+      return () => clearInterval(interval);
+    }, 800);
+    
+    return () => clearTimeout(timer);
+  }, []);
+  
   return (
-    <main className="flex justify-center px-4">
-      <div className="w-full max-w-md mt-6">
-        <div className="relative rounded-3xl overflow-hidden shadow-md bg-white">
-          {/* Background Pattern */}
-          <div className="absolute inset-0 z-0">
-            <div className="h-full w-full bg-pink-50">
-              {/* Confetti and gems */}
-              <div className="relative h-full w-full overflow-hidden">
-                {Array(15).fill(null).map((_, i) => (
-                  <motion.div
-                    key={i}
-                    className="absolute"
-                    initial={{ 
-                      x: Math.random() * 300 - 150, 
-                      y: Math.random() * 300, 
-                      opacity: 0 
-                    }}
-                    animate={{ 
-                      y: [null, Math.random() * -300],
-                      opacity: [0, 0.8, 0],
-                      scale: [0.5, 1, 0.5]
-                    }}
-                    transition={{ 
-                      duration: Math.random() * 3 + 2,
-                      repeat: Infinity,
-                      repeatType: "loop"
-                    }}
-                  >
-                    <div 
-                      className="w-6 h-6" 
-                      style={{
-                        background: `${['#FF6B6B', '#4ECDC4', '#FFD166', '#06D6A0', '#FF9A8B'][Math.floor(Math.random() * 5)]}`,
-                        clipPath: `${['circle(50%)', 'polygon(50% 0%, 61% 35%, 98% 35%, 68% 57%, 79% 91%, 50% 70%, 21% 91%, 32% 57%, 2% 35%, 39% 35%)', 'polygon(50% 0%, 100% 50%, 50% 100%, 0% 50%)'][Math.floor(Math.random() * 3)]}`
-                      }}
-                    />
-                  </motion.div>
-                ))}
-
-                {/* Gems at the top */}
-                <div className="absolute top-20 right-8 z-10">
-                  <div className="w-6 h-6 bg-teal-300 rounded-full mb-2"></div>
-                  <div className="w-10 h-10 bg-teal-400 rotate-45 transform origin-center"></div>
-                </div>
+    <div className="w-full max-w-md mx-auto">  
+        {/* Achievement Badge */}
+        <div className="relative z-10 -mt-16 flex flex-col items-center justify-center px-6">
+          <motion.div
+            initial={{ scale: 0.8, opacity: 0 }}
+            animate={{ scale: 1, opacity: 1 }}
+            transition={{ duration: 0.6, type: 'spring' }}
+            className="w-32 h-32 rounded-full flex items-center justify-center bg-gradient-to-br from-rose-400 to-red-500 shadow-lg border-4 border-white"
+          >
+            <div className="w-28 h-28 rounded-full flex flex-col items-center justify-center text-white bg-gradient-to-br from-rose-500 to-red-600">
+              <motion.div 
+                initial={{ scale: 0.5 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.3, duration: 0.5 }}
+                className="flex justify-center items-center text-xl font-extrabold mb-0.5"
+              >
+                YOU WON
+              </motion.div>
+              <div className="text-center text-xs font-medium px-1">
+                You Will Receive a Gift
               </div>
             </div>
-          </div>
+          </motion.div>
           
-          {/* Content */}
-          <div className="relative z-10 flex flex-col items-center justify-center pt-8 h-[630px]">
+          {/* Card Content */}
+          <div className="w-full mt-6 text-center">
             <motion.div
-              initial={{ scale: 0.9, opacity: 0 }}
-              animate={{ scale: 1, opacity: 1 }}
-              transition={{ duration: 0.5 }}
-              className="w-48 h-48 rounded-full flex items-center justify-center bg-gradient-to-br from-rose-300 to-red-500"
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 0.5 }}
+              className="mb-6"
             >
-              <div className="w-40 h-40 rounded-full flex flex-col items-center justify-center text-white">
-                <div className="text-xl font-bold mb-1">YOU WON</div>
-                <div className="text-center text-sm px-4">
-                  You Will Receive a Gift
+              <h2 className="text-xl font-bold text-gray-800 mb-2">Quest Completed!</h2>
+              <p className="text-gray-600 text-sm">You've successfully completed the treasure hunt challenge</p>
+            </motion.div>
+            
+            {/* Rewards Section */}
+            <motion.div 
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              transition={{ delay: 0.8 }}
+              className="bg-gradient-to-r from-indigo-50 to-purple-50 rounded-xl p-4 mb-6"
+            >
+              <div className="flex justify-between items-center mb-3">
+                <div className="flex items-center">
+                  <Gift size={18} className="text-purple-500 mr-2" />
+                  <span className="font-semibold text-gray-800">Your Rewards</span>
+                </div>
+                <div className="text-xs text-purple-600 bg-purple-100 px-2 py-0.5 rounded-full">Premium</div>
+              </div>
+              
+              <div className="flex justify-between">
+                <div className="flex-1 border-r border-gray-200 pr-3">
+                  <div className="text-xs text-gray-500 mb-1">Points Earned</div>
+                  <div className="font-bold text-indigo-600">{rewardPoints} pts</div>
+                </div>
+                
+                <div className="flex-1 border-r border-gray-200 px-3">
+                  <div className="text-xs text-gray-500 mb-1">Badge</div>
+                  <div className="font-bold text-indigo-600">Explorer</div>
+                </div>
+                
+                <div className="flex-1 pl-3">
+                  <div className="text-xs text-gray-500 mb-1">Rank</div>
+                  <div className="flex items-center justify-center">
+                    <Star size={14} fill="gold" stroke="none" className="mr-1" />
+                    <span className="font-bold text-indigo-600">Gold</span>
+                  </div>
                 </div>
               </div>
             </motion.div>
-          </div>
-          
-          {/* Bottom Buttons */}
-          <div className="relative z-10 flex justify-center space-x-4 px-6 pb-6">
-            <motion.button 
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 rounded-full bg-white border border-red-200 text-red-500 font-semibold flex-1 flex items-center justify-center shadow-sm"
+            
+            {/* Achievement Progress */}
+            <motion.div 
+              initial={{ y: 20, opacity: 0 }}
+              animate={{ y: 0, opacity: 1 }}
+              transition={{ delay: 1 }}
+              className="mb-6 px-1"
             >
-              Check my rankings
-            </motion.button>
-            <motion.button 
-              whileTap={{ scale: 0.95 }}
-              className="px-6 py-3 rounded-full bg-red-500 text-white font-semibold flex-1 flex items-center justify-center shadow-sm"
-            >
-              <span>Next Quests</span>
-              <ChevronRight size={18} className="ml-2" />
-            </motion.button>
-          </div>
-
-          {/* AI assistant button */}
-          <div className="absolute bottom-4 right-4 z-20">
-            <button className="w-10 h-10 rounded-full bg-white shadow-md flex items-center justify-center">
-              <span role="img" aria-label="AI assistant">🧠</span>
-            </button>
+              <div className="flex justify-between items-center mb-2">
+                <div className="text-sm font-medium text-gray-700">Your Quest Progress</div>
+                <div className="text-xs font-medium text-teal-600">3/5 completed</div>
+              </div>
+              <div className="w-full bg-gray-200 rounded-full h-2.5">
+                <motion.div 
+                  initial={{ width: 0 }}
+                  animate={{ width: '60%' }}
+                  transition={{ delay: 1.2, duration: 0.8 }}
+                  className="bg-gradient-to-r from-teal-400 to-cyan-500 h-2.5 rounded-full"
+                ></motion.div>
+              </div>
+              <div className="mt-2 flex justify-between text-xs text-gray-500">
+                <div>Beginner</div>
+                <div>Master</div>
+              </div>
+            </motion.div>
           </div>
         </div>
+        
+        {/* Bottom Buttons */}
+        <div className="relative z-10 flex justify-center space-x-4 px-6 pb-6">
+          <motion.button 
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="px-5 py-3 rounded-full bg-white border border-indigo-200 text-indigo-600 font-semibold flex-1 flex items-center justify-center shadow-sm"
+          >
+            <Award size={18} className="mr-2" />
+            <span>Check Rankings</span>
+          </motion.button>
+          
+          <motion.button 
+            whileHover={{ scale: 1.03 }}
+            whileTap={{ scale: 0.97 }}
+            className="px-5 py-3 rounded-full bg-gradient-to-r from-rose-500 to-red-600 text-white font-semibold flex-1 flex items-center justify-center shadow-md"
+          >
+            <span>Next Quests</span>
+            <ChevronRight size={18} className="ml-1" />
+          </motion.button>
+        </div>
+
+        {/* AI assistant button */}
+        <motion.div 
+          className="absolute bottom-4 right-4 z-20"
+          whileHover={{ scale: 1.1 }}
+          whileTap={{ scale: 0.9 }}
+        >
+        </motion.div>
       </div>
-    </main>
   );
 }
