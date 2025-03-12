@@ -18,6 +18,9 @@ export function Header() {
           <Button variant="ghost" asChild className="text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50">
             <Link href="/challenges">Side Quests</Link>
           </Button>
+          <Button variant="ghost" asChild className="text-slate-600 hover:text-indigo-600 hover:bg-indigo-50/50">
+            <Link href="/landing">Q&A</Link>
+          </Button>
         </div>
       </nav>
     </header>

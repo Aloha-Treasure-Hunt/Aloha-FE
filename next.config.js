@@ -8,7 +8,8 @@ const nextConfig = {
         pathname: '/storage/v1/object/public/**',
       },
     ],
+    domains: ['storage.googleapis.com'],
   },
 }
 
-module.exports = nextConfig 
+module.exports = nextConfig
