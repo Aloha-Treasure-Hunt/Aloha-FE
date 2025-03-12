@@ -1,28 +1,28 @@
-import { Header } from '@/components/Header'
-import { Footer } from '@/components/Footer'
-import type { Metadata } from 'next'
-import './globals.css'
+import { Header } from "@/components/Header";
+import { Footer } from "@/components/Footer";
+import type { Metadata } from "next";
+import "./globals.css";
+import { AuthProvider } from "@/components/AuthContext";
 
 export const metadata: Metadata = {
-  title: 'Danang Treasure Hunt',
-  description: 'Explore Danang through an exciting treasure hunt adventure',
-}
+  title: "Danang Treasure Hunt",
+  description: "Explore Danang through an exciting treasure hunt adventure",
+};
 
 export default function RootLayout({
   children,
 }: {
-  children: React.ReactNode
+  children: React.ReactNode;
 }) {
   return (
-    <html lang="en">
-      <body>
-        <div className="min-h-screen flex flex-col">
-          <main className="flex-grow">
-            {children}
-          </main>
-        </div>
-      </body>
-    </html>
-  )
+    <AuthProvider>
+      <html lang="en">
+        <body>
+          <div className="min-h-screen flex flex-col">
+            <main className="flex-grow">{children}</main>
+          </div>
+        </body>
+      </html>
+    </AuthProvider>
+  );
 }
-

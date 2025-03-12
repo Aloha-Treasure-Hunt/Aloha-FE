@@ -3,63 +3,92 @@ import React, { useEffect, useState } from 'react'
 import { LiaEyeSlashSolid } from 'react-icons/lia'
 import { FcGoogle } from 'react-icons/fc'
 import { FaFacebookSquare } from 'react-icons/fa'
-// import { useDispatch, useSelector } from 'react-redux'
-// import { useLoginMutation, useRegisterMutation } from '@/redux/services/auth.service'
-// import { setCredentials } from '../../../redux/slice/auth.slice'
-// import { RootState } from '@/redux/store'
-// import { signIn, signOut, useSession } from 'next-auth/react'
+import ClipLoader from "react-spinners/ClipLoader";
 import { useRouter } from 'next/navigation'
-// import { toast } from 'react-toastify'
+import { toast } from 'react-toastify'
+import { useAuth } from '@/components/AuthContext.js'
+import { jwtDecode, JwtPayload } from "jwt-decode";
+import { loginApi, registerApi } from "@/components/api/loginApi.js";
+
+interface CustomJwtPayload extends JwtPayload {
+  role: string;
+  email: string;
+  fullName: string;
+}
 
 export default function LoginRegister() {
-//   const dispatch = useDispatch()
   const router = useRouter()
   const [isLogin, setIsLogin] = useState(true)
   const [error, setError] = useState('')
-//   const { data: session, status } = useSession()
+  const [loading, setLoading] = useState(false);
 
   // Login form state
   const [email, setEmail] = useState('')
   const [name, setName] = useState('')
   const [password, setPassword] = useState('')
   const [confirmPassword, setConfirmPassword] = useState('')
+  const { login } = useAuth();
 
-//   const [login] = useLoginMutation()
-//   const [register, { isLoading }] = useRegisterMutation()
-//   if (session) {
-//     return (
-//       <>
-//         Signed in as {session?.user?.email} <br />
-//         Username is {session?.user?.name} <br />
-//         <button onClick={() => signOut()}>Sign out</button>
-//       </>
-//     )
-//   }
+  
 
   const handleLogin = async (e: React.FormEvent) => {
-    e.preventDefault()
-    try {
-      
-    } catch (err) {
-      
+    e.preventDefault();
+  
+    if (!email || !password) {
+      toast.error("Email/Password is required!");
+      return;
     }
-  }
-
+  
+    setLoading(true);
+    try {
+      const res = await loginApi(email, password);
+  
+      if (res?.data?.message?.statusCode === 200) {
+        const { accessToken, refreshToken } = res.data.message.data;
+        const decodedToken: CustomJwtPayload = jwtDecode(accessToken);
+  
+        // Lưu token vào localStorage
+        localStorage.setItem("token", accessToken);
+        localStorage.setItem("refreshToken", refreshToken);
+        localStorage.setItem("userRole", decodedToken.role);
+        localStorage.setItem("userEmail", decodedToken.email);
+  
+        // Lưu thông tin người dùng vào context
+        login({
+          email: decodedToken.email,
+          role: decodedToken.role,
+          fullName: decodedToken.fullName,
+        });
+  
+        toast.success("Login successful!");
+        router.push("/homepage");
+      } else {
+        toast.error(res?.data?.message?.message || "Login failed!");
+      }
+    } catch (error) {
+      toast.error("Something went wrong. Please try again!");
+    } finally {
+      setLoading(false);
+    }
+  };
+  
   const handleRegister = async (e: React.FormEvent) => {
     e.preventDefault()
-    // if (password !== confirmPassword) {
-    //   toast.error('Passwords do not match!')
-    //   return
-    // }
-
+    if (password !== confirmPassword) {
+      toast.error('Passwords do not match!')
+      return
+    }
+    setLoading(true);
     try {
-      
+      const res = await registerApi(email, name, password, confirmPassword)
 
-    //   toast.success('Registration successful! Redirecting to login...')
+      toast.success('Registration successful! Redirecting to login...')
       setIsLogin(true)
     } catch (err) {
       console.error('Registration failed:', err)
-    //   toast.error('Registration failed. Please try again.')
+      toast.error('Registration failed. Please try again.')
+    }finally{
+      setLoading(false);
     }
   }
 
@@ -122,14 +151,14 @@ export default function LoginRegister() {
                 <p className='text-xs mt-3 text-blue-500 underline cursor-pointer'>Forgot your password?</p>
               </div>
               <button className='bg-blue-500 rounded-xl text-white py-2' type='submit'>
-                Log in
+              {loading ? <ClipLoader size={15} color="#fff" /> : "Login"}
               </button>
             </form>
             <div className='border-t-[1px] mt-4 border-[#9ca3af]'></div>
             <div className='flex mt-8 justify-center text-sm'>
               <p className='mr-1'>New to Treasure Hunt?</p>
               <button className='text-blue-500 underline' onClick={() => setIsLogin(false)}>
-                Register
+              {loading ? <ClipLoader size={15} color="#fff" /> : "Register"}
               </button>
             </div>
 
