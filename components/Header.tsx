@@ -5,7 +5,7 @@ export function Header() {
   return (
     <header className="bg-white/70 backdrop-blur-md border-b border-slate-200 sticky top-0 z-50">
       <nav className="container mx-auto flex justify-between items-center py-4">
-        <Link href="/" className="text-2xl font-semibold gradient-text">
+        <Link href="/homepage" className="text-2xl font-semibold gradient-text">
           Danang Treasure Hunt
         </Link>
         <div className="space-x-2">

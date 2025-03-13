@@ -18,6 +18,7 @@ import {
   FaTrophy,
 } from "react-icons/fa";
 import "./home.css";
+import Link from "next/link";
 
 const featuredDestinations = [
   {
@@ -155,9 +156,7 @@ export default function Home() {
               />
             </div>
             <div className="w-1/2 p-4 flex flex-col justify-center bg-yellow-50">
-              <h2 className="text-2xl font-bold text-red-900">
-                Are You Ready
-              </h2>
+              <h2 className="text-2xl font-bold text-red-900">Are You Ready</h2>
               <p className="my-2 text-red-800">
                 Complete the mission to unlock the next location.
               </p>
@@ -182,9 +181,11 @@ export default function Home() {
                 <br />
                 package
               </p>
-              <button className="mt-4 bg-red-600 text-white py-2 px-6 rounded-lg w-full">
-                Buy now
-              </button>
+              <Link href={"/orderPayment/annualPayment"}>
+                <button className="mt-4 bg-red-600 text-white py-2 px-6 rounded-lg w-full">
+                  Buy now
+                </button>
+              </Link>
             </div>
             <div className="plan-card p-4 rounded-lg shadow text-center">
               <p className="font-bold text-red-800 text-sm">
@@ -192,9 +193,11 @@ export default function Home() {
                 <br />
                 Then $3/15 day
               </p>
-              <button className="mt-4 bg-red-600 text-white py-2 px-6 rounded-lg w-full">
-                Buy now
-              </button>
+              <Link href={"/orderPayment/daysPayment"}>
+                <button className="mt-4 bg-red-600 text-white py-2 px-6 rounded-lg w-full">
+                  Buy now
+                </button>
+              </Link>
             </div>
           </div>
         </section>
