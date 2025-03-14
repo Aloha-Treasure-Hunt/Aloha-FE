@@ -42,7 +42,7 @@ export default function SuccessScreen() {
                 transition={{ delay: 0.3, duration: 0.5 }}
                 className="flex justify-center items-center text-xl font-extrabold mb-0.5"
               >
-                YOU WON
+                WON
               </motion.div>
               <div className="text-center text-xs font-medium px-1">
                 You Will Receive a Gift
