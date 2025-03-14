@@ -6,17 +6,17 @@
 
 :root {
   /* Theme Colors */
-  --color-primary: 79 70 229;      /* indigo-600 */
-  --color-primary-light: 129 140 248;  /* indigo-400 */
-  --color-accent: 245 158 11;      /* amber-500, softer than before */
-  --color-accent-light: 251 191 36;  /* amber-400 */
-  
+  --color-primary: 79 70 229; /* indigo-600 */
+  --color-primary-light: 129 140 248; /* indigo-400 */
+  --color-accent: 245 158 11; /* amber-500, softer than before */
+  --color-accent-light: 251 191 36; /* amber-400 */
+
   /* UI Colors */
-  --color-background: 245 245 247;  /* custom light gray */
+  --color-background: 245 245 247; /* custom light gray */
   --color-card: 255 255 255;
-  --color-text: 51 65 85;          /* slate-700 */
-  --color-text-secondary: 71 85 105;  /* slate-600 */
-  
+  --color-text: 51 65 85; /* slate-700 */
+  --color-text-secondary: 71 85 105; /* slate-600 */
+
   /* Shadows */
   --shadow-card: 0 4px 20px rgba(0, 0, 0, 0.08);
   --radius: 1rem;
@@ -28,7 +28,10 @@
     font-family: 'Montserrat', sans-serif;
   }
 
-  h1, h2, h3, h4 {
+  h1,
+  h2,
+  h3,
+  h4 {
     font-family: 'Lora', serif;
   }
 }
@@ -39,16 +42,16 @@
            border border-slate-100 backdrop-blur-sm
            transition-all duration-300 hover:shadow-lg;
   }
-  
+
   .container-padding {
     @apply px-6 md:px-8;
   }
-  
+
   .heading-large {
     @apply text-4xl md:text-5xl font-semibold text-slate-800
            tracking-tight leading-tight;
   }
-  
+
   .heading-medium {
     @apply text-2xl font-semibold text-slate-800
            tracking-tight leading-snug;
