@@ -1,4 +1,3 @@
-import Link from 'next/link'
 import { FaBell, FaCompass, FaLanguage, FaQuestionCircle, FaUserCircle } from 'react-icons/fa'
 import '@/components/home/home.css'
 

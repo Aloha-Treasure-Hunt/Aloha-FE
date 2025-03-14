@@ -1,5 +1,5 @@
 'use client'
-import React, { useEffect, useState } from 'react'
+import React, { useState } from 'react'
 import { LiaEyeSlashSolid } from 'react-icons/lia'
 import { FcGoogle } from 'react-icons/fc'
 import { FaFacebookSquare } from 'react-icons/fa'
@@ -19,7 +19,6 @@ interface CustomJwtPayload extends JwtPayload {
 export default function LoginRegister() {
   const router = useRouter()
   const [isLogin, setIsLogin] = useState(true)
-  const [error, setError] = useState('')
   const [loading, setLoading] = useState(false);
 
   // Login form state
@@ -80,7 +79,7 @@ export default function LoginRegister() {
     }
     setLoading(true);
     try {
-      const res = await registerApi(email, name, password, confirmPassword)
+      await registerApi(email, name, password, confirmPassword)
 
       toast.success('Registration successful! Redirecting to login...')
       setIsLogin(true)
@@ -118,7 +117,7 @@ export default function LoginRegister() {
               <p className='text-center text-sm'>Or</p>
               <hr className='border-gray-400' />
             </div>
-            {error && <p className='text-red-500 text-sm'>{error}</p>}
+            {/* {error && <p className='text-red-500 text-sm'>{error}</p>} */}
             <form onSubmit={handleLogin} className='flex flex-col gap-4 mt-4'>
               <div>
                 <span>
@@ -188,7 +187,7 @@ export default function LoginRegister() {
         ) : (
           <div className='sm:w-1/2 px-12 py-10'>
             <h2 className='font-bold text-2xl text-blue-500 flex text-center justify-center'>REGISTER</h2>
-            {error && <p className='text-red-500 text-sm'>{error}</p>}
+            {/* {error && <p className='text-red-500 text-sm'>{error}</p>} */}
             <form onSubmit={handleRegister} className='flex flex-col gap-4 mt-4'>
               <div>
                 <span>

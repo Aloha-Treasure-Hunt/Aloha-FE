@@ -4,7 +4,6 @@ import { ChevronRight, Award, Gift, Star } from 'lucide-react';
 import { useState, useEffect } from 'react';
 
 export default function SuccessScreen() {
-  const [showConfetti, setShowConfetti] = useState(true);
   const [rewardPoints, setRewardPoints] = useState(0);
   
   // Animate points counting up
@@ -60,7 +59,7 @@ export default function SuccessScreen() {
               className="mb-6"
             >
               <h2 className="text-xl font-bold text-gray-800 mb-2">Quest Completed!</h2>
-              <p className="text-gray-600 text-sm">You've successfully completed the treasure hunt challenge</p>
+              <p className="text-gray-600 text-sm">You have successfully completed the treasure hunt challenge</p>
             </motion.div>
             
             {/* Rewards Section */}

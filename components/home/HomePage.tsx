@@ -1,16 +1,10 @@
 // File: pages/index.js
 "use client";
 import { useState, useEffect } from "react";
-import Head from "next/head";
 import Image from "next/image";
 import {
   FaMapMarkerAlt,
-  FaWhatsapp,
-  FaQuestionCircle,
-  FaCompass,
   FaBell,
-  FaLanguage,
-  FaUserCircle,
   FaChevronLeft,
   FaChevronRight,
   FaPuzzlePiece,

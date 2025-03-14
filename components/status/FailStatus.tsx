@@ -1,6 +1,6 @@
 'use client'
 import { motion } from 'framer-motion';
-import { ArrowLeft, X, AlertTriangle, RefreshCw } from 'lucide-react';
+import { AlertTriangle, RefreshCw } from 'lucide-react';
 import { useState } from 'react';
 
 export default function FailScreen() {
@@ -44,7 +44,7 @@ export default function FailScreen() {
               className="mb-6"
             >
               <h2 className="text-xl font-bold text-gray-800 mb-2">Challenge Failed</h2>
-              <p className="text-gray-600 text-sm">Don't worry! You can try again and complete your quest.</p>
+              <p className="text-gray-600 text-sm">Do not worry! You can try again and complete your quest.</p>
             </motion.div>
             
             {/* Missing Requirements */}
@@ -91,7 +91,7 @@ export default function FailScreen() {
               
               {!showHints && (
                 <div className="text-center py-1 text-sm text-gray-500">
-                  Click "Show Hints" for details on what you're missing
+                  Click Show Hints for details on what you are missing
                 </div>
               )}
             </motion.div>
