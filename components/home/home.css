@@ -6,12 +6,10 @@
 :root {
   --primary-red: #e63946;
   --primary-yellow: #fefac7;
-  --light-pink: #fef2f2;
 }
 
 body {
-  font-family: -apple-system, BlinkMacSystemFont, "Segoe UI", Roboto, sans-serif;
-  background-color: var(--light-pink);
+  font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif;
 }
 
 .header-bg {
@@ -23,7 +21,11 @@ body {
 }
 
 .main-content {
-  background: linear-gradient(0deg, rgba(254,242,242,1) 0%, rgba(254,226,226,1) 100%);
+  background: linear-gradient(
+    0deg,
+    rgba(254, 242, 242, 1) 0%,
+    rgba(254, 226, 226, 1) 100%
+  );
 }
 
 .plan-card {
@@ -69,7 +71,11 @@ body {
 }
 
 .grid-pattern {
-  background-image: linear-gradient(to right, rgba(255,255,255,0.2) 1px, transparent 1px),
-                     linear-gradient(to bottom, rgba(255,255,255,0.2) 1px, transparent 1px);
+  background-image: linear-gradient(
+      to right,
+      rgba(255, 255, 255, 0.2) 1px,
+      transparent 1px
+    ),
+    linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
   background-size: 25% 25%;
 }
