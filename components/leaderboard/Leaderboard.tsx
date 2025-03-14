@@ -1,25 +1,12 @@
 'use client';
 import React from 'react';
-import {
-  Globe,
-  MapPin,
-  Compass,
-  Award,
-  Camera,
-  PartyPopper,
-} from 'lucide-react';
+import { Globe, MapPin, Compass, Camera, PartyPopper } from 'lucide-react';
+import LeaderboardItem from './LeaderboardItem';
+import LeaderboardTable from '@/components/leaderboard/LeaderboardTable';
+import { Traveller } from '@/app/api/explorers/types';
 
 export default function Leaderboard() {
-  type AvatarColor = 'blue' | 'yellow' | 'green';
-
-  const leaderboardData: {
-    id: number;
-    name: string;
-    points: number;
-    avatar: AvatarColor;
-    destinations: number;
-    badge: string;
-  }[] = [
+  const leaderboardData: Traveller[] = [
     {
       id: 1,
       name: 'Linda',
@@ -86,166 +73,40 @@ export default function Leaderboard() {
         {/* Podium with 3D effect */}
         <div className='flex justify-center items-end mb-12 relative mt-16'>
           {/* 2nd Place */}
-          <div className='flex flex-col items-center mr-3'>
-            <div className='relative'>
-              <div
-                className={`w-16 h-16 rounded-full ${avatarGradients.yellow} shadow-lg flex items-center justify-center p-1`}
-              >
-                <div className='bg-white rounded-full w-full h-full flex items-center justify-center'>
-                  <Camera className='h-7 w-7 text-orange-500' />
-                </div>
-              </div>
-              <span className='absolute -bottom-1 -right-1 bg-white rounded-full w-6 h-6 flex items-center justify-center shadow-md text-sm font-bold text-gray-700'>
-                2
-              </span>
-            </div>
-            <p className='mt-2 font-medium text-gray-800'>
-              {leaderboardData[1].name}
-            </p>
-            <div className='w-20 h-24 mt-2 bg-gradient-to-br from-amber-400 to-orange-500 rounded-t-lg shadow-lg flex flex-col items-center justify-center transform perspective-800 rotateX-10'>
-              <span className='text-4xl font-bold text-white drop-shadow-md'>
-                2
-              </span>
-              <div className=' rounded-full px-2 py-0.5 mt-1'>
-                <span className='text-xs font-medium text-white'>
-                  {leaderboardData[1].points} points
-                </span>
-              </div>
-            </div>
-          </div>
+          <LeaderboardItem
+            rank={2}
+            name={leaderboardData[1].name}
+            points={leaderboardData[1].points}
+            avatarGradient={avatarGradients.yellow}
+            icon={<Camera className='h-7 w-7 text-orange-500' />}
+          />
 
           {/* 1st Place */}
-          <div className='flex flex-col items-center z-20 -mt-8'>
-            <div className='relative'>
-              <div className='absolute -top-4 left-1/2 transform -translate-x-1/2 animate-pulse'>
-                <Award className='h-8 w-8 mt- text-yellow-500 filter drop-shadow-lg' />
-              </div>
-              <div
-                className={`w-20 h-20 rounded-full ${avatarGradients.blue} shadow-lg flex items-center justify-center p-1`}
-              >
-                <div className='bg-white rounded-full w-full h-full flex items-center justify-center'>
-                  <PartyPopper className='h-10 w-10 text-indigo-700' />
-                </div>
-              </div>
-              <span className='absolute -bottom-1 -right-1 bg-white rounded-full w-7 h-7 flex items-center justify-center shadow-md text-sm font-bold text-gray-700'>
-                1
-              </span>
-            </div>
-            <p className='mt-2 font-medium text-gray-800'>
-              {leaderboardData[0].name}
-            </p>
-            <div className='w-24 h-36 mt-2 bg-gradient-to-t from-indigo-500 to-purple-600 rounded-t-lg shadow-lg flex flex-col items-center justify-center transform perspective-800 rotateX-10'>
-              <span className='text-5xl font-bold text-white drop-shadow-md'>
-                1
-              </span>
-              <div className='rounded-full px-3 py-0.5 mt-1'>
-                <span className='text-xs font-medium text-white'>
-                  {leaderboardData[0].points} points
-                </span>
-              </div>
-            </div>
-          </div>
+          <LeaderboardItem
+            rank={1}
+            name={leaderboardData[0].name}
+            points={leaderboardData[0].points}
+            avatarGradient={avatarGradients.blue}
+            icon={<PartyPopper className='h-10 w-10 text-indigo-700' />}
+            size='large'
+          />
 
           {/* 3rd Place */}
-          <div className='flex flex-col items-center ml-3'>
-            <div className='relative'>
-              <div
-                className={`w-16 h-16 rounded-full ${avatarGradients.green} shadow-lg flex items-center justify-center p-1`}
-              >
-                <div className='bg-white rounded-full w-full h-full flex items-center justify-center'>
-                  <Compass className='h-7 w-7 text-green-600' />
-                </div>
-              </div>
-              <span className='absolute -bottom-1 -right-1 bg-white rounded-full w-6 h-6 flex items-center justify-center shadow-md text-sm font-bold text-gray-700'>
-                3
-              </span>
-            </div>
-            <p className='mt-2 font-medium text-gray-800'>
-              {leaderboardData[2].name}
-            </p>
-            <div className='w-20 h-20 mt-2 bg-gradient-to-b from-green-500 to-emerald-600 rounded-t-lg shadow-lg flex flex-col items-center justify-center transform perspective-800 rotateX-10'>
-              <span className='text-4xl font-bold text-white drop-shadow-md'>
-                3
-              </span>
-              <div className='rounded-full px-2 py-0.5 mt-1'>
-                <span className='text-xs font-medium text-white'>
-                  {leaderboardData[2].points} points
-                </span>
-              </div>
-            </div>
-          </div>
+          <LeaderboardItem
+            rank={3}
+            name={leaderboardData[2].name}
+            points={leaderboardData[2].points}
+            avatarGradient={avatarGradients.green}
+            icon={<Compass className='h-7 w-7 text-green-600' />}
+          />
         </div>
 
         {/* Leaderboard Table - FIXED VERSION */}
-        <div className='mt-2 bg-white rounded-xl overflow-hidden shadow-lg border border-blue-100'>
-          {/* Table Header */}
-          <div className='bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-3'>
-            <div className='grid grid-cols-12 gap-2'>
-              <div className='col-span-2 text-center font-medium'>Rank</div>
-              <div className='col-span-5 text-center font-medium'>Explorer</div>
-              <div className='col-span-5 font-medium ml-5'>Badge</div>
-            </div>
-          </div>
-
-          {/* Table Body */}
-          {leaderboardData.map((explorer, index) => (
-            <div
-              key={explorer.id}
-              className='p-3 border-b border-gray-100 hover:bg-blue-50 transition-colors'
-            >
-              <div className='grid grid-cols-12 gap-2 items-center'>
-                {/* Rank Column */}
-                <div className='col-span-2'>
-                  <div className='w-8 h-8 rounded-full bg-blue-50 flex items-center justify-center text-blue-700 font-bold border-2 border-blue-100'>
-                    {index + 1}
-                  </div>
-                </div>
-
-                {/* Explorer Column */}
-                <div className='col-span-5 flex items-center'>
-                  <div
-                    className={`w-8 h-8 rounded-full ${
-                      avatarGradients[explorer.avatar]
-                    } flex items-center justify-center mr-2 shadow-md shrink-0`}
-                  >
-                    <div className='bg-white rounded-full w-6 h-6 flex items-center justify-center'>
-                      {index === 0 ? (
-                        <PartyPopper className='h-4 w-4 text-indigo-700' />
-                      ) : index === 1 ? (
-                        <Camera className='h-4 w-4 text-orange-500' />
-                      ) : (
-                        <Compass className='h-4 w-4 text-green-600' />
-                      )}
-                    </div>
-                  </div>
-                  <div className='min-w-0 flex-1'>
-                    <div className='font-medium text-gray-800 truncate'>
-                      {explorer.name}
-                    </div>
-                    <div className='text-xs text-gray-500 flex items-center'>
-                      <MapPin className='h-3 w-3 mr-1 text-blue-500 shrink-0' />
-                      <span className='truncate'>
-                        {explorer.destinations} destinations
-                      </span>
-                    </div>
-                  </div>
-                </div>
-
-                {/* Badge Column */}
-                <div className='col-span-5 ml-5'>
-                  <div
-                    className={`${
-                      badgeColors[explorer.badge as keyof typeof badgeColors]
-                    } text-white text-xs px-2 py-1 rounded-full font-medium truncate w-fit`}
-                    title={explorer.badge}
-                  >
-                    {explorer.badge}
-                  </div>
-                </div>
-              </div>
-            </div>
-          ))}
-        </div>
+        <LeaderboardTable
+          leaderboardData={leaderboardData}
+          avatarGradients={avatarGradients}
+          badgeColors={badgeColors}
+        />
 
         {/* Bottom call to action */}
         <div className='mt-6 relative z-10'>
