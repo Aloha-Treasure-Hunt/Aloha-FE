@@ -92,7 +92,7 @@ export default function DaysOrderPage() {
               </li>
               <li className="flex items-start">
                 <div className="h-5 w-1 bg-blue-400 rounded mr-2 mt-0.5"></div>
-                <span>We'll remind you 5 days before trial ends</span>
+                <span>We will remind you 5 days before trial ends</span>
               </li>
             </ul>
           </div>

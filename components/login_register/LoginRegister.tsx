@@ -66,6 +66,7 @@ export default function LoginRegister() {
       }
     } catch (error) {
       toast.error("Something went wrong. Please try again!");
+      console.error("Login failed:", error); 
     } finally {
       setLoading(false);
     }

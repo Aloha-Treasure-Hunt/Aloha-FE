@@ -510,7 +510,7 @@ export default function Home() {
           <div className="bg-white rounded-lg p-6 max-w-sm mx-4 text-center">
             <FaTrophy className="text-yellow-500 text-4xl mb-4 mx-auto" />
             <h3 className="text-xl font-bold mb-2">New Achievement!</h3>
-            <p>You've unlocked "Vietnam Explorer" badge!</p>
+            <p>You have unlocked Vietnam Explorer badge!</p>
             <button
               onClick={() => setShowAchievement(false)}
               className="mt-4 bg-red-600 text-white py-2 px-4 rounded-lg"
