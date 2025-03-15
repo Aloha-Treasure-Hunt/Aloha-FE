@@ -5,5 +5,3 @@ export interface Traveller {
   destinations: number;
   badge: string;
 }
-
-type AvatarColor = 'blue' | 'yellow' | 'green';
