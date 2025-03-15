@@ -3,7 +3,7 @@ import React from 'react';
 import { Globe, MapPin, Compass, Camera, PartyPopper } from 'lucide-react';
 import LeaderboardItem from './LeaderboardItem';
 import LeaderboardTable from '@/components/leaderboard/LeaderboardTable';
-import { Traveller } from '@/app/api/explorers/types';
+import { Traveller } from '@/app/api/travellers/types';
 
 export default function Leaderboard() {
   const leaderboardData: Traveller[] = [
@@ -11,7 +11,6 @@ export default function Leaderboard() {
       id: 1,
       name: 'Linda',
       points: 1800,
-      avatar: 'blue',
       destinations: 9,
       badge: 'Explorer Pro',
     },
@@ -19,7 +18,6 @@ export default function Leaderboard() {
       id: 2,
       name: 'Sara',
       points: 1700,
-      avatar: 'yellow',
       destinations: 7,
       badge: 'Adventure Seeker',
     },
@@ -27,7 +25,6 @@ export default function Leaderboard() {
       id: 3,
       name: 'Nate',
       points: 1500,
-      avatar: 'green',
       destinations: 6,
       badge: 'Nature Lover',
     },
@@ -70,7 +67,7 @@ export default function Leaderboard() {
           </div>
         </div>
 
-        {/* Podium with 3D effect */}
+        {/* Podium */}
         <div className='flex justify-center items-end mb-12 relative mt-16'>
           {/* 2nd Place */}
           <LeaderboardItem

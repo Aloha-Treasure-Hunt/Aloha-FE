@@ -1,4 +1,4 @@
-import { Traveller } from '@/app/api/explorers/types';
+import { Traveller } from '@/app/api/travellers/types';
 import { Camera, Compass, MapPin, PartyPopper } from 'lucide-react';
 import React from 'react';
 
@@ -9,9 +9,9 @@ interface LeaderboardTableProps {
 }
 
 export default function LeaderboardTable({
+  leaderboardData,
   avatarGradients,
   badgeColors,
-  leaderboardData,
 }: LeaderboardTableProps) {
   return (
     <div className='mt-2 bg-white rounded-xl overflow-hidden shadow-lg border border-blue-100'>
@@ -19,15 +19,15 @@ export default function LeaderboardTable({
       <div className='bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-3'>
         <div className='grid grid-cols-12 gap-2'>
           <div className='col-span-2 text-center font-medium'>Rank</div>
-          <div className='col-span-5 text-center font-medium'>Explorer</div>
+          <div className='col-span-5 text-center font-medium'>traveller</div>
           <div className='col-span-5 font-medium ml-5'>Badge</div>
         </div>
       </div>
 
       {/* Table Body */}
-      {leaderboardData.map((explorer, index) => (
+      {leaderboardData.map((traveller, index) => (
         <div
-          key={explorer.id}
+          key={traveller.id}
           className='p-3 border-b border-gray-100 hover:bg-blue-50 transition-colors'
         >
           <div className='grid grid-cols-12 gap-2 items-center'>
@@ -38,11 +38,11 @@ export default function LeaderboardTable({
               </div>
             </div>
 
-            {/* Explorer Column */}
+            {/* traveller Column */}
             <div className='col-span-5 flex items-center'>
               <div
                 className={`w-8 h-8 rounded-full ${
-                  avatarGradients[explorer.avatar]
+                  avatarGradients[traveller.id]
                 } flex items-center justify-center mr-2 shadow-md shrink-0 mt-1`}
               >
                 <div className='bg-white rounded-full w-6 h-6 flex items-center justify-center'>
@@ -57,12 +57,12 @@ export default function LeaderboardTable({
               </div>
               <div className='min-w-0 flex-1 justify-center'>
                 <div className='font-medium text-gray-800 truncate'>
-                  {explorer.name}
+                  {traveller.name}
                 </div>
                 <div className='text-xs text-gray-500 flex items-center'>
                   <MapPin className='h-3 w-3 mr-1 text-blue-500 shrink-0' />
                   <span className='truncate'>
-                    {explorer.destinations} destinations
+                    {traveller.destinations} destinations
                   </span>
                 </div>
               </div>
@@ -72,11 +72,11 @@ export default function LeaderboardTable({
             <div className='col-span-5 ml-5'>
               <div
                 className={`${
-                  badgeColors[explorer.badge as keyof typeof badgeColors]
+                  badgeColors[traveller.badge]
                 } text-white text-xs px-2 py-1 rounded-full font-medium truncate w-fit`}
-                title={explorer.badge}
+                title={traveller.badge}
               >
-                {explorer.badge}
+                {traveller.badge}
               </div>
             </div>
           </div>

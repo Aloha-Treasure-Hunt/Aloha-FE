@@ -3,7 +3,6 @@ export interface Traveller {
   name: string;
   points: number;
   destinations: number;
-  avatar: AvatarColor;
   badge: string;
 }
 
