@@ -16,7 +16,6 @@ interface MapProps {
 
 // Add your Stadia API key
 const STADIA_API_KEY = process.env.NEXT_PUBLIC_STADIA_API_KEY;
-console.log('Stadia API Key:', process.env.NEXT_PUBLIC_STADIA_API_KEY);
 
 export function Map({ center, zoom, markers }: MapProps) {
   return (
