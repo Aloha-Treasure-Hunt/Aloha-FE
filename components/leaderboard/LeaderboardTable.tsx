@@ -1,4 +1,4 @@
-import { Traveller } from '@/app/api/travellers/types';
+import { Traveller } from '@/types/traveller.types';
 import { Camera, Compass, MapPin, PartyPopper } from 'lucide-react';
 import React from 'react';
 

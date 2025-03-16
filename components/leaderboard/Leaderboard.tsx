@@ -3,7 +3,7 @@ import React from 'react';
 import { Globe, MapPin, Compass, Camera, PartyPopper } from 'lucide-react';
 import LeaderboardItem from './LeaderboardItem';
 import LeaderboardTable from '@/components/leaderboard/LeaderboardTable';
-import { Traveller } from '@/app/api/travellers/types';
+import { Traveller } from '@/types/traveller.types';
 
 export default function Leaderboard() {
   const leaderboardData: Traveller[] = [
