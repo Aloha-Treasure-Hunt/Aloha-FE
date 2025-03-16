@@ -12,7 +12,7 @@ export function Header() {
   const toggleMenu = () => setIsMenuOpen(!isMenuOpen);
 
   return (
-    <header className='bg-white/80 backdrop-blur-md border-b border-amber-100 sticky top-0 z-50 shadow-sm'>
+    <header className='bg-white/80 backdrop-blur-md border-b border-amber-100 fixed w-full z-50 shadow-sm'>
       <nav className='container mx-auto flex justify-between items-center py-3 px-4 md:px-6'>
         <Link href='/homepage' className='text-xl md:text-2xl font-bold'>
           <span className='bg-gradient-to-r from-amber-500 to-teal-600 bg-clip-text text-transparent'>

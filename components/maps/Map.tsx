@@ -1,43 +1,12 @@
 'use client';
 
-import {
-  MapContainer,
-  TileLayer,
-  Circle,
-  Marker,
-  Popup,
-  useMap,
-} from 'react-leaflet';
+import { MapContainer, TileLayer, Circle, Marker, Popup } from 'react-leaflet';
 import { LatLngTuple } from 'leaflet';
 import 'leaflet/dist/leaflet.css';
-import { useEffect } from 'react';
 import customIcon from '@/lib/customIcon';
-
-interface MapProps {
-  center: [number, number];
-  zoom: number;
-  markers: Array<{
-    position: [number, number];
-    radius: number;
-    color: string;
-    name?: string;
-    description?: string;
-  }>;
-  interactive?: boolean;
-  height?: string;
-}
-
-const STADIA_API_KEY = process.env.NEXT_PUBLIC_STADIA_API_KEY;
-
-function MapUpdater({ center }: { center: LatLngTuple }) {
-  const map = useMap();
-
-  useEffect(() => {
-    map.setView(center, map.getZoom(), { animate: true });
-  }, [center, map]);
-
-  return null;
-}
+import { MapProps } from '@/types/map.types';
+import MapUpdater from '@/components/maps/MapUpdater';
+import { STADIA_API_KEY } from '@/lib/config';
 
 export function Map({
   center,
@@ -59,6 +28,7 @@ export function Map({
         dragging={interactive}
         touchZoom={interactive}
         zoomControl={interactive}
+        style={{ zIndex: 1 }}
       >
         <MapUpdater center={center as LatLngTuple} />
 

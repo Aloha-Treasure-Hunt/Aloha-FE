@@ -1,3 +1,5 @@
+import { Traveller } from '@/types/traveller.types';
+
 export const LOCATIONS = {
   HCMC: {
     name: 'Ho Chi Minh City',
@@ -38,4 +40,40 @@ export const LOCATIONS = {
       },
     ],
   },
+};
+
+export const leaderboardData: Traveller[] = [
+  {
+    id: 1,
+    name: 'Linda',
+    points: 1800,
+    destinations: 9,
+    badge: 'Explorer Pro',
+  },
+  {
+    id: 2,
+    name: 'Sara',
+    points: 1700,
+    destinations: 7,
+    badge: 'Adventure Seeker',
+  },
+  {
+    id: 3,
+    name: 'Nate',
+    points: 1500,
+    destinations: 6,
+    badge: 'Nature Lover',
+  },
+];
+
+export const avatarGradients = {
+  blue: 'bg-gradient-to-br from-indigo-500 to-purple-600',
+  yellow: 'bg-gradient-to-br from-amber-200 to-orange-400',
+  green: 'bg-gradient-to-br from-green-300 to-emerald-500',
+};
+
+export const badgeColors = {
+  'Explorer Pro': 'bg-gradient-to-r from-indigo-500 to-purple-600',
+  'Adventure Seeker': 'bg-gradient-to-r from-amber-500 to-orange-500',
+  'Nature Lover': 'bg-gradient-to-r from-green-500 to-emerald-600',
 };
