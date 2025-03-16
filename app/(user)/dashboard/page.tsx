@@ -1,5 +1,5 @@
-import { MapComponent } from '@/components/MapComponent';
 import Leaderboard from '@/components/leaderboard/Leaderboard';
+import { MapComponent } from '@/components/maps/MapComponent';
 
 export default function Dashboard() {
   return (
