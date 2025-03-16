@@ -1,7 +1,7 @@
 'use client';
 import { useState, useEffect } from 'react';
 import dynamic from 'next/dynamic';
-import { LoadingSpinner } from './ui/loading-spinner';
+import { LoadingSpinner } from '../ui/loading-spinner';
 import { Button } from '@/components/ui/button';
 import { ChevronDown, ChevronUp, MapPin, Search } from 'lucide-react';
 
