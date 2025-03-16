@@ -36,9 +36,11 @@ export function Map({
       if (typeof window !== 'undefined') {
         const L = await import('leaflet');
 
-        (L.Icon.Default.prototype as any)._getIconUrl = function (
-          name: string
-        ) {
+        (
+          L.Icon.Default.prototype as L.Icon.Default & {
+            _getIconUrl?: (name: string) => string;
+          }
+        )._getIconUrl = function (name: string) {
           return L.Icon.Default.imagePath + name;
         };
 
