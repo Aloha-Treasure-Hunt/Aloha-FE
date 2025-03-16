@@ -146,7 +146,7 @@ const ModernErrorUI = () => {
           }`}
         >
           <p className="text-center text-gray-300">
-            The password you entered doesn't match our records. Please
+            The password you entered does not match our records. Please
             double-check and try again.
           </p>
         </div>

@@ -11,5 +11,5 @@ export const registerApi = (email, name, password, confirmPassword) => {
 };
 
 export default {
-    loginApi,
+    loginApi, registerApi
 };

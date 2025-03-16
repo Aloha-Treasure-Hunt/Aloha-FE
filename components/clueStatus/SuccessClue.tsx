@@ -1,13 +1,9 @@
 "use client";
-import React, { useEffect, useState, useRef } from "react";
+import React, { useEffect, useState } from "react";
 import Link from "next/link";
-import { useRouter } from "next/navigation";
 
 const SuccessCelebration = () => {
   const [isVisible, setIsVisible] = useState(false);
-  const canvasRef = useRef(null);
-  const confettiRef = useRef(null);
-  const router = useRouter();
 
   useEffect(() => {
     // Staggered animation entrance
@@ -243,7 +239,7 @@ const SuccessCelebration = () => {
           }`}
         >
           <p className="text-center text-gray-300">
-            You've successfully solved the clue! Well done on your incredible
+            You have successfully solved the clue! Well done on your incredible
             detective skills. Ready for the next challenge?
           </p>
         </div>
