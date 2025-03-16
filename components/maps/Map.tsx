@@ -28,6 +28,7 @@ export function Map({
         dragging={interactive}
         touchZoom={interactive}
         zoomControl={interactive}
+        style={{ zIndex: 1 }}
       >
         <MapUpdater center={center as LatLngTuple} />
 
