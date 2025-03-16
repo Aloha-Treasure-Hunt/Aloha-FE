@@ -112,9 +112,9 @@ export default function PaymentSuccess() {
       </main>
 
       {/* Footer with travel-themed messaging */}
-      <footer className='bg-white bg-opacity-20 backdrop-blur-sm py-3 text-center text-white'>
+      {/* <footer className='bg-white bg-opacity-20 backdrop-blur-sm py-3 text-center text-white'>
         <p className='text-sm'>Thank you for choosing with us. Safe travels!</p>
-      </footer>
+      </footer> */}
     </div>
   );
 }

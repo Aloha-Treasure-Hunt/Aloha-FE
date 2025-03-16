@@ -1,5 +1,6 @@
 import React from 'react';
 import { ChevronLeft, Clock, ShieldCheck, CreditCard, Heart } from 'lucide-react';
+import Link from 'next/link';
 
 export default function DaysOrderPage() {
   return (
@@ -144,7 +145,9 @@ export default function DaysOrderPage() {
               <span>Back</span>
             </button>
             <button className="bg-gradient-to-r from-teal-500 to-teal-600 text-white px-6 py-3 rounded-xl font-bold sm:w-2/3 shadow-md order-1 sm:order-2 mb-2 sm:mb-0">
+            <Link href={'/payment-status'}>
               Continue
+            </Link>
             </button>
           </div>
         </div>

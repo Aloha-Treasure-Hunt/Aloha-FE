@@ -175,7 +175,7 @@ export default function Home() {
                 <br />
                 package
               </p>
-              <Link href={"/orderPayment/annualPayment"}>
+              <Link href={"/annualPayment"}>
                 <button className="mt-4 bg-red-600 text-white py-2 px-6 rounded-lg w-full">
                   Buy now
                 </button>
@@ -187,7 +187,7 @@ export default function Home() {
                 <br />
                 Then $3/15 day
               </p>
-              <Link href={"/orderPayment/daysPayment"}>
+              <Link href={"/daysPayment"}>
                 <button className="mt-4 bg-red-600 text-white py-2 px-6 rounded-lg w-full">
                   Buy now
                 </button>

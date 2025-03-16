@@ -1,4 +1,4 @@
-import FailScreen from '@/components/status/FailStatus'
+import FailScreen from '@/components/QuestStatus/FailStatus'
 import React from 'react'
 
 export default function FailStatusPage() {
