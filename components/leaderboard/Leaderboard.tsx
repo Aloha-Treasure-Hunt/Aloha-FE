@@ -3,45 +3,9 @@ import React from 'react';
 import { Globe, MapPin, Compass, Camera, PartyPopper } from 'lucide-react';
 import LeaderboardItem from './LeaderboardItem';
 import LeaderboardTable from '@/components/leaderboard/LeaderboardTable';
-import { Traveller } from '@/types/traveller.types';
+import { avatarGradients, badgeColors, leaderboardData } from '@/lib/mockData';
 
 export default function Leaderboard() {
-  const leaderboardData: Traveller[] = [
-    {
-      id: 1,
-      name: 'Linda',
-      points: 1800,
-      destinations: 9,
-      badge: 'Explorer Pro',
-    },
-    {
-      id: 2,
-      name: 'Sara',
-      points: 1700,
-      destinations: 7,
-      badge: 'Adventure Seeker',
-    },
-    {
-      id: 3,
-      name: 'Nate',
-      points: 1500,
-      destinations: 6,
-      badge: 'Nature Lover',
-    },
-  ];
-
-  const avatarGradients = {
-    blue: 'bg-gradient-to-br from-indigo-500 to-purple-600',
-    yellow: 'bg-gradient-to-br from-amber-200 to-orange-400',
-    green: 'bg-gradient-to-br from-green-300 to-emerald-500',
-  };
-
-  const badgeColors = {
-    'Explorer Pro': 'bg-gradient-to-r from-indigo-500 to-purple-600',
-    'Adventure Seeker': 'bg-gradient-to-r from-amber-500 to-orange-500',
-    'Nature Lover': 'bg-gradient-to-r from-green-500 to-emerald-600',
-  };
-
   return (
     <div className='flex flex-col'>
       {/* Header with travel theme */}
@@ -98,7 +62,7 @@ export default function Leaderboard() {
           />
         </div>
 
-        {/* Leaderboard Table - FIXED VERSION */}
+        {/* Leaderboard Table */}
         <LeaderboardTable
           leaderboardData={leaderboardData}
           avatarGradients={avatarGradients}
