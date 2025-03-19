@@ -16,7 +16,7 @@ export default function RootLayout({
   return (
     <>
       <Header />
-      <div className='min-h-[715px] flex justify-center flex-col'>
+      <div className='min-h-[950px] flex justify-center items-center flex-col'>
         {children}
       </div>
       <Footer />

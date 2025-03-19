@@ -73,7 +73,7 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
               )}
             </div>
 
-            <Link href={'/success-clue'}>
+            <Link href={'/success-status'}>
             <button className='w-full bg-amber-400 hover:bg-amber-500 text-amber-800 py-2 rounded-lg mt-4'>Submit</button>
             </Link>
             <button onClick={() => setSelectedChallenge(null)} className='w-full bg-amber-100 hover:bg-amber-200 text-amber-800 py-2 rounded-lg mt-4'>Close</button>
