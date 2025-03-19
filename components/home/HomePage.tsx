@@ -118,7 +118,7 @@ export default function Home() {
   }, []);
 
   return (
-    <div className="flex flex-col min-h-screen">
+    <div>
       {/* Header */}
       {/* <header className="header-bg text-white p-3 flex items-center justify-between sticky top-0 z-10">
         <div className="flex items-center">
@@ -175,7 +175,6 @@ export default function Home() {
                 <br />
                 Then 7$ forever
                 <br />
-                package
               </p>
               <Link href={"/annualPayment"}>
                 <button className="mt-4 bg-red-600 text-white py-2 px-6 rounded-lg w-full">
@@ -187,7 +186,7 @@ export default function Home() {
               <p className="font-bold text-red-800 text-sm">
                 3-day free trial,
                 <br />
-                Then $3/15 day
+                Then $3/15 days
               </p>
               <Link href={"/daysPayment"}>
                 <button className="mt-4 bg-red-600 text-white py-2 px-6 rounded-lg w-full">

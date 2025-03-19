@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-    baseURL: 'https://aloha-vietnam.azurewebsites.net/api/'
+    baseURL: 'https://edu-trailblaze.azurewebsites.net/api/'
     // baseURL: 'https://reqres.in'
 })
 

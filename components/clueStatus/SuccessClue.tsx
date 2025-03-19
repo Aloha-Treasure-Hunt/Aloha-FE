@@ -350,7 +350,7 @@ const SuccessCelebration = () => {
       </div>
 
       {/* Stats */}
-      <div
+      {/* <div
         className={`absolute bottom-4 left-1/2 transform -translate-x-1/2 text-gray-300 text-xs transition-all duration-1000 delay-1200 ${
           isVisible ? "opacity-100" : "opacity-0"
         } flex space-x-4`}
@@ -364,7 +364,7 @@ const SuccessCelebration = () => {
         <span>
           Score: <span className="text-green-400">250</span>
         </span>
-      </div>
+      </div> */}
 
       {/* CSS for animations */}
       <style jsx>{`

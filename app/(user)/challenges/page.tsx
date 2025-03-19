@@ -180,7 +180,7 @@ const BONUS_CHALLENGE: Challenge = {
 
 export default function ChallengePage() {
   return (
-    <main className='container mx-auto py-8 px-4'>
+    <main className='container mx-auto py-8 px-4 mt-20 mb-20'>
       <h1 className='text-3xl font-bold text-center mb-4 text-amber-800'>
         Side Quests
       </h1>
