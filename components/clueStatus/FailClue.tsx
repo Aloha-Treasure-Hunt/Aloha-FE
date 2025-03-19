@@ -188,7 +188,7 @@ const ModernErrorUI = () => {
             </div>
           </div>
 
-          <Link href={"/clues"}>
+          <Link href={"/success-clue"}>
             <button
               className={`mt-2 w-full py-3 px-4 bg-gray-800 hover:bg-gray-700 text-gray-300 font-medium rounded-lg flex items-center justify-center transform transition-all duration-500 hover:text-white border border-gray-700 delay-1000 ${
                 isVisible

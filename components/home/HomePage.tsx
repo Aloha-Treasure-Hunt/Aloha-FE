@@ -138,7 +138,7 @@ export default function Home() {
       {/* Main Content */}
       <main className="flex-grow main-content grid-pattern">
         {/* Hero Section */}
-        <section className="p-4 flex flex-col">
+        <section className="p-4 mt-20 flex flex-col">
           <div className="flex flex-row items-stretch bg-white rounded-lg overflow-hidden shadow">
             <div className="w-1/2 relative">
               <Image
@@ -154,9 +154,11 @@ export default function Home() {
               <p className="my-2 text-red-800">
                 Complete the mission to unlock the next location.
               </p>
-              <button className="mt-2 bg-red-600 text-white py-2 px-4 rounded-lg font-bold animated-btn">
-                Start playing
-              </button>
+              <Link href={"/clues"}>
+                <button className="mt-2 bg-red-600 text-white py-2 px-4 rounded-lg font-bold animated-btn">
+                  Start playing
+                </button>
+              </Link>
             </div>
           </div>
         </section>
