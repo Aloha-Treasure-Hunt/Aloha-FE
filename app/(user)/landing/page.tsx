@@ -10,8 +10,8 @@ export const metadata = {
 
 const Page: FC = () => {
   return (
-    <main className='min-h-screen bg-gray-100'>
-      <div className='py-12 space-y-16'>
+    <main className='bg-gray-100'>
+      <div className='py-20 space-y-16'>
         <section className='text-center space-y-4'>
           <h1 className='heading-large'>The Hunt is On!</h1>
           <p className='text-xl text-amber-700 max-w-2xl mx-auto'>

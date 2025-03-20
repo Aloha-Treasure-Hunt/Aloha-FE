@@ -62,8 +62,16 @@
   }
 
   .gradient-text {
-    @apply bg-gradient-to-r from-indigo-600 to-amber-500 
+    @apply bg-gradient-to-r from-amber-300 to-amber-500 
            bg-clip-text text-transparent;
+  }
+
+  .icon-color {
+    @apply text-amber-400;
+  }
+
+  .text-hover {
+    @apply text-white hover:bg-[#00707e]/50 hover:text-amber-300 flex items-center gap-1;
   }
 }
 

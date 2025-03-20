@@ -13,7 +13,9 @@ body {
 }
 
 .header-bg {
-  background-color: var(--primary-red);
+  @apply bg-gradient-to-r from-[#00707e] to-[#00707e] 
+  backdrop-blur-md border-b border-[#00707e]/30 
+  fixed w-full z-50 shadow-md mb-5;
 }
 
 .footer-bg {
