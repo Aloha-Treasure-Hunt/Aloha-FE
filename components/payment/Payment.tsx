@@ -5,7 +5,6 @@ import {
   CreditCard,
   MapPinHouse,
   MapPlus,
-  XCircle,
   Home,
   FileText,
   Map,
@@ -138,7 +137,7 @@ export default function PaymentResult() {
               <div className='text-sm text-red-700 flex items-start mt-2'>
                 <Info size={16} className='mr-2 mt-0.5 flex-shrink-0' />
                 <span>
-                  Your payment couldn't be processed. Please check your payment
+                  Your payment could not be processed. Please check your payment
                   details and try again.
                 </span>
               </div>
