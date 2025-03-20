@@ -4,7 +4,6 @@ import { useState } from 'react';
 import { Card } from '@/components/ui/card';
 import { motion } from 'framer-motion';
 import { Challenge } from '@/types/challenges.types';
-import Link from 'next/link';
 
 interface BingoCardProps {
   challenges: Challenge[];
@@ -14,6 +13,7 @@ interface BingoCardProps {
 export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
   const [selectedChallenge, setSelectedChallenge] = useState<Challenge | null>(null);
   const [media, setMedia] = useState<{ [key: string]: File | null }>({});
+  const [showUploadSuccess, setShowUploadSuccess] = useState(false);
 
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>, challengeId: string) => {
     if (event.target.files && event.target.files.length > 0) {
@@ -21,6 +21,13 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
         setMedia((prev) => ({ ...prev, [challengeId]: event.target.files?.[0] || null }));
       }
     }
+  };
+
+  const handleSubmit = () => {
+    // Show success notification
+    setShowUploadSuccess(true);
+    // Hide the challenge modal
+    setSelectedChallenge(null);
   };
 
   return (
@@ -73,10 +80,87 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
               )}
             </div>
 
-            <Link href={'/success-status'}>
-            <button className='w-full bg-amber-400 hover:bg-amber-500 text-amber-800 py-2 rounded-lg mt-4'>Submit</button>
-            </Link>
+            <button onClick={handleSubmit} className='w-full bg-amber-400 hover:bg-amber-500 text-amber-800 py-2 rounded-lg mt-4'>Submit</button>
             <button onClick={() => setSelectedChallenge(null)} className='w-full bg-amber-100 hover:bg-amber-200 text-amber-800 py-2 rounded-lg mt-4'>Close</button>
+          </motion.div>
+        </div>
+      )}
+
+      {/* Upload Success Notification */}
+      {showUploadSuccess && (
+        <div className='fixed inset-0 bg-black/50 flex items-center justify-center p-4 z-50'>
+          <motion.div 
+            initial={{ opacity: 0, scale: 0.9 }} 
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ 
+              type: "spring", 
+              stiffness: 300, 
+              damping: 25 
+            }}
+            className='bg-gradient-to-b from-white to-amber-50 rounded-xl max-w-md w-full p-6 shadow-xl border border-amber-200'
+          >
+            <div className='text-center space-y-6'>
+              <motion.div 
+                initial={{ scale: 0.5, opacity: 0 }}
+                animate={{ scale: 1, opacity: 1 }}
+                transition={{ delay: 0.2, duration: 0.5 }}
+                className='mx-auto bg-gradient-to-r from-green-400 to-emerald-500 rounded-full p-4 w-20 h-20 flex items-center justify-center shadow-lg shadow-green-200'
+              >
+                <motion.svg 
+                  xmlns="http://www.w3.org/2000/svg" 
+                  className="h-12 w-12 text-white" 
+                  fill="none" 
+                  viewBox="0 0 24 24" 
+                  stroke="currentColor"
+                  initial={{ pathLength: 0 }}
+                  animate={{ pathLength: 1 }}
+                  transition={{ delay: 0.5, duration: 0.8, ease: "easeInOut" }}
+                >
+                  <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={3} d="M5 13l4 4L19 7" />
+                </motion.svg>
+              </motion.div>
+              
+              <motion.div 
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.3 }}
+                className="space-y-3"
+              >
+                <h3 className='text-2xl font-bold text-gray-800'>Upload Successful!</h3>
+                <p className='text-gray-600 text-lg'>Your submission has been received.</p>
+                <div className='flex items-center justify-center space-x-2 text-amber-700'>
+                  <svg xmlns="http://www.w3.org/2000/svg" className="h-5 w-5" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path strokeLinecap="round" strokeLinejoin="round" strokeWidth={2} d="M12 8v4l3 3m6-3a9 9 0 11-18 0 9 9 0 0118 0z" />
+                  </svg>
+                  <p className='font-medium'>Results will be available within 3 hours</p>
+                </div>
+              </motion.div>
+              
+              <motion.button 
+                onClick={() => setShowUploadSuccess(false)} 
+                className='w-full bg-gradient-to-r from-amber-400 to-amber-500 hover:from-amber-500 hover:to-amber-600 text-amber-900 py-3 rounded-lg mt-4 font-medium text-lg shadow-md hover:shadow-lg transform transition duration-200 hover:-translate-y-1'
+                whileHover={{ scale: 1.03 }}
+                whileTap={{ scale: 0.98 }}
+                initial={{ y: 20, opacity: 0 }}
+                animate={{ y: 0, opacity: 1 }}
+                transition={{ delay: 0.5 }}
+              >
+                Continue to other quests
+              </motion.button>
+              
+              <motion.div 
+                className="absolute -bottom-4 -right-4 w-24 h-24 bg-amber-300 rounded-full opacity-20 z-0"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.6, duration: 0.8 }}
+              />
+              <motion.div 
+                className="absolute -top-2 -left-2 w-16 h-16 bg-green-300 rounded-full opacity-20 z-0"
+                initial={{ scale: 0 }}
+                animate={{ scale: 1 }}
+                transition={{ delay: 0.7, duration: 0.8 }}
+              />
+            </div>
           </motion.div>
         </div>
       )}

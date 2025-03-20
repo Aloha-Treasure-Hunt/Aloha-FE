@@ -510,13 +510,13 @@ export default function Home() {
         <div className="fixed inset-0 flex items-center justify-center bg-black bg-opacity-50 z-20">
           <div className="bg-white rounded-lg p-6 max-w-sm mx-4 text-center">
             <FaTrophy className="text-yellow-500 text-4xl mb-4 mx-auto" />
-            <h3 className="text-xl font-bold mb-2">New Achievement!</h3>
-            <p>You have unlocked Vietnam Explorer badge!</p>
+            <h3 className="text-xl font-bold mb-2">Welcome to Aloha!</h3>
+            <p>Complete tasks to receive many attractive vouchers!</p>
             <button
               onClick={() => setShowAchievement(false)}
               className="mt-4 bg-red-600 text-white py-2 px-4 rounded-lg"
             >
-              Claim Reward
+              Playing now
             </button>
           </div>
         </div>
