@@ -3,6 +3,7 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
+    "dev:prod": "env-cmd -f .env.prod tsc --noEmit && next lint && next dev --turbopack --experimental-https",
     "dev": "next dev --turbopack --experimental-https",
     "build": "next build",
     "start": "next start",
@@ -19,6 +20,7 @@
     "axios": "^1.8.3",
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
+    "env-cmd": "^10.1.0",
     "framer-motion": "^11.18.2",
     "jwt-decode": "^4.0.0",
     "leaflet": "^1.9.4",

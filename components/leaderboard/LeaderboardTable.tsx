@@ -19,7 +19,7 @@ export default function LeaderboardTable({
       <div className='bg-gradient-to-r from-blue-500 to-indigo-600 text-white p-3'>
         <div className='grid grid-cols-12 gap-2'>
           <div className='col-span-2 text-center font-medium'>Rank</div>
-          <div className='col-span-5 text-center font-medium'>traveller</div>
+          <div className='col-span-5 text-center font-medium'>Traveller</div>
           <div className='col-span-5 font-medium ml-5'>Badge</div>
         </div>
       </div>
