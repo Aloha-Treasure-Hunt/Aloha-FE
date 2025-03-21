@@ -9,7 +9,7 @@ import '@/components/home/home.css';
 
 export function Footer() {
   return (
-    <footer className='footer-bg p-4 grid grid-cols-5 gap-2 items-center justify-items-center fixed bottom-0 w-full'>
+    <footer className='footer-bg p-4 grid grid-cols-5 gap-2 items-center justify-items-center fixed bottom-0 w-full z-20'>
       <div className='text-center'>
         <FaCompass className='text-red-800 text-xl' />
       </div>

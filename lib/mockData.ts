@@ -1,4 +1,4 @@
-import { Traveller } from '@/types/traveller.types';
+import { Traveler } from '@/types/traveler.types';
 
 export const LOCATIONS = {
   HCMC: {
@@ -42,7 +42,7 @@ export const LOCATIONS = {
   },
 };
 
-export const leaderboardData: Traveller[] = [
+export const leaderboardData: Traveler[] = [
   {
     id: 1,
     name: 'Linda',

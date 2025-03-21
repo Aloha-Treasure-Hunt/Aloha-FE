@@ -36,7 +36,7 @@ export default function PaymentResult() {
       className={`flex flex-col h-auto min-h-screen ${
         paymentStatus === 'success'
           ? 'bg-gradient-to-b from-teal-600 to-teal-700 '
-          : 'bg-gradient-to-b from-red-100 to-red-200 '
+          : ''
       }`}
     >
       <main className='flex-grow flex flex-col items-center justify-center px-4 py-12'>
@@ -133,17 +133,13 @@ export default function PaymentResult() {
               </div>
             </div>
           ) : (
-            <div className='w-full bg-red-50 rounded-lg p-4 border border-red-100'>
-              <div className='text-sm text-red-700 flex items-start mt-2'>
-                <Info size={16} className='mr-2 mt-0.5 flex-shrink-0' />
+            <div className='w-full bg-red-50 rounded-lg p-3 border border-red-100'>
+              <div className='text-sm text-red-700 flex items-start'>
+                <Info size={16} className='mr-2 flex-shrink-0' />
                 <span>
                   Your payment could not be processed. Please check your payment
                   details and try again.
                 </span>
-              </div>
-              <div className='text-sm text-red-700 flex justify-between items-center mt-2'>
-                <span>Error Code:</span>
-                <span className='font-bold'>ERR-PAYMENT-301</span>
               </div>
             </div>
           )}

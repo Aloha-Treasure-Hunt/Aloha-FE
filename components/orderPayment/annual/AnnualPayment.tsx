@@ -39,14 +39,14 @@ export default function AnnualOrderPage() {
       {/* Subscription Card */}
       <div className="bg-white rounded-3xl mx-4 shadow-xl overflow-hidden">
         {/* Card Header */}
-        <div className="bg-gradient-to-r from-pink-50 to-pink-100 p-5">
+        <div className="p-5">
           <h3 className="text-xl font-bold text-gray-800 mb-1">Subscription Details</h3>
           <p className="text-gray-600 text-sm">Choose the plan that works for you</p>
         </div>
         
         {/* Subscription Options */}
         <div className="p-5">
-          <div className="bg-pink-50 rounded-xl p-4 mb-6 border-2 border-teal-600">
+          <div className="rounded-xl p-4 mb-6 border-2 border-teal-600">
             <div className="flex justify-between items-center mb-2">
               <div>
                 <span className="text-gray-800 font-bold text-lg">Annual Plan</span>

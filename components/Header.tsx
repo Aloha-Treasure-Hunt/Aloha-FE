@@ -20,7 +20,7 @@ export function Header() {
           className='text-xl md:text-2xl font-bold flex items-center gap-2'
         >
           <Compass className='icon-color h-6 w-6 md:h-7 md:w-7' />
-          <span className='gradient-text'>Aloha Treasure Hunt</span>
+          <span className='text-white'>Aloha Treasure Hunt</span>
         </Link>
 
         {/* Mobile menu button */}

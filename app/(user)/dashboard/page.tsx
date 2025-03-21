@@ -3,7 +3,7 @@ import { MapComponent } from '@/components/maps/MapComponent';
 
 export default function Dashboard() {
   return (
-    <main className='container mx-auto px-4 py-8'>
+    <main className='container mt-10 mb-10 mx-auto px-4 py-8'>
       <h1 className='text-3xl font-bold text-center text-amber-800 mb-8'>
         Treasure Hunt Dashboard
       </h1>

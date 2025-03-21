@@ -9,7 +9,7 @@ export default function Leaderboard() {
   return (
     <div className='flex flex-col'>
       {/* Header with travel theme */}
-      <div className='w-full bg-gradient-to-r from-blue-600 to-indigo-700 rounded-t-xl p-5 shadow-lg'>
+      <div className='w-full bg-gradient-to-r from-[#00707e] to-[#2EB2AE] rounded-t-xl p-5 shadow-lg'>
         <div className='flex items-center justify-center space-x-2'>
           <Globe className='text-white h-6 w-6' />
           <h1 className='text-white text-2xl font-bold tracking-wider'>
@@ -22,10 +22,10 @@ export default function Leaderboard() {
       </div>
 
       {/* Top 3 Explorers */}
-      <div className='w-full bg-gradient-to-b from-white to-blue-50 rounded-b-2xl p-6 shadow-xl '>
+      <div className='w-full rounded-b-2xl p-6 shadow-xl '>
         {/* Destinations explored counter */}
         <div className='flex justify-center mb-6'>
-          <div className='bg-gradient-to-r from-blue-600 to-indigo-600 text-white px-6 py-1 rounded-full shadow flex items-center'>
+          <div className='bg-[#2EB2AE] text-white px-6 py-1 rounded-full shadow flex items-center'>
             <MapPin className='h-4 w-4 mr-1' />
             <span className='text-sm'>Ho Chi Minh City</span>
           </div>
@@ -71,7 +71,7 @@ export default function Leaderboard() {
 
         {/* Bottom call to action */}
         <div className='mt-6 relative z-10'>
-          <button className='bg-gradient-to-r from-blue-600 to-indigo-600 hover:from-blue-700 hover:to-indigo-700 text-white font-medium py-2 px-6 rounded-full shadow-md flex items-center justify-center mx-auto transition-all'>
+          <button className='bg-gradient-to-r from-[#00707e] to-[#2EB2AE] hover:from-[#006f7e9a] hover:to-[#2EB2AE] text-white font-medium py-2 px-6 rounded-full shadow-md flex items-center justify-center mx-auto transition-all'>
             <Globe className='h-4 w-4 mr-2' />
             Start Your Journey
           </button>

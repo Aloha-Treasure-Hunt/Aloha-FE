@@ -58,7 +58,7 @@ export function MapComponent() {
             variant='ghost'
             size='sm'
             onClick={toggleExpanded}
-            className='text-amber-700'
+            className='text-white'
           >
             {isExpanded ? <ChevronUp size={20} /> : <ChevronDown size={20} />}
           </Button>
@@ -74,7 +74,7 @@ export function MapComponent() {
                 onClick={() => setSelectedLocation(key)}
                 className={
                   selectedLocation === key
-                    ? 'bg-teal-600 hover:bg-teal-700'
+                    ? 'bg-teal-600 text-white hover:bg-teal-700'
                     : 'border-amber-300 text-amber-800 hover:bg-amber-100'
                 }
               >
