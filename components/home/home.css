@@ -5,8 +5,7 @@
 
 :root {
   --primary-red: #e63946;
-  --primary-yellow: #edf259;
-  --primary-blue: #0584f2;
+  --primary-yellow: #fefac7;
 }
 
 body {
@@ -14,17 +13,13 @@ body {
 }
 
 .header-bg {
-  @apply bg-gradient-to-r from-[#0444bf] to-[#0aaff1] 
+  @apply bg-gradient-to-r from-[#00707e] to-[#2EB2AE] 
   backdrop-blur-md border-b border-[#00707e]/30 
   fixed w-full z-50 shadow-md mb-5;
 }
 
 .footer-bg {
-  background-color: var(--primary-blue);
-}
-
-.text-app {
-  color: var(--primary-yellow);
+  background-color: var(--primary-yellow);
 }
 
 .main-content {
