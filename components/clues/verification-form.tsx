@@ -25,11 +25,24 @@ export function VerificationForm({
 
   const { error, verify, setError } = useVerification();
 
+  // Chuyển userClues thành dạng Map để truy vấn nhanh hơn
+  const solvedCluesMap = new Map(
+    userClues.map((clue) => [clue.clueId, clue.isSolved])
+  );
+
+  // Xác định clue nào có thể chọn dựa trên thứ tự (order)
+  const isClueUnlockable = (order: number) => {
+    if (order === 1) return true; // Clue đầu tiên luôn mở
+    return (
+      solvedCluesMap.get(
+        clues.find((clue) => clue.order === order - 1)?.id || 0
+      ) === true
+    );
+  };
+
   const handleSubmit = async (e: React.FormEvent) => {
     e.preventDefault();
     setError('');
-
-    // console.log('Submitting verification:', { selectedClueId, code, userId });
 
     if (!selectedClueId) {
       setError('Please select a clue to verify.');
@@ -61,18 +74,19 @@ export function VerificationForm({
 
       {/* Clue selection buttons with enhanced styling */}
       <div className='mb-6 flex flex-wrap gap-2'>
-        {clues.map(({ id }) => {
-          const isSolved = userClues.some(
-            (clue) => clue.clueId === id && clue.isSolved
-          );
+        {clues.map(({ id, order }) => {
+          const isSolved = solvedCluesMap.get(id) === true;
+          const isUnlockable = isClueUnlockable(order);
           return (
             <button
               key={id}
-              onClick={() => setSelectedClueId(id)}
+              onClick={() => isUnlockable && setSelectedClueId(id)}
               className={`px-4 py-2 rounded-full text-sm border transition-all flex items-center gap-1.5 font-medium ${
                 isSolved
                   ? 'bg-green-100 text-green-700 border-green-200 hover:bg-green-200'
-                  : 'bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-200'
+                  : isUnlockable
+                  ? 'bg-blue-100 text-blue-700 border-blue-200 hover:bg-blue-200'
+                  : 'bg-gray-200 text-gray-500 border-gray-300 cursor-not-allowed'
               } ${
                 selectedClueId === id ? 'ring-2 ring-blue-500 shadow-sm' : ''
               }`}
