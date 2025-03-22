@@ -39,7 +39,17 @@ export default function LeaderboardItem({
           {rank}
         </span>
       </div>
-      <p className='mt-2 font-medium text-gray-800'>{name}</p>
+
+      {/* Improved name display with tooltip for long names */}
+      <div className='relative group mt-2 w-24 text-center'>
+        <p className='font-medium text-gray-800 truncate w-full'>{name}</p>
+        {name.length > 12 && (
+          <div className='absolute left-1/2 -translate-x-1/2 -bottom-8 invisible group-hover:visible bg-gray-800 text-white text-xs rounded py-1 px-2 whitespace-nowrap z-10'>
+            {name}
+          </div>
+        )}
+      </div>
+
       <div
         className={`${
           size === 'large'

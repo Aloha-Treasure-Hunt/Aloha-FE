@@ -7,7 +7,8 @@ type VerificationStore = {
     clueNumber: number,
     code: string,
     userId: string | null,
-    refetch: () => void
+    refetch: () => void,
+    onSuccess: () => void
   ) => Promise<void>;
   setError: (message: string) => void;
 };
@@ -16,7 +17,7 @@ export const useVerification = create<VerificationStore>((set) => ({
   error: '',
   setError: (message) => set({ error: message }),
 
-  verify: async (clueNumber, code, userId, refetch) => {
+  verify: async (clueNumber, code, userId, refetch, onSuccess) => {
     if (!userId) {
       set({ error: 'User ID is missing. Please log in.' });
       return;
@@ -27,17 +28,25 @@ export const useVerification = create<VerificationStore>((set) => ({
     try {
       const res = await PostClue(clueNumber, code, userId);
 
+      if (res.message.includes('Correct answer')) {
+        set({ error: '' });
+        onSuccess();
+        return;
+      }
+
+      if (res.message.includes('already')) {
+        set({ error: 'This clue has already been solved.' });
+        return;
+      }
+
       if (res.message.includes('Incorrect')) {
         set({ error: 'Invalid verification code. Please try again.' });
         return;
       }
 
-      console.log('Verification response:', res);
       set({ error: '' });
       refetch();
     } catch (error) {
-      console.error('Error verifying clue:', error);
-
       if (error instanceof Error) {
         set({ error: error.message });
       } else {
