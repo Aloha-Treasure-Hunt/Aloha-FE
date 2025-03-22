@@ -1,30 +1,48 @@
-import { create } from 'zustand'
+import { PostClue } from '@/components/api/clueApi';
+import { create } from 'zustand';
 
 type VerificationStore = {
-  unlockedClues: number[]
-  verify: (code: string) => Promise<void>
-}
-
-// Simple verification codes for testing
-const VERIFICATION_CODES = {
-  'FATCAT': 2,
-  'SPRINGROLL': 3,
-  'SPACEG': 4,
-  'WOLFY': 5,
-}
+  error: string;
+  verify: (
+    clueNumber: number,
+    code: string,
+    userId: string | null,
+    refetch: () => void
+  ) => Promise<void>;
+  setError: (message: string) => void;
+};
 
 export const useVerification = create<VerificationStore>((set) => ({
-  unlockedClues: [1], // Clue 1 is unlocked by default
-  verify: async (code: string) => {
-    const normalizedCode = code.trim().toUpperCase()
-    const clueNumber = VERIFICATION_CODES[normalizedCode as keyof typeof VERIFICATION_CODES]
+  error: '',
+  setError: (message) => set({ error: message }),
 
-    if (!clueNumber) {
-      throw new Error('Invalid verification code')
+  verify: async (clueNumber, code, userId, refetch) => {
+    if (!userId) {
+      set({ error: 'User ID is missing. Please log in.' });
+      return;
     }
 
-    set((state) => ({
-      unlockedClues: [...new Set([...state.unlockedClues, clueNumber])]
-    }))
-  }
-})) 
+    console.log('Verifying clue:', clueNumber, code, userId);
+
+    try {
+      const res = await PostClue(clueNumber, code, userId);
+
+      if (res.message.includes('Incorrect')) {
+        set({ error: 'Invalid verification code. Please try again.' });
+        return;
+      }
+
+      console.log('Verification response:', res);
+      set({ error: '' });
+      refetch();
+    } catch (error) {
+      console.error('Error verifying clue:', error);
+
+      if (error instanceof Error) {
+        set({ error: error.message });
+      } else {
+        set({ error: 'An unknown error occurred.' });
+      }
+    }
+  },
+}));

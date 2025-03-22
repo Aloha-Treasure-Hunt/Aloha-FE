@@ -17,7 +17,16 @@ export interface TreasureHuntItem {
 }
 
 export interface ClueData {
-  title: string;
-  description: string;
-  hint?: string;
+  cityId: number;
+  question: string;
+  answerCode: string;
+  hint: string;
+  points: number;
+  timeBonus: number | null;
+  order: number;
+  title: string | null;
+  destination: string;
+  difficulty: 'Easy' | 'Medium' | 'Hard';
+  userProgresses: any[];
+  id: number;
 }
