@@ -35,15 +35,14 @@
     @apply hover:scale-105 transition-all duration-200;
   }
   .header-bg {
-    color: var(--text-secondary);
-    background: var(--background-theme);
-    @apply backdrop-blur-md border-b fixed w-full z-50 shadow-md mb-5;
+    @apply text-yellow-400 bg-gradient-to-r from-[#0444bf] to-[#0aaff1] 
+    backdrop-blur-md border-b border-[#00707e]/30 
+    fixed w-full z-50 shadow-md mb-5;
   }
   .footer-bg {
-    color: var(--text-secondary);
-    background: var(--background-theme);
-    @apply p-4 grid grid-cols-5 gap-2 items-center justify-items-center fixed bottom-0 w-full z-50 border-t shadow-xl;
+    background-color: var(--primary-blue);
   }
+
   .footer-bg svg {
     font-size: 1.25rem;
     line-height: 1.75rem;
