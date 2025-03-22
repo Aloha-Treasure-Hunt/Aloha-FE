@@ -6,6 +6,7 @@ import { Input } from '@/components/ui/input';
 import { useVerification } from '@/hooks/use-verification';
 import { ClueData } from '@/types/challenges.types';
 import { KeyRound, Check, Lock, ChevronRight } from 'lucide-react';
+import { useRouter } from 'next/navigation';
 
 export function VerificationForm({
   clues = [],
@@ -18,8 +19,8 @@ export function VerificationForm({
   userId: string | null;
   refetch: () => void;
 }) {
+  const router = useRouter();
   const [code, setCode] = useState('');
-  // const [error, setError] = useState('');
   const [selectedClueId, setSelectedClueId] = useState<number | null>(null);
 
   const { error, verify, setError } = useVerification();
@@ -37,7 +38,8 @@ export function VerificationForm({
 
     try {
       await verify(selectedClueId, code, userId, refetch);
-      setCode('');
+      router.push('/success-clue');
+      // setCode('');
     } catch {
       setError('Invalid verification code. Please try again.');
     }
