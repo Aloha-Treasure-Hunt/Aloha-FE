@@ -1,9 +1,10 @@
 "use client";
-
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import { Card } from "@/components/ui/card";
 import { motion } from "framer-motion";
 import { Challenge, TreasureHuntItem } from "@/types/challenges.types";
+import { jwtDecode } from "jwt-decode";
+import { submitQuestsApi } from "../api/questsApi";
 
 interface BingoCardProps {
   challenges: TreasureHuntItem[];
@@ -15,29 +16,67 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
     useState<TreasureHuntItem | null>(null);
   const [media, setMedia] = useState<{ [key: string]: File | null }>({});
   const [showUploadSuccess, setShowUploadSuccess] = useState(false);
+  const [userId, setUserId] = useState("");
   const [windowWidth, setWindowWidth] = useState(
     typeof window !== "undefined" ? window.innerWidth : 1200
   );
+  const [selectedFile, setSelectedFile] = useState<File | null>(null);
+    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+    const [error, setError] = useState<string | null>(null);
 
-  const handleFileChange = (
-    event: React.ChangeEvent<HTMLInputElement>,
-    challengeId: number
-  ) => {
-    if (event.target.files && event.target.files.length > 0) {
-      if (event.target.files) {
-        setMedia((prev) => ({
-          ...prev,
-          [challengeId]: event.target.files?.[0] || null,
-        }));
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    try {
+      if (token) {
+        const decode = jwtDecode(token);
+        setUserId(decode?.sub ?? ""); // Use optional chaining and nullish coalescing
       }
+    } catch (error) {
+      console.error("Error decoding token:", error);
+      setUserId("");
     }
-  };
+  }, []);
 
-  const handleSubmit = () => {
-    // Show success notification
-    setShowUploadSuccess(true);
-    // Hide the challenge modal
-    setSelectedChallenge(null);
+  // Xử lý chọn file
+  const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
+    const file = event.target.files?.[0];
+    if (!file) return;
+
+    // Kiểm tra định dạng file (chỉ nhận video MP4)
+    const validFormats = ["video/mp4"];
+    if (!validFormats.includes(file.type)) {
+        setError("Only accept file MP4.");
+        return;
+    }
+
+    // Kiểm tra dung lượng file (giới hạn 50MB)
+    const maxSize = 50 * 1024 * 1024; // 50MB
+    if (file.size > maxSize) {
+        setError("File quá lớn, vui lòng chọn file dưới 50MB.");
+        return;
+    }
+
+    setSelectedFile(file);
+    setError(null);
+
+    // Tạo preview video
+    const fileURL = URL.createObjectURL(file);
+    setPreviewUrl(fileURL);
+};
+
+  const handleFileSubmit = async (selectedQuestId: number) => {
+    if (!selectedFile) {
+      alert("Please choose your file!");
+      return;
+    }
+
+    try {
+      const response = await submitQuestsApi(userId, selectedQuestId, selectedFile);
+      console.log("Submit successfully:", response);
+    } catch (error) {
+      console.error("Error when submit side quest:", error);
+    }
   };
 
   return (
@@ -129,7 +168,7 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
               <input
                 type="file"
                 accept="image/*,video/*"
-                onChange={(e) => handleFileChange(e, selectedChallenge.id)}
+                onChange={handleFileChange}
                 className="block w-full text-sm text-gray-500 file:mr-4 file:py-2 file:px-4 file:rounded-lg file:border-0 file:text-sm file:font-semibold file:bg-amber-100 file:text-amber-800 hover:file:bg-amber-200"
               />
               {media[selectedChallenge.id] && (
@@ -137,10 +176,16 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
                   Selected: {media[selectedChallenge.id]?.name}
                 </p>
               )}
+              {previewUrl && (
+                <div className="mt-3">
+                    <p className="text-sm text-gray-600">Xem trước video:</p>
+                    <video src={previewUrl} controls className="w-full max-h-60 rounded-lg shadow" />
+                </div>
+            )}
             </div>
 
             <button
-              onClick={handleSubmit}
+              onClick={() => handleFileSubmit(selectedChallenge.id)}
               className="w-full bg-amber-400 hover:bg-amber-500 text-amber-800 py-2 rounded-lg mt-4"
             >
               Submit

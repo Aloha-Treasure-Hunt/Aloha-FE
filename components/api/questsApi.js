@@ -1,3 +1,4 @@
+import { toast } from 'react-toastify';
 import axios from './customizeAxios';
 
 export const getQuestsApi = async (cityId) => {
@@ -9,3 +10,25 @@ export const getQuestsApi = async (cityId) => {
         throw error;  // Ensure errors are properly handled in the UI
     }
 }
+
+export const submitQuestsApi = async (userId , sideQuestId , file ) => {
+    try {
+        const formData = new FormData();
+        formData.append("File", file); // Đảm bảo tên "File" đúng với API backend
+
+        const response = await axios.post(`SideQuest/CheckSideQuest?UserId=${userId}&SideQuestId=${sideQuestId}  `, formData, {
+            headers: {
+                "Content-Type": "multipart/form-data",
+            },
+        });
+
+        if(response.status === 400) toast.error(response.data.message);
+        else toast.success("Submit successfully!");
+
+        return response.data;
+    } catch (error) {
+        console.error("Error submitting quests:", error);
+        throw error;
+    }
+};
+
