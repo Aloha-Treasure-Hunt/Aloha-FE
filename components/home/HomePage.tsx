@@ -1,20 +1,21 @@
 // File: pages/index.js
-"use client";
+'use client';
 import { useState, useEffect } from "react";
 import Image from "next/image";
 import {
   FaMapMarkerAlt,
-  FaBell,
   FaChevronLeft,
   FaChevronRight,
   FaPuzzlePiece,
   FaMountain,
   FaTrophy,
+  FaBell,
 } from "react-icons/fa";
 import "./home.css";
 import Link from "next/link";
-import {getPackageApi} from '@/components/api/packageApi'
+import { getPackageApi } from "@/components/api/packageApi";
 import ImageSlider from "./HomeSlider";
+import { Plane } from "lucide-react";
 
 const featuredDestinations = [
   {
@@ -62,7 +63,7 @@ const testimonials = [
   },
   {
     name: "Rosie",
-    avatar: "/assets/Side_Image/rosie.jpg",
+    avatar: "/assets/Side_Image/Rosie.jpg",
     comment:
       "This app transformed our trip to Ha Long Bay. The cave exploration challenge had us discovering places we would never have found on our own!",
     location: "Ha Long Bay",
@@ -109,7 +110,6 @@ export default function Home() {
   const [packages, setPackages] = useState<Package[]>([]);
 
   useEffect(() => {
-
     // Fetch dữ liệu gói khi component mount
     const fetchPackages = async () => {
       try {
@@ -141,22 +141,6 @@ export default function Home() {
 
   return (
     <div>
-      {/* Header */}
-      {/* <header className="header-bg text-white p-3 flex items-center justify-between sticky top-0 z-10">
-        <div className="flex items-center">
-          <h1 className="text-xl font-bold italic">Aloha<br/>Vietnam</h1>
-        </div>
-        <div className="flex items-center bg-white rounded-full px-4 py-1 w-2/3">
-          <span className="text-gray-500">search</span>
-          <div className="flex-grow"></div>
-          <FaMapMarkerAlt className="text-gray-500" />
-        </div>
-        <div className="flex items-center">
-          <FaWhatsapp className="text-xl mx-1" />
-          <FaQuestionCircle className="text-xl mx-1" />
-        </div>
-      </header> */}
-
       {/* Main Content */}
       <main className="flex-grow main-content grid-pattern">
         {/* Hero Section */}
@@ -164,16 +148,18 @@ export default function Home() {
           <div className="flex flex-row items-stretch bg-white rounded-lg overflow-hidden shadow">
             <div className="w-1/2 relative">
               <Image
-                src="/assets/Side_Image/traveler.jpg"
+                src="/assets/Side_Image/halong.jpg"
                 alt="Traveler with map in Vietnam"
                 layout="fill"
                 objectFit="cover"
                 priority
               />
             </div>
-            <div className="w-1/2 p-4 flex flex-col justify-center bg-amber-50">
-              <h2 className="text-xl font-bold text-[#3B2C04]">Are You Ready</h2>
-              <p className="my-2 text-[#403B2E]">
+            <div className="w-1/2 p-4 flex flex-col justify-center card-bg">
+              <h2 className="text-lg font-bold flex items-center gap-2">
+                Are you ready? <Plane />
+              </h2>
+              <p className="my-2 text-gray-500">
                 Complete the mission to unlock the next location.
               </p>
               <Link href={"/clues"}>
@@ -186,18 +172,18 @@ export default function Home() {
         </section>
 
         {/* Plans Section */}
-        {/* Plans Section */}
-<section className="px-4 py-6">
+        <section className="px-4 py-6">
           <h2 className="text-2xl font-bold text-[#3B2C04] text-center mb-4">
             Choose your Plan
           </h2>
           <div className="grid grid-cols-2 gap-4">
             {packages.length > 0 ? (
               packages.map((pkg) => (
-                <div key={pkg.id} className="p-4 rounded-lg shadow text-center border-2 border-[#0aaff1]">
-                  <p className="font-bold text-black text-sm">
-                    {pkg.name}
-                  </p>
+                <div
+                  key={pkg.id}
+                  className="p-4 rounded-lg shadow text-center border-2 border-[#0aaff1]"
+                >
+                  <p className="font-bold text-black text-sm">{pkg.name}</p>
                   <Link href={`/package/${pkg.id}`}>
                     <button className="mt-4 text-white py-2 px-6 rounded-lg w-full btn-app">
                       Buy now
@@ -212,19 +198,18 @@ export default function Home() {
         </section>
 
         {/* Events Section */}
-        {/* Events Section */}
         <section className="mx-4 my-6 p-4">
           <h2 className="text-2xl font-bold text-[#3B2C04] text-center mb-6">
             Local Cultural Events
           </h2>
           <div className="relative">
-            <ImageSlider/>
+            <ImageSlider />
           </div>
           {/* <div className="flex justify-center mt-4 space-x-1">
             {[0, 1, 2, 3, 4].map((index) => (
               <div
                 key={index}
-                className={`dot ${index === currentDot ? "active" : ""}`}
+                className={`dot ${index === currentDot ? 'active' : ''}`}
               />
             ))}
           </div> */}
@@ -237,8 +222,8 @@ export default function Home() {
               Popular Challenges
             </h2>
             <div className="space-y-3">
-              <div className="flex items-center p-2 bg-yellow-50 rounded">
-                <FaPuzzlePiece className="text-red-600 text-xl mr-3" />
+              <div className="flex items-center p-2 card-bg rounded">
+                <FaPuzzlePiece className="text-[#e7505f] text-xl mr-3" />
                 <div>
                   <h3 className="font-bold">Hoi An Ancient Town</h3>
                   <p className="text-sm text-gray-600">
@@ -251,8 +236,8 @@ export default function Home() {
                   </span>
                 </div>
               </div>
-              <div className="flex items-center p-2 bg-yellow-50 rounded">
-                <FaMountain className="text-red-600 text-xl mr-3" />
+              <div className="flex items-center p-2 card-bg rounded">
+                <FaMountain className="text-[#e7505f] text-xl mr-3" />
                 <div>
                   <h3 className="font-bold">Ha Long Bay</h3>
                   <p className="text-sm text-gray-600">Find the hidden cave</p>
@@ -273,7 +258,7 @@ export default function Home() {
             <h2 className="text-xl font-bold text-[#3B2C04]">
               Featured Destinations
             </h2>
-            <span className="text-red-600 text-sm">View all</span>
+            <span className="text-sm">View all</span>
           </div>
 
           <div className="overflow-x-auto pb-4">
@@ -291,17 +276,15 @@ export default function Home() {
                       objectFit="cover"
                     />
                     {destination.isNew && (
-                      <div className="absolute top-2 right-2 bg-red-600 text-white text-xs px-2 py-1 rounded-full">
+                      <div className="absolute top-2 right-2 bg-[#e7505f] text-white text-xs px-2 py-1 rounded-full">
                         New
                       </div>
                     )}
                   </div>
-                  <div className="p-2">
-                    <h3 className="font-bold text-red-900">
-                      {destination.name}
-                    </h3>
+                  <div className="p-2 card-bg">
+                    <h3 className="font-bold ">{destination.name}</h3>
                     <div className="flex items-center text-xs mt-1">
-                      <FaMapMarkerAlt className="text-red-600 mr-1" />
+                      <FaMapMarkerAlt className="mr-1" />
                       <span className="text-gray-600">
                         {destination.location}
                       </span>
@@ -310,7 +293,7 @@ export default function Home() {
                       <span className="text-xs text-gray-600">
                         {destination.challenges} puzzles
                       </span>
-                      <span className="text-xs bg-yellow-100 text-yellow-800 px-1 rounded">
+                      <span className="text-xs bg-green-100 text-green-800 px-1 rounded">
                         {destination.rating} ★
                       </span>
                     </div>
@@ -364,14 +347,14 @@ export default function Home() {
           </div>
 
           <div className="mt-4 text-center">
-            <button className="bg-white text-red-900 py-2 px-4 rounded-lg shadow border border-red-200 font-medium">
+            <button className="bg-white border-[#2980b9] py-2 px-4 rounded-lg shadow border font-medium">
               Read More Reviews
             </button>
           </div>
         </section>
 
         <section className="px-4 py-6 mb-16">
-          <h2 className="text-xl font-bold text-red-900 mb-4">
+          <h2 className="text-xl font-bold text-black mb-4">
             Nearby Events & Activities
           </h2>
 
@@ -379,7 +362,7 @@ export default function Home() {
             {nearbyEvents.map((event, index) => (
               <div
                 key={index}
-                className="flex items-center bg-white p-3 rounded-lg shadow-md"
+                className="flex items-center card-bg p-3 rounded-lg shadow-md"
               >
                 <div className="relative min-w-16 h-16 rounded-md overflow-hidden mr-3">
                   <Image
@@ -391,7 +374,7 @@ export default function Home() {
                 </div>
                 <div className="flex-grow">
                   <div className="flex justify-between items-start">
-                    <h3 className="font-bold text-red-900">{event.title}</h3>
+                    <h3 className="font-bold ">{event.title}</h3>
                     <span
                       className={`text-xs px-2 py-1 rounded-full ${
                         event.status === "Now"
@@ -417,62 +400,63 @@ export default function Home() {
               </div>
             ))}
           </div>
-
           <button className="mt-4 w-full py-2 border-2 border-[#0aaff1] text-[#0444bf] rounded-lg font-medium">
             View All Activities
           </button>
         </section>
 
+        {/* Aloha Reward Section */}
         <section className="px-4 py-6 mb-16 bg-gradient-to-r from-[#0444bf] to-[#0584f2] rounded-lg mx-4 text-white">
           <div className="flex items-center justify-center mb-2">
             <FaTrophy className="text-yellow-300 text-2xl mr-2" />
             <h2 className="text-xl font-bold">Aloha Rewards</h2>
           </div>
 
-          <p className="text-center mb-4">
-            Complete challenges and earn points to unlock exclusive rewards!
+          <p className="text-center text-sm mb-4 text-gray-500">
+            Complete challenges and earn points to unlock exclusive Hawaiian
+            experiences!
           </p>
 
-          <div className="bg-white bg-opacity-20 rounded-lg p-4 mb-4">
+          <div className="progress-container mb-4">
             <div className="flex justify-between items-center mb-2">
-              <span className="font-medium">Your Progress</span>
-              <span className="text-sm">120 / 200 points</span>
+              <span className="text-sm font-medium text-gray-500">
+                Your Progress
+              </span>
+              <span className="points-badge">120 / 200 points</span>
             </div>
-            <div className="w-full bg-white bg-opacity-30 rounded-full h-2.5">
-              <div
-                className="bg-yellow-300 h-2.5 rounded-full"
-                style={{ width: "60%" }}
-              ></div>
+            <div className="progress-bg">
+              <div className="progress-fill"></div>
             </div>
-            <p className="text-xs mt-2 text-center">
-              Next reward: Free City Tour (80 points to go)
+            <p className="text-xs text-center mt-2 text-gray-500">
+              Next reward: Free City Tour{" "}
+              <span className="points-remaining">(80 points to go)</span>
             </p>
           </div>
 
           <div className="grid grid-cols-2 gap-3">
-            <div className="bg-white bg-opacity-10 p-3 rounded-lg text-center">
-              <div className="bg-yellow-400 text-red-800 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2">
-                <span className="font-bold">1</span>
+            <div className="challenge-card">
+              <div className="challenge-number">
+                <span>1</span>
               </div>
-              <p className="text-sm">Complete Daily Challenges</p>
+              <p className="text-xs">Complete Daily Challenges</p>
             </div>
-            <div className="bg-white bg-opacity-10 p-3 rounded-lg text-center">
-              <div className="bg-yellow-400 text-red-800 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2">
-                <span className="font-bold">2</span>
+            <div className="challenge-card">
+              <div className="challenge-number">
+                <span>2</span>
               </div>
-              <p className="text-sm">Share Photos</p>
+              <p className="text-xs">Share Photos</p>
             </div>
-            <div className="bg-white bg-opacity-10 p-3 rounded-lg text-center">
-              <div className="bg-yellow-400 text-red-800 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2">
-                <span className="font-bold">3</span>
+            <div className="challenge-card">
+              <div className="challenge-number">
+                <span>3</span>
               </div>
-              <p className="text-sm">Invite Friends</p>
+              <p className="text-xs">Invite Friends</p>
             </div>
-            <div className="bg-white bg-opacity-10 p-3 rounded-lg text-center">
-              <div className="bg-yellow-400 text-red-800 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2">
-                <span className="font-bold">4</span>
+            <div className="challenge-card">
+              <div className="challenge-number">
+                <span>4</span>
               </div>
-              <p className="text-sm">Redeem Rewards</p>
+              <p className="text-xs">Redeem Rewards</p>
             </div>
           </div>
         </section>
@@ -481,7 +465,7 @@ export default function Home() {
       <section className="px-4 py-6 mb-20">
         <div className="bg-yellow-100 rounded-lg p-4 shadow-md">
           <div className="flex items-center justify-center mb-3">
-            <FaBell className="text-red-600 text-xl mr-2" />
+            <FaBell className="text-[#e7505f] text-xl mr-2" />
             <h2 className="font-bold text-red-900">Stay Updated</h2>
           </div>
 
@@ -516,7 +500,7 @@ export default function Home() {
             <p>Complete tasks to receive many attractive vouchers!</p>
             <button
               onClick={() => setShowAchievement(false)}
-              className="mt-4 bg-red-600 text-white py-2 px-4 rounded-lg"
+              className="mt-4 bg-[#e7505f] text-white py-2 px-4 rounded-lg"
             >
               Playing now
             </button>

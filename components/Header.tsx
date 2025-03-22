@@ -19,15 +19,15 @@ export function Header() {
           href='/homepage'
           className='text-xl md:text-2xl font-bold flex items-center gap-2'
         >
-          <Compass className='icon-color h-6 w-6 md:h-7 md:w-7' />
-          <span className='text-white'>Aloha Treasure Hunt</span>
+          <Compass className=' h-6 w-6 md:h-7 md:w-7' />
+          <span>Aloha Treasure Hunt</span>
         </Link>
 
         {/* Mobile menu button */}
         <Button
           variant='ghost'
           size='icon'
-          className='md:hidden text-white hover:bg-[#00707e]/50'
+          className='md:hidden  hover:text-[#337cad]'
           onClick={toggleMenu}
           aria-label='Toggle menu'
         >
@@ -36,19 +36,19 @@ export function Header() {
 
         {/* Desktop navigation */}
         <div className='hidden md:flex space-x-2 lg:space-x-3'>
-          <NavButton href='/dashboard' className='text-hover'>
+          <NavButton href='/dashboard'>
             <Map size={18} />
             Dashboard
           </NavButton>
-          <NavButton href='/clues' className='text-hover'>
+          <NavButton href='/clues'>
             <Compass size={18} />
             Clues
           </NavButton>
-          <NavButton href='/challenges' className='text-hover'>
+          <NavButton href='/challenges'>
             <FaPuzzlePiece size={18} />
             Side Quests
           </NavButton>
-          <NavButton href='/landing' className='text-hover'>
+          <NavButton href='/landing'>
             <HelpCircle size={18} />
             Q&A
           </NavButton>
@@ -57,37 +57,21 @@ export function Header() {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className='md:hidden bg-[#00707e]/95 animate-fadeIn'>
+        <div className='md:hidden bg-white animate-fadeIn'>
           <div className='flex flex-col py-2 px-4 space-y-2'>
-            <MobileNavButton
-              href='/dashboard'
-              onClick={toggleMenu}
-              className='text-white hover:bg-[#00707e] hover:text-amber-300 flex items-center gap-2 py-3'
-            >
+            <MobileNavButton href='/dashboard' onClick={toggleMenu}>
               <Map size={18} />
               Dashboard
             </MobileNavButton>
-            <MobileNavButton
-              href='/clues'
-              onClick={toggleMenu}
-              className='text-white hover:bg-[#00707e] hover:text-amber-300 flex items-center gap-2 py-3'
-            >
+            <MobileNavButton href='/clues' onClick={toggleMenu}>
               <Compass size={18} />
               Clues
             </MobileNavButton>
-            <MobileNavButton
-              href='/challenges'
-              onClick={toggleMenu}
-              className='text-white hover:bg-[#00707e] hover:text-amber-300 flex items-center gap-2 py-3'
-            >
+            <MobileNavButton href='/challenges' onClick={toggleMenu}>
               <FaPuzzlePiece size={18} />
               Side Quests
             </MobileNavButton>
-            <MobileNavButton
-              href='/landing'
-              onClick={toggleMenu}
-              className='text-white hover:bg-[#00707e] hover:text-amber-300 flex items-center gap-2 py-3'
-            >
+            <MobileNavButton href='/landing' onClick={toggleMenu}>
               <HelpCircle size={18} />
               Q&A
             </MobileNavButton>

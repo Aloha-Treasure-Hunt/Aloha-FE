@@ -91,12 +91,12 @@ export default function LoginRegister() {
   };
 
   return (
-    <section className='bg-gray-50 min-h-screen flex items-center justify-center'>
-      <div className='bg-gray-100 flex rounded-2xl shadow-xl max-w-4xl p-5'>
+    <section>
+      <div className='login'>
         {/* Nội dung thay đổi dựa trên trạng thái */}
         {isLogin ? (
           <div className='sm:w-1/2 px-12 py-10'>
-            <h1 className='font-bold text-2xl text-blue-500 flex text-center justify-center'>
+            <h1 className='font-bold text-2xl text-[#4aa7e5] flex text-center justify-center'>
               LOGIN
             </h1>
             <button
@@ -104,14 +104,14 @@ export default function LoginRegister() {
               className='bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-center text-sm'
             >
               <FcGoogle className='mr-3' />
-              Login with google
+              Login with Google
             </button>
             <button
               //   onClick={() => signIn('facebook', { callbackUrl: '/' })}
               className='bg-white border py-2 w-full rounded-xl mt-5 flex justify-center items-center text-center text-sm'
             >
               <FaFacebookSquare className='mr-3 text-blue-700' />
-              Login with facebook
+              Login with Facebook
             </button>
             <div className='mt-6 grid grid-cols-3 items-center text-gray-500'>
               <hr className='border-gray-400' />
@@ -151,12 +151,12 @@ export default function LoginRegister() {
                   fill='gray'
                   className='absolute top-1/2 right-3 -translate-y-1/2 font-bold'
                 />
-                <p className='text-xs mt-3 text-blue-500 underline cursor-pointer'>
+                <p className='text-xs mt-3 text-[#4aa7e5] underline cursor-pointer'>
                   Forgot your password?
                 </p>
               </div>
               <button
-                className='bg-blue-500 rounded-xl text-white py-2'
+                className='bg-[#4aa7e5] rounded-xl text-white py-2'
                 type='submit'
               >
                 {loading ? <ClipLoader size={15} color='#fff' /> : 'Login'}
@@ -166,7 +166,7 @@ export default function LoginRegister() {
             <div className='flex mt-8 justify-center text-sm'>
               <p className='mr-1'>New to Treasure Hunt?</p>
               <button
-                className='text-blue-500 underline'
+                className='text-[#4aa7e5] underline'
                 onClick={() => setIsLogin(false)}
               >
                 {loading ? <ClipLoader size={15} color='#fff' /> : 'Register'}
@@ -176,7 +176,7 @@ export default function LoginRegister() {
             <div className='mt-8 text-xs'>
               <div className='flex justify-center text-center'>
                 <p>
-                  Having trouble logging in? 
+                  Having trouble logging in?
                   <a href='' className='underline text-gray-600 font-bold'>
                     Treasure Hunt Help Center
                   </a>
@@ -187,18 +187,18 @@ export default function LoginRegister() {
             <div className='mt-2 text-xs'>
               <div className='flex justify-center text-center'>
                 <p>
-                  This site is protected by reCAPTCHA Enterprise and the Google
+                  This site is protected by reCAPTCHA Enterprise and the Google
                   <a className='underline text-gray-600 font-bold' href=''>
-                    Privacy Policy and Terms of Service
+                    Privacy Policy and Terms of Service
                   </a>
-                   apply.
+                  apply.
                 </p>
               </div>
             </div>
           </div>
         ) : (
           <div className='sm:w-1/2 px-12 py-10'>
-            <h2 className='font-bold text-2xl text-blue-500 flex text-center justify-center'>
+            <h2 className='font-bold text-2xl text-[#4aa7e5] flex text-center justify-center'>
               REGISTER
             </h2>
             {/* {error && <p className='text-red-500 text-sm'>{error}</p>} */}
@@ -260,7 +260,7 @@ export default function LoginRegister() {
                 />
               </div>
               <button
-                className='bg-blue-500 rounded-xl text-white py-2 my-2'
+                className='bg-[#4aa7e5] rounded-xl text-white py-2 my-2'
                 type='submit'
               >
                 Register
@@ -270,7 +270,7 @@ export default function LoginRegister() {
             <div className='flex mt-8 justify-center text-sm'>
               <p className='mr-1'>Already have an account?</p>
               <button
-                className='text-blue-500 underline'
+                className='text-[#4aa7e5] underline'
                 onClick={() => setIsLogin(true)}
               >
                 Login

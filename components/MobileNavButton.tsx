@@ -9,7 +9,12 @@ export function MobileNavButton({
   onClick,
 }: MobileNavButtonProps) {
   return (
-    <Button variant='ghost' asChild className={className} onClick={onClick}>
+    <Button
+      variant='ghost'
+      asChild
+      className={`hover:bg-[#d3eafa] ${className ?? ''}`}
+      onClick={onClick}
+    >
       <Link href={href}>{children}</Link>
     </Button>
   );
