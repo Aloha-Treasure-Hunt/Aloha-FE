@@ -35,7 +35,7 @@ export const PostClue = async (
 
     return response.data;
   } catch (error) {
-    console.error('API Error:', error);
-    throw error; // 🚀 Throw lỗi để xử lý tiếp ở `useVerification`
+    // console.error('API Error:', error);
+    throw error; // Throw lỗi để xử lý tiếp ở `useVerification`
   }
 };

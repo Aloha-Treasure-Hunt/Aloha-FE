@@ -11,3 +11,15 @@ export const getUserProgressByUserId = async (id: string) => {
     throw error;
   }
 };
+
+export const getTop3UserByCityId = async (cityId: number) => {
+  try {
+    const response = await axios.get(
+      `/UserProgress/GetTop3UserByCityId/${cityId}`
+    );
+    return response.data;
+  } catch (error) {
+    console.error('Error fetching package:', error);
+    throw error;
+  }
+};
