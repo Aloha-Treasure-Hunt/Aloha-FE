@@ -23,11 +23,11 @@ export const submitQuestsApi = async (userId , sideQuestId , file ) => {
         });
 
         if(response.status === 400) toast.error(response.data.message);
-        else toast.success("Submit successfully!");
 
         return response.data;
     } catch (error) {
         console.error("Error submitting quests:", error);
+        toast.error("Side Quest already completed");
         throw error;
     }
 };
