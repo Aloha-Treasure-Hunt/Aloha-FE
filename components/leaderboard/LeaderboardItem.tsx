@@ -29,7 +29,7 @@ export default function LeaderboardItem({
         <div
           className={`${
             size === 'large' ? 'w-20 h-20' : 'w-16 h-16'
-          } rounded-full ${avatarGradient} shadow-lg flex items-center justify-center p-1`}
+          } rounded-full ${avatarGradient} shadow-lg flex items-center justify-center p-1 !important`}
         >
           <div className='bg-white rounded-full w-full h-full flex items-center justify-center'>
             {icon}
@@ -49,7 +49,7 @@ export default function LeaderboardItem({
             : 'w-20 h-24'
         } mt-2 bg-gradient-to-b rounded-t-lg shadow-lg flex flex-col items-center justify-center transform perspective-800 rotateX-10 ${
           rank === 1
-            ? 'from-indigo-500 to-purple-600'
+            ? 'from-sky-500 to-blue-600'
             : rank === 2
             ? 'from-amber-400 to-orange-500'
             : 'from-green-500 to-emerald-600'
