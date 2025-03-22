@@ -36,7 +36,7 @@
   }
   .header-bg {
     @apply text-yellow-400 bg-gradient-to-r from-[#0444bf] to-[#0aaff1] 
-    backdrop-blur-md border-b border-[#00707e]/30 
+    backdrop-blur-md 
     fixed w-full z-50 shadow-md mb-5;
   }
   .footer-bg {
