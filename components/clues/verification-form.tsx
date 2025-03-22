@@ -37,9 +37,9 @@ export function VerificationForm({
     }
 
     try {
-      await verify(selectedClueId, code, userId, refetch);
-      router.push('/success-clue');
-      // setCode('');
+      await verify(selectedClueId, code, userId, refetch, () => {
+        router.push('/success-clue');
+      });
     } catch {
       setError('Invalid verification code. Please try again.');
     }
