@@ -27,7 +27,7 @@ export default function SuccessScreen() {
   }, []);
 
   return (
-    <div className="w-full max-w-md mx-auto">
+    <div className="w-full max-w-md mx-auto mt-52">
       {/* Achievement Badge */}
       <div className="relative z-10 -mt-16 flex flex-col items-center justify-center px-6">
         <motion.div

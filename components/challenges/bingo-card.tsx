@@ -76,7 +76,7 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
         selectedQuestId,
         selectedFile
       );
-      console.log("Submit successfully:", response);
+      setShowUploadSuccess(true)
     } catch (error) {
       console.error("Error when submit side quest:", error);
     }
@@ -282,7 +282,7 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
                     />
                   </svg>
                   <p className="font-medium">
-                    Results will be available within 3 hours
+                  Results will be reviewed within 10 minutes.
                   </p>
                 </div>
               </motion.div>
