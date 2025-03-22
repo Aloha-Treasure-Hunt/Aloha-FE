@@ -21,8 +21,8 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
     typeof window !== "undefined" ? window.innerWidth : 1200
   );
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
-    const [previewUrl, setPreviewUrl] = useState<string | null>(null);
-    const [error, setError] = useState<string | null>(null);
+  const [previewUrl, setPreviewUrl] = useState<string | null>(null);
+  const [error, setError] = useState<string | null>(null);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -38,32 +38,31 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
     }
   }, []);
 
-  // Xử lý chọn file
   const handleFileChange = (event: React.ChangeEvent<HTMLInputElement>) => {
     const file = event.target.files?.[0];
     if (!file) return;
 
-    // Kiểm tra định dạng file (chỉ nhận video MP4)
-    const validFormats = ["video/mp4"];
+    // Danh sách định dạng hợp lệ (bao gồm ảnh và video)
+    const validFormats = ["image/jpeg", "image/png", "image/jpg", "video/mp4"];
     if (!validFormats.includes(file.type)) {
-        setError("Only accept file MP4.");
-        return;
+      setError("Only accept MP4 videos or JPEG/PNG images.");
+      return;
     }
 
     // Kiểm tra dung lượng file (giới hạn 50MB)
     const maxSize = 50 * 1024 * 1024; // 50MB
     if (file.size > maxSize) {
-        setError("File quá lớn, vui lòng chọn file dưới 50MB.");
-        return;
+      setError("File is too large, please choose a file under 50MB.");
+      return;
     }
 
     setSelectedFile(file);
     setError(null);
 
-    // Tạo preview video
+    // Hiển thị preview
     const fileURL = URL.createObjectURL(file);
     setPreviewUrl(fileURL);
-};
+  };
 
   const handleFileSubmit = async (selectedQuestId: number) => {
     if (!selectedFile) {
@@ -72,7 +71,11 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
     }
 
     try {
-      const response = await submitQuestsApi(userId, selectedQuestId, selectedFile);
+      const response = await submitQuestsApi(
+        userId,
+        selectedQuestId,
+        selectedFile
+      );
       console.log("Submit successfully:", response);
     } catch (error) {
       console.error("Error when submit side quest:", error);
@@ -178,10 +181,22 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
               )}
               {previewUrl && (
                 <div className="mt-3">
-                    <p className="text-sm text-gray-600">Xem trước video:</p>
-                    <video src={previewUrl} controls className="w-full max-h-60 rounded-lg shadow" />
+                  <p className="text-sm text-gray-600">Preview:</p>
+                  {selectedFile?.type.startsWith("image/") ? (
+                    <img
+                      src={previewUrl}
+                      alt="Preview"
+                      className="w-full max-h-60 rounded-lg shadow"
+                    />
+                  ) : (
+                    <video
+                      src={previewUrl}
+                      controls
+                      className="w-full max-h-60 rounded-lg shadow"
+                    />
+                  )}
                 </div>
-            )}
+              )}
             </div>
 
             <button

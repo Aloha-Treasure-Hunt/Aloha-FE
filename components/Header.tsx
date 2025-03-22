@@ -57,8 +57,8 @@ export function Header() {
 
       {/* Mobile menu */}
       {isMenuOpen && (
-        <div className='md:hidden bg-white animate-fadeIn'>
-          <div className='flex flex-col py-2 px-4 space-y-2'>
+        <div className='md:hidden bg-gradient-to-r from-[#0aaff1] to-[#59d0ff] animate-fadeIn uppercase'>
+          <div className='flex flex-col py-2 px-4 space-y-2 text-white font-bold'>
             <MobileNavButton href='/dashboard' onClick={toggleMenu}>
               <Map size={18} />
               Dashboard
