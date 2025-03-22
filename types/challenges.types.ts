@@ -7,6 +7,14 @@ export interface Challenge {
   description?: string;
   requirements?: string[];
 }
+export interface TreasureHuntItem {
+  id: number;
+  cityId: number;
+  title: string;
+  description: string;
+  points: number;
+  requirement: string[];
+}
 
 export interface ClueData {
   cityId: number;

@@ -1,5 +1,8 @@
+'use client'
+import { getQuestsApi } from '@/components/api/questsApi';
 import { BingoCard } from '@/components/challenges/bingo-card';
-import { Challenge } from '@/types/challenges.types';
+import { Challenge, TreasureHuntItem } from '@/types/challenges.types';
+import { useEffect, useState } from 'react';
 
 const CHALLENGES: Challenge[] = [
   // Original challenges
@@ -179,6 +182,22 @@ const BONUS_CHALLENGE: Challenge = {
 };
 
 export default function ChallengePage() {
+  const [quests, setQuests] = useState<TreasureHuntItem[]>([]);
+
+  useEffect(() => {
+    const fetchQuests = async () => {
+      try {
+        const data = await getQuestsApi(1)
+        setQuests(data);
+      } catch (error) {
+        console.log( "Error fetching quest: ",error);
+      }
+    };
+    fetchQuests();
+  }, [])
+
+  console.log(quests)
+
   return (
     <main className='container mx-auto py-8 px-4 mt-20 mb-20'>
       <h1 className='text-3xl font-bold text-center mb-4 text-amber-800'>
@@ -190,7 +209,7 @@ export default function ChallengePage() {
         with bonus points. Document your adventures and share them with
         #AVNTreasureHunt
       </p>
-      <BingoCard challenges={CHALLENGES} bonusChallenge={BONUS_CHALLENGE} />
+      <BingoCard challenges={quests} bonusChallenge={BONUS_CHALLENGE} />
     </main>
   );
 }

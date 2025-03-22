@@ -407,63 +407,62 @@ export default function Home() {
 
         {/* Aloha Reward Section */}
         <section className="px-4 py-6 mb-16 bg-gradient-to-r from-[#0444bf] to-[#0584f2] rounded-lg mx-4 text-white">
-          <div className="flex items-center justify-center mb-2">
-            <FaTrophy className="text-yellow-300 text-2xl mr-2" />
-            <h2 className="text-xl font-bold">Aloha Rewards</h2>
-          </div>
-
-          <p className="text-center text-sm mb-4 text-gray-500">
-            Complete challenges and earn points to unlock exclusive Hawaiian
-            experiences!
-          </p>
-
-          <div className="progress-container mb-4">
-            <div className="flex justify-between items-center mb-2">
-              <span className="text-sm font-medium text-gray-500">
-                Your Progress
-              </span>
-              <span className="points-badge">120 / 200 points</span>
-            </div>
-            <div className="progress-bg">
-              <div className="progress-fill"></div>
-            </div>
-            <p className="text-xs text-center mt-2 text-gray-500">
-              Next reward: Free City Tour{" "}
-              <span className="points-remaining">(80 points to go)</span>
-            </p>
-          </div>
-
-          <div className="grid grid-cols-2 gap-3">
-            <div className="challenge-card">
-              <div className="challenge-number">
-                <span>1</span>
-              </div>
-              <p className="text-xs">Complete Daily Challenges</p>
-            </div>
-            <div className="challenge-card">
-              <div className="challenge-number">
-                <span>2</span>
-              </div>
-              <p className="text-xs">Share Photos</p>
-            </div>
-            <div className="challenge-card">
-              <div className="challenge-number">
-                <span>3</span>
-              </div>
-              <p className="text-xs">Invite Friends</p>
-            </div>
-            <div className="challenge-card">
-              <div className="challenge-number">
-                <span>4</span>
-              </div>
-              <p className="text-xs">Redeem Rewards</p>
-            </div>
-          </div>
-        </section>
+           <div className="flex items-center justify-center mb-2">
+             <FaTrophy className="text-yellow-300 text-2xl mr-2" />
+             <h2 className="text-xl font-bold">Aloha Rewards</h2>
+           </div>
+ 
+           <p className="text-center mb-4">
+             Complete challenges and earn points to unlock exclusive rewards!
+           </p>
+ 
+           <div className="bg-white bg-opacity-20 rounded-lg p-4 mb-4">
+             <div className="flex justify-between items-center mb-2">
+               <span className="font-medium">Your Progress</span>
+               <span className="text-sm">120 / 200 points</span>
+             </div>
+             <div className="w-full bg-white bg-opacity-30 rounded-full h-2.5">
+               <div
+                 className="bg-yellow-300 h-2.5 rounded-full"
+                 style={{ width: "60%" }}
+               ></div>
+             </div>
+             <p className="text-xs mt-2 text-center">
+               Next reward: Free City Tour (80 points to go)
+             </p>
+           </div>
+ 
+           <div className="grid grid-cols-2 gap-3">
+             <div className="bg-white bg-opacity-10 p-3 rounded-lg text-center">
+               <div className="bg-yellow-400 text-red-800 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2">
+                 <span className="font-bold">1</span>
+               </div>
+               <p className="text-sm">Complete Daily Challenges</p>
+             </div>
+             <div className="bg-white bg-opacity-10 p-3 rounded-lg text-center">
+               <div className="bg-yellow-400 text-red-800 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2">
+                 <span className="font-bold">2</span>
+               </div>
+               <p className="text-sm">Share Photos</p>
+             </div>
+             <div className="bg-white bg-opacity-10 p-3 rounded-lg text-center">
+               <div className="bg-yellow-400 text-red-800 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2">
+                 <span className="font-bold">3</span>
+               </div>
+               <p className="text-sm">Invite Friends</p>
+             </div>
+             <div className="bg-white bg-opacity-10 p-3 rounded-lg text-center">
+               <div className="bg-yellow-400 text-red-800 w-10 h-10 rounded-full flex items-center justify-center mx-auto mb-2">
+                 <span className="font-bold">4</span>
+               </div>
+               <p className="text-sm">Redeem Rewards</p>
+             </div>
+           </div>
+         </section>
       </main>
 
       <section className="px-4 py-6 mb-20">
-        <div className="bg-yellow-100 rounded-lg p-4 shadow-md">
+        <div className="card-bg rounded-lg p-4 shadow-md">
           <div className="flex items-center justify-center mb-3">
             <FaBell className="text-[#e7505f] text-xl mr-2" />
             <h2 className="font-bold text-red-900">Stay Updated</h2>
@@ -480,7 +479,7 @@ export default function Home() {
               placeholder="Your email address"
               className="flex-grow py-2 px-3 rounded-l-lg border-t border-b border-l border-gray-300 focus:outline-none"
             />
-            <button className="bg-[#2EB2AE] text-white py-2 px-4 rounded-r-lg">
+            <button className="btn-for-app font-bold text-white py-2 px-4 rounded-r-lg">
               Subscribe
             </button>
           </div>
