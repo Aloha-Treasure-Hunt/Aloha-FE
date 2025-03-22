@@ -16,11 +16,11 @@ export default function LeaderboardTable({
   return (
     <div className='mt-2 bg-white rounded-xl overflow-hidden shadow-lg border border-blue-100'>
       {/* Table Header */}
-      <div className='bg-gradient-to-r to-[#017c8c] from-[#2EB2AE] text-white p-3'>
+      <div className='bg-gradient-to-r from-[#3498db] to-[#2980b9] text-white p-3'>
         <div className='grid grid-cols-12 gap-2'>
           <div className='col-span-2 text-center font-medium'>Rank</div>
           <div className='col-span-5 text-center font-medium'>Traveler</div>
-          <div className='col-span-5 font-medium ml-5'>Badge</div>
+          <div className='col-span-5 text-center font-medium ml-5'>Badge</div>
         </div>
       </div>
 
@@ -47,7 +47,7 @@ export default function LeaderboardTable({
               >
                 <div className='bg-white rounded-full w-6 h-6 flex items-center justify-center'>
                   {index === 0 ? (
-                    <PartyPopper className='h-4 w-4 text-indigo-700' />
+                    <PartyPopper className='h-4 w-4 ' />
                   ) : index === 1 ? (
                     <Camera className='h-4 w-4 text-orange-500' />
                   ) : (
@@ -69,11 +69,11 @@ export default function LeaderboardTable({
             </div>
 
             {/* Badge Column */}
-            <div className='col-span-5'>
+            <div className='col-span-5 flex items-center justify-center'>
               <div
                 className={`${
                   badgeColors[traveler.badge]
-                } text-white text-xs px-2 py-1 rounded-full font-medium truncate w-fit`}
+                } text-white text-xs px-2 py-1 rounded-full font-medium truncate w-fit ml-5`}
                 title={traveler.badge}
               >
                 {traveler.badge}

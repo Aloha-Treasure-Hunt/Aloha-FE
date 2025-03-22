@@ -47,11 +47,11 @@ export function MapComponent() {
   const currentLocation = LOCATIONS[selectedLocation as keyof typeof LOCATIONS];
 
   return (
-    <div className='w-full bg-amber-50/30 rounded-xl p-4 shadow-md border border-amber-100'>
+    <div className='w-full rounded-xl p-4 shadow-md border'>
       <div className='flex flex-col mb-4'>
         <div className='flex justify-between items-center'>
-          <h2 className='text-lg sm:text-xl font-semibold text-teal-800 flex items-center'>
-            <MapPin className='mr-2 text-amber-500' />
+          <h2 className='text-lg sm:text-xl font-semibold  flex items-center'>
+            <MapPin className='mr-2 ' />
             Treasure Hunting Areas
           </h2>
           <Button
@@ -74,8 +74,8 @@ export function MapComponent() {
                 onClick={() => setSelectedLocation(key)}
                 className={
                   selectedLocation === key
-                    ? 'bg-teal-600 text-white hover:bg-teal-700'
-                    : 'border-amber-300 text-amber-800 hover:bg-amber-100'
+                    ? 'bg-[#2980b9] text-white hover:bg-[#2980b9]'
+                    : ''
                 }
               >
                 {location.name}
