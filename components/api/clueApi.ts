@@ -1,3 +1,4 @@
+import instance from './customizeAxios';
 import axios from './customizeAxios';
 
 export const getClueApi = async () => {
@@ -26,26 +27,15 @@ export const PostClue = async (
   userId: string
 ) => {
   try {
-    const response = await axios.post('/Clue', {
+    const response = await instance.post('/Clue', {
       clueId,
       answer,
       userId,
     });
-    if (response.status === 200 || response.status === 500) {
-      return response.data;
-    } else {
-      throw new Error(`Unexpected response: ${response.status}`);
-    }
-  } catch (error: any) {
-    if (error.response) {
-      console.error('Server Error:', error.response.data);
-      throw new Error(error.response.data.message || 'Server error occurred');
-    } else if (error.request) {
-      console.error('Network Error:', error.request);
-      throw new Error('Network error: Unable to reach the server');
-    } else {
-      console.error('Unexpected Error:', error.message);
-      throw new Error('Unexpected error occurred');
-    }
+
+    return response.data;
+  } catch (error) {
+    console.error('API Error:', error);
+    throw error; // 🚀 Throw lỗi để xử lý tiếp ở `useVerification`
   }
 };
