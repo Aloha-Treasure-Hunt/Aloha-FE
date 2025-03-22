@@ -12,7 +12,8 @@ export const AuthProvider = ({ children }) => {
     const storedUser = JSON.parse(localStorage.getItem('user'));
     if (storedUser) {
       setUser(storedUser);
-    }    
+      // console.log(user.id)
+    }
   }, []);
 
   const login = (userData) => {

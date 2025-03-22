@@ -11,6 +11,7 @@ import { jwtDecode, JwtPayload } from 'jwt-decode';
 import { loginApi, registerApi } from '@/components/api/loginApi.js';
 
 interface CustomJwtPayload extends JwtPayload {
+  sub: string;
   role: string;
   email: string;
   fullName: string;
@@ -47,11 +48,13 @@ export default function LoginRegister() {
         // Lưu token vào localStorage
         localStorage.setItem('token', accessToken);
         localStorage.setItem('refreshToken', refreshToken);
+        localStorage.setItem('id', decodedToken.sub);
         localStorage.setItem('userRole', decodedToken.role);
         localStorage.setItem('userEmail', decodedToken.email);
 
         // Lưu thông tin người dùng vào context
         login({
+          id: decodedToken.sub,
           email: decodedToken.email,
           role: decodedToken.role,
           fullName: decodedToken.fullName,

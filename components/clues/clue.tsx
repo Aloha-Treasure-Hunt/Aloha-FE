@@ -1,7 +1,7 @@
 import { ClueData } from '@/types/challenges.types';
 
 export interface ClueProps {
-  number: number;
+  id: number;
   isLocked: boolean;
   data: ClueData;
 }
@@ -10,7 +10,7 @@ export function Clue({ isLocked, data }: ClueProps) {
   return (
     <div
       className={`p-4 rounded-lg border transition-colors ${
-        isLocked ? 'bg-gray-100 border-gray-200' : 'bg-white border-amber-200'
+        isLocked ? 'bg-gray-100 border-gray-200' : 'bg-white border-blue-200'
       }`}
     >
       <div className='flex flex-col md:flex-row gap-4'>
@@ -20,7 +20,7 @@ export function Clue({ isLocked, data }: ClueProps) {
               isLocked ? 'text-gray-400' : 'text-amber-800'
             }`}
           >
-            {data.title} {isLocked && '🔒'}
+            Clue {data.id} {isLocked && '🔒'}
           </h3>
         </div>
 
@@ -31,7 +31,7 @@ export function Clue({ isLocked, data }: ClueProps) {
             </p>
           ) : (
             <div className='space-y-2'>
-              <p className='text-gray-700'>{data.description}</p>
+              <p className='text-gray-700'>{data.id}</p>
               {data.hint && (
                 <p className='text-sm text-gray-500'>Hint: {data.hint}</p>
               )}
