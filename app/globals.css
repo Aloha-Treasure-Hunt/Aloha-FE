@@ -93,8 +93,8 @@
   .btn-light-red {
     @apply bg-red-100 text-red-800 hover:bg-red-200 focus:ring-red-300;
   }
-  .btn-app {
-    @apply bg-[#016F7C] text-white hover:scale-105
+  .btn-for-app {
+    @apply bg-gradient-to-r from-[#0584f2] to-[#0aaff1] text-white hover:scale-105
   }
 }
 

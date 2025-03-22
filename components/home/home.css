@@ -5,7 +5,8 @@
 
 :root {
   --primary-red: #e63946;
-  --primary-yellow: #fefac7;
+  --primary-yellow: #edf259;
+  --primary-blue: #0584f2;
 }
 
 body {
@@ -19,7 +20,11 @@ body {
 }
 
 .footer-bg {
-  background-color: var(--primary-yellow);
+  background-color: var(--primary-blue);
+}
+
+.text-app {
+  color: var(--primary-yellow);
 }
 
 .main-content {

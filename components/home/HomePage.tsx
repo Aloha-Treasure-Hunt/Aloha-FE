@@ -13,6 +13,8 @@ import {
 } from "react-icons/fa";
 import "./home.css";
 import Link from "next/link";
+import {getPackageApi} from '@/components/api/packageApi'
+import ImageSlider from "./HomeSlider";
 
 const featuredDestinations = [
   {
@@ -99,7 +101,27 @@ export default function Home() {
   const [currentDot, setCurrentDot] = useState(0);
   const [showAchievement, setShowAchievement] = useState(false);
 
+  interface Package {
+    id: string;
+    name: string;
+  }
+
+  const [packages, setPackages] = useState<Package[]>([]);
+
   useEffect(() => {
+
+    // Fetch dữ liệu gói khi component mount
+    const fetchPackages = async () => {
+      try {
+        const data = await getPackageApi();
+        setPackages(data); // Cập nhật state với dữ liệu nhận được
+      } catch (error) {
+        console.error("Error fetching packages:", error);
+      }
+    };
+
+    fetchPackages();
+
     // Show achievement popup after 5 seconds
     const achievementTimer = setTimeout(() => {
       setShowAchievement(true);
@@ -164,67 +186,48 @@ export default function Home() {
         </section>
 
         {/* Plans Section */}
-        <section className="px-4 py-6">
+        {/* Plans Section */}
+<section className="px-4 py-6">
           <h2 className="text-2xl font-bold text-[#3B2C04] text-center mb-4">
             Choose your Plan
           </h2>
           <div className="grid grid-cols-2 gap-4">
-            <div className="bg-[#A6D1D7] p-4 rounded-lg shadow text-center">
-              <p className="font-bold text-black text-sm">
-                Annual
-                <br />
-                Package
-              </p>
-              <Link href={"/annualPayment"}>
-                <button className="mt-4 text-white py-2 px-6 rounded-lg w-full btn-app">
-                  Buy now
-                </button>
-              </Link>
-            </div>
-            <div className="bg-[#A6D1D7] p-4 rounded-lg shadow text-center">
-              <p className="font-bold text-black text-sm">
-              Fifteen Days
-              <br />
-              Package
-              </p>
-              <Link href={"/daysPayment"}>
-                <button className="mt-4 text-white py-2 px-6 rounded-lg w-full btn-app">
-                  Buy now
-                </button>
-              </Link>
-            </div>
+            {packages.length > 0 ? (
+              packages.map((pkg) => (
+                <div key={pkg.id} className="p-4 rounded-lg shadow text-center border-2 border-[#0aaff1]">
+                  <p className="font-bold text-black text-sm">
+                    {pkg.name}
+                  </p>
+                  <Link href={`/package/${pkg.id}`}>
+                    <button className="mt-4 text-white py-2 px-6 rounded-lg w-full btn-app">
+                      Buy now
+                    </button>
+                  </Link>
+                </div>
+              ))
+            ) : (
+              <p className="text-center text-gray-500">Loading packages...</p>
+            )}
           </div>
         </section>
 
         {/* Events Section */}
-        <section className="bg-[#32919D] mx-4 my-6 p-4 rounded-lg shadow">
-          <h2 className="text-2xl font-bold text-white text-center mb-6">
+        {/* Events Section */}
+        <section className="mx-4 my-6 p-4">
+          <h2 className="text-2xl font-bold text-[#3B2C04] text-center mb-6">
             Local Cultural Events
           </h2>
           <div className="relative">
-            <div className="py-8">
-              {/* Event content would go here */}
-              <div className="flex justify-center items-center h-32">
-                <p className="text-lg font-bold text-white">
-                  Upcoming Festival: Tết Holiday
-                </p>
-              </div>
-            </div>
-            <button className="absolute left-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2">
-              <FaChevronLeft className="text-xl text-white" />
-            </button>
-            <button className="absolute right-0 top-1/2 transform -translate-y-1/2 bg-white bg-opacity-50 rounded-full p-2">
-              <FaChevronRight className="text-xl text-white" />
-            </button>
+            <ImageSlider/>
           </div>
-          <div className="flex justify-center mt-4 space-x-1">
+          {/* <div className="flex justify-center mt-4 space-x-1">
             {[0, 1, 2, 3, 4].map((index) => (
               <div
                 key={index}
                 className={`dot ${index === currentDot ? "active" : ""}`}
               />
             ))}
-          </div>
+          </div> */}
         </section>
 
         {/* New Features Section */}
@@ -329,7 +332,7 @@ export default function Home() {
                 key={index}
                 className="bg-white p-4 rounded-lg shadow-md border-l-4"
                 style={{
-                  borderLeftColor: index % 2 === 0 ? "#00707e" : "#2eb2ae",
+                  borderLeftColor: index % 2 === 0 ? "#0444bf" : "#0aaff1",
                 }}
               >
                 <div className="flex items-center mb-2">
@@ -415,12 +418,12 @@ export default function Home() {
             ))}
           </div>
 
-          <button className="mt-4 w-full py-2 border border-[#38e2dd] text-[#2EB2AE] rounded-lg font-medium">
+          <button className="mt-4 w-full py-2 border-2 border-[#0aaff1] text-[#0444bf] rounded-lg font-medium">
             View All Activities
           </button>
         </section>
 
-        <section className="px-4 py-6 mb-16 bg-gradient-to-r from-[#00707e] to-[#2EB2AE] rounded-lg mx-4 text-white">
+        <section className="px-4 py-6 mb-16 bg-gradient-to-r from-[#0444bf] to-[#0584f2] rounded-lg mx-4 text-white">
           <div className="flex items-center justify-center mb-2">
             <FaTrophy className="text-yellow-300 text-2xl mr-2" />
             <h2 className="text-xl font-bold">Aloha Rewards</h2>
