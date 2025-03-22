@@ -1,14 +1,31 @@
 /* File: styles/globals.css */
-/* @tailwind base;
+@tailwind base;
 @tailwind components;
 @tailwind utilities;
 
 :root {
+  --primary-red: #e63946;
+  --primary-yellow: #edf259;
+  --primary-blue: #0584f2;
   --primary: #63b0e5;
 }
 
 body {
-  color: var(--primary);
+  /* font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, sans-serif; */
+}
+
+.header-bg {
+  @apply bg-gradient-to-r from-[#00707e] to-[#2EB2AE] 
+  backdrop-blur-md border-b border-[#00707e]/30 
+  fixed w-full z-50 shadow-md mb-5;
+}
+
+.footer-bg {
+  background-color: var(--primary-blue);
+}
+
+.text-app {
+  color: var(--primary-yellow);
 }
 
 .main-content {
@@ -69,4 +86,4 @@ body {
     ),
     linear-gradient(to bottom, rgba(255, 255, 255, 0.2) 1px, transparent 1px);
   background-size: 25% 25%;
-} */
+}
