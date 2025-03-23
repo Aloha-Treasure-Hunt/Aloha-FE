@@ -8,7 +8,8 @@ type VerificationStore = {
     code: string,
     userId: string | null,
     refetch: () => void,
-    onSuccess: () => void
+    onSuccess: () => void,
+    setIsLoading: (loading: boolean) => void
   ) => Promise<void>;
   setError: (message: string) => void;
 };
@@ -17,7 +18,14 @@ export const useVerification = create<VerificationStore>((set) => ({
   error: '',
   setError: (message) => set({ error: message }),
 
-  verify: async (clueNumber, code, userId, refetch, onSuccess) => {
+  verify: async (
+    clueNumber,
+    code,
+    userId,
+    refetch,
+    onSuccess,
+    setIsLoading
+  ) => {
     if (!userId) {
       set({ error: 'User ID is missing. Please log in.' });
       return;
@@ -30,6 +38,7 @@ export const useVerification = create<VerificationStore>((set) => ({
 
       if (res.message.includes('Correct answer')) {
         set({ error: '' });
+        setIsLoading(false);
         onSuccess();
         return;
       }
@@ -52,6 +61,8 @@ export const useVerification = create<VerificationStore>((set) => ({
       } else {
         set({ error: 'An unknown error occurred.' });
       }
+    } finally {
+      setIsLoading(false); // Tắt loading trong mọi trường hợp
     }
   },
 }));

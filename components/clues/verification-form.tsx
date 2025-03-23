@@ -7,6 +7,7 @@ import { useVerification } from '@/hooks/use-verification';
 import { ClueData } from '@/types/challenges.types';
 import { KeyRound, Check, Lock, ChevronRight } from 'lucide-react';
 import { useRouter } from 'next/navigation';
+import { LoadingSpinner } from '@/components/ui/loading-spinner';
 
 export function VerificationForm({
   clues = [],
@@ -22,6 +23,7 @@ export function VerificationForm({
   const router = useRouter();
   const [code, setCode] = useState('');
   const [selectedClueId, setSelectedClueId] = useState<number | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   const { error, verify, setError } = useVerification();
 
@@ -48,11 +50,18 @@ export function VerificationForm({
       setError('Please select a clue to verify.');
       return;
     }
-
+    setIsLoading(true);
     try {
-      await verify(selectedClueId, code, userId, refetch, () => {
-        router.push('/success-clue');
-      });
+      await verify(
+        selectedClueId,
+        code,
+        userId,
+        refetch,
+        () => {
+          router.push('/success-clue');
+        },
+        setIsLoading
+      );
     } catch {
       setError('Invalid verification code. Please try again.');
     }
@@ -126,10 +135,11 @@ export function VerificationForm({
 
         <Button
           type='submit'
-          className='w-full bg-blue-600 hover:bg-blue-700 text-white transition-colors py-2 rounded-lg flex items-center justify-center gap-2'
+          className='w-full bg-blue-600 hover:bg-blue-700 text-white transition-colors py-2 rounded-lg flex items-center justify-center gap-2 disabled:opacity-100'
+          disabled={isLoading}
         >
-          Verify Code
-          <ChevronRight size={16} />
+          {isLoading ? <LoadingSpinner /> : 'Verify Code'}
+          {!isLoading && <ChevronRight size={16} />}
         </Button>
 
         {selectedClueId && (
