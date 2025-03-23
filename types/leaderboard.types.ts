@@ -4,5 +4,5 @@ export interface LeaderboardProps {
   userName: string;
   totalPoints: number;
   numerOfCity: string;
-  badge?: string;
+  prize: string;
 }
