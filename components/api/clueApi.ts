@@ -27,6 +27,7 @@ export const PostClue = async (
   userId: string
 ) => {
   try {
+    await new Promise((resolve) => setTimeout(resolve, 3000));
     const response = await instance.post('/Clue', {
       clueId,
       answer,
