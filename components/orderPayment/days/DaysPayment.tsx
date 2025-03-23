@@ -23,6 +23,11 @@ export default function DaysOrderPage() {
   const { id } = useParams();
   const [userId, setUserId] = useState("");
   const router = useRouter();
+  const [origin, setOrigin] = useState<string | null>(null);
+
+  useEffect(() => {
+    setOrigin(window.location.origin);
+  }, []);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -56,6 +61,7 @@ export default function DaysOrderPage() {
       const response = await postPaymentApi(
         userId,
         Number(Array.isArray(id) ? id[0] : id) || 0,
+        origin ?? "",
         2
       );
       router.push(`${response.data.paymentUrl}`);
