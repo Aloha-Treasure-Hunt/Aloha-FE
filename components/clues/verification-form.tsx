@@ -122,7 +122,7 @@ export function VerificationForm({
             type='text'
             placeholder='Enter verification code'
             value={code}
-            onChange={(e) => setCode(e.target.value)}
+            onChange={(e) => setCode(e.target.value.toUpperCase())}
             className='w-full pl-10 pr-4 py-2 border-blue-200 focus:ring-blue-500 focus:border-blue-500 rounded-lg'
           />
         </div>
