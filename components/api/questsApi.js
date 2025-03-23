@@ -11,24 +11,47 @@ export const getQuestsApi = async (cityId) => {
     }
 }
 
-export const submitQuestsApi = async (userId , sideQuestId , file ) => {
+export const submitQuestsApi = async (userId, sideQuestId, file, router) => {
     try {
         const formData = new FormData();
-        formData.append("File", file); // Đảm bảo tên "File" đúng với API backend
+        formData.append("File", file);
 
-        const response = await axios.post(`SideQuest/CheckSideQuest?UserId=${userId}&SideQuestId=${sideQuestId}  `, formData, {
-            headers: {
-                "Content-Type": "multipart/form-data",
-            },
-        });
+        const response = await axios.post(
+            `SideQuest/CheckSideQuest?UserId=${userId}&SideQuestId=${sideQuestId}`,
+            formData,
+            {
+                headers: {
+                    "Content-Type": "multipart/form-data",
+                },
+            }
+        );
 
-        if(response.status === 400) toast.error(response.data.message);
+        // Xử lý trường hợp API trả về message yêu cầu chuyển hướng tới /fail-status
+        if (response.data.message === "The evidence provided does not match the side quest's requirement.") {
+            const errorData = encodeURIComponent(JSON.stringify(response.data));
+            router.push(`/fail-status?errorData=${errorData}`);
+            return;
+        }
 
+        // Nếu thành công, chuyển hướng tới /success-status
+        router.push(
+            `/success-status?points=${response.data.data.pointsEarned}&progress=${response.data.data.currentProgress}`
+        );
         return response.data;
     } catch (error) {
         console.error("Error submitting quests:", error);
-        toast.error("Side Quest already completed");
+
+        if (error.response && error.response.status === 409) {
+            // Xử lý trường hợp đã hoàn thành side quest (status code 409)
+            const errorData = encodeURIComponent(JSON.stringify(error.response.data));
+            router.push(`/fail-status?errorData=${errorData}`);
+            return;
+        }
+
+        // Trường hợp lỗi khác
+        toast.error("Something went wrong.");
         throw error;
     }
 };
+
 

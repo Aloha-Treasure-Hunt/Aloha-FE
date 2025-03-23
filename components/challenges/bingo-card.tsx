@@ -5,6 +5,7 @@ import { motion } from "framer-motion";
 import { Challenge, TreasureHuntItem } from "@/types/challenges.types";
 import { jwtDecode } from "jwt-decode";
 import { submitQuestsApi } from "../api/questsApi";
+import { useRouter } from "next/navigation";
 
 interface BingoCardProps {
   challenges: TreasureHuntItem[];
@@ -23,6 +24,7 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
   const [selectedFile, setSelectedFile] = useState<File | null>(null);
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
+  const router = useRouter();
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -74,9 +76,9 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
       const response = await submitQuestsApi(
         userId,
         selectedQuestId,
-        selectedFile
+        selectedFile, 
+        router
       );
-      setShowUploadSuccess(true)
     } catch (error) {
       console.error("Error when submit side quest:", error);
     }

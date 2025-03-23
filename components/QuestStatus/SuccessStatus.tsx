@@ -2,29 +2,33 @@
 import { motion } from "framer-motion";
 import { ChevronRight, Award, Gift, Star } from "lucide-react";
 import Link from "next/link";
+import { useSearchParams } from "next/navigation";
 import { useState, useEffect } from "react";
 
 export default function SuccessScreen() {
+  const searchParams = useSearchParams();
+  const points = searchParams.get("points") || 0;
+  const progress = searchParams.get("progress") || "Not Available";
+
   const [rewardPoints, setRewardPoints] = useState(0);
 
-  // Animate points counting up
   useEffect(() => {
+    const targetPoints = parseInt(points.toString(), 10);
+
     const timer = setTimeout(() => {
       const interval = setInterval(() => {
         setRewardPoints((prev) => {
-          if (prev >= 500) {
+          if (prev >= targetPoints) {
             clearInterval(interval);
-            return 500;
+            return targetPoints;
           }
           return prev + 25;
         });
       }, 50);
-
-      return () => clearInterval(interval);
     }, 800);
 
     return () => clearTimeout(timer);
-  }, []);
+  }, [points]);
 
   return (
     <div className="w-full max-w-md mx-auto mt-52">
@@ -121,13 +125,13 @@ export default function SuccessScreen() {
                 Your Quest Progress
               </div>
               <div className="text-xs font-medium text-teal-600">
-                3/5 completed
+              {progress} completed
               </div>
             </div>
             <div className="w-full bg-gray-200 rounded-full h-2.5">
               <motion.div
                 initial={{ width: 0 }}
-                animate={{ width: "60%" }}
+                animate={{ width: `${progress}%` }}
                 transition={{ delay: 1.2, duration: 0.8 }}
                 className="bg-gradient-to-r from-teal-400 to-cyan-500 h-2.5 rounded-full"
               ></motion.div>
