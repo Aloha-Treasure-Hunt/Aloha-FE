@@ -327,7 +327,7 @@ const SuccessCelebration = () => {
       </div>
 
       {/* Achievement badge */}
-      <div
+      {/* <div
         className={`absolute top-6 right-6 bg-black bg-opacity-50 backdrop-blur-lg rounded-lg p-3 border border-gray-700 transform transition-all duration-700 delay-1200 flex items-center ${
           isVisible ? 'translate-y-0 opacity-100' : 'translate-y-4 opacity-0'
         }`}
@@ -347,7 +347,7 @@ const SuccessCelebration = () => {
           />
         </svg>
         <span className='text-white text-sm'>Puzzle Master</span>
-      </div>
+      </div> */}
 
       {/* Stats */}
       {/* <div
