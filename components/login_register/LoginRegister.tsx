@@ -167,7 +167,7 @@ export default function LoginRegister() {
             </form>
             <div className='border-t-[1px] mt-4 border-[#9ca3af]'></div>
             <div className='flex mt-8 justify-center text-sm'>
-              <p className='mr-1'>New to Treasure Hunt?</p>
+              <p className='mr-1'>New to Aloha?</p>
               <button
                 className='text-[#4aa7e5] underline'
                 onClick={() => setIsLogin(false)}
@@ -181,7 +181,7 @@ export default function LoginRegister() {
                 <p>
                   Having trouble logging in?
                   <a href='' className='underline text-gray-600 font-bold'>
-                    Treasure Hunt Help Center
+                    Aloha Help Center
                   </a>
                 </p>
               </div>
@@ -285,7 +285,7 @@ export default function LoginRegister() {
                 <p>
                   Having trouble logging in? 
                   <a href='' className='underline text-gray-600 font-bold'>
-                    Treasure Hunt Help Center
+                    Aloha Help Center
                   </a>
                 </p>
               </div>

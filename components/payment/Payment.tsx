@@ -33,23 +33,19 @@ export default function PaymentResult() {
 
   return (
     <div
-      className={`flex flex-col h-auto min-h-screen ${
-        paymentStatus === 'success'
-          ? 'bg-gradient-to-b from-teal-600 to-teal-700 '
-          : ''
-      }`}
+      className={`flex flex-col h-auto min-h-screen `}
     >
       <main className='flex-grow flex flex-col items-center justify-center px-4 py-12'>
         <div
           id='payment-container'
-          className='w-full max-w-md flex flex-col items-center justify-center space-y-8 transition-all duration-700 opacity-0 translate-y-4 bg-white bg-opacity-90 rounded-2xl p-8 shadow-xl'
+          className='w-full max-w-md flex flex-col items-center justify-center space-y-8 transition-all duration-700 opacity-0 translate-y-4 bg-white bg-opacity-90 rounded-2xl p-8'
         >
           {/* Status Icon */}
           <div className='relative'>
             {/* Animated pulse ring */}
             <div
               className={`absolute inset-0 rounded-full ${
-                paymentStatus === 'success' ? 'bg-teal-500' : 'bg-red-500'
+                paymentStatus === 'success' ? 'bg-[#1f6feb]' : 'bg-red-500'
               } opacity-20 animate-ping`}
             ></div>
 
@@ -57,7 +53,7 @@ export default function PaymentResult() {
             <div
               className={`relative w-28 h-28 rounded-full border-4 ${
                 paymentStatus === 'success'
-                  ? 'border-teal-500 text-teal-500'
+                  ? 'border-[#1f6feb] text-[#1f6feb]'
                   : 'border-red-500 text-red-500'
               } flex items-center justify-center bg-white shadow-lg`}
             >
@@ -102,7 +98,7 @@ export default function PaymentResult() {
           <div className='text-center'>
             <h1
               className={`text-3xl font-bold ${
-                paymentStatus === 'success' ? 'text-teal-600' : 'text-red-600'
+                paymentStatus === 'success' ? 'text-[#1f6feb]' : 'text-red-600'
               } mt-4 tracking-wide filter drop-shadow-sm`}
             >
               {paymentStatus === 'success'
@@ -111,7 +107,7 @@ export default function PaymentResult() {
             </h1>
             <p
               className={`${
-                paymentStatus === 'success' ? 'text-teal-800' : 'text-red-800'
+                paymentStatus === 'success' ? 'text-[#1651a9]' : 'text-red-800'
               } mt-2`}
             >
               {paymentStatus === 'success'
@@ -122,12 +118,12 @@ export default function PaymentResult() {
 
           {/* Booking/Error information */}
           {paymentStatus === 'success' ? (
-            <div className='w-full bg-green-50 rounded-lg p-4 border border-teal-100'>
-              <div className='text-sm text-teal-700 flex justify-between items-center'>
+            <div className='w-full bg-blue-50 rounded-lg p-4 border border-[#b6d3ff]'>
+              <div className='text-sm text-[#1f6feb] flex justify-between items-center'>
                 <span>Booking Reference:</span>
                 <span className='font-bold'>XYZ12345</span>
               </div>
-              <div className='text-sm text-teal-700 flex justify-between items-center mt-2'>
+              <div className='text-sm text-[#1f6feb] flex justify-between items-center mt-2'>
                 <span>Confirmation Email:</span>
                 <span className='font-bold'>Sent ✓</span>
               </div>
@@ -156,7 +152,7 @@ export default function PaymentResult() {
             </button>
             {paymentStatus === 'success' ? (
               <button
-                className='btn-style btn-teal'
+                className='btn-style btn-for-app'
                 onClick={() => router.push('/clues')}
               >
                 <Map size={18} className='mr-2' /> My Clues
@@ -174,7 +170,7 @@ export default function PaymentResult() {
           {/* Additional options */}
           <div className='w-full flex justify-center mt-2'>
             {paymentStatus === 'success' ? (
-              <button className='text-teal-600 text-sm underline hover:text-teal-800 flex items-center'>
+              <button className='text-blue-600 text-sm underline hover:text-blue-800 flex items-center'>
                 <FileText size={14} className='mr-1' /> Download Receipt
               </button>
             ) : (
