@@ -5,7 +5,7 @@ export const avatarGradients = {
 };
 
 export const badgeColors = {
-  '30 vouchers': 'bg-gradient-to-br from-sky-500 to-blue-600',
-  '20 vouchers': 'bg-gradient-to-r from-amber-500 to-orange-500',
-  '10 vouchers': 'bg-gradient-to-r from-green-500 to-emerald-600',
+  '10 vouchers': 'bg-gradient-to-br from-sky-500 to-blue-600',
+  '5 vouchers': 'bg-gradient-to-r from-amber-500 to-orange-500',
+  '2 vouchers': 'bg-gradient-to-r from-green-500 to-emerald-600',
 };

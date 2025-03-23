@@ -7,6 +7,7 @@ import LeaderboardTable from '@/components/leaderboard/LeaderboardTable';
 import { avatarGradients, badgeColors } from '@/lib/leaderBoard';
 import { getTop3UserByCityId } from '@/components/api/userProgressApi';
 import { LeaderboardProps } from '@/types/leaderboard.types';
+import Link from 'next/link';
 
 export default function Leaderboard() {
   const [leaderboardData, setLeaderboardData] = useState<LeaderboardProps[]>(
@@ -113,10 +114,13 @@ export default function Leaderboard() {
 
           {/* Bottom call to action */}
           <div className='mt-6 relative z-10'>
-            <button className='bg-gradient-to-r from-[#3498db] to-[#2980b9] text-white font-medium py-2 px-6 rounded-full shadow-md flex items-center justify-center mx-auto transition-all'>
+            <Link
+              href={'/clues'}
+              className='bg-gradient-to-r from-[#3498db] to-[#2980b9] text-white font-medium py-2 px-6 rounded-full shadow-md flex items-center justify-center mx-auto transition-all'
+            >
               <Globe className='h-4 w-4 mr-2' />
               Start Your Journey
-            </button>
+            </Link>
             <p className='text-gray-500 text-sm mt-2 text-center'>
               Explore more destinations to climb the ranking!
             </p>
