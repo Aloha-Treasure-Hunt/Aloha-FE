@@ -4,6 +4,7 @@ import { VerificationForm } from '@/components/clues/verification-form';
 import { useCallback, useEffect, useState } from 'react';
 import { getClueApi, GetCluesForCity } from '@/components/api/clueApi';
 import { ClueData } from '@/types/challenges.types';
+import { LoadingSpinner } from '@/components/ui/loading-spinner';
 
 export default function CluesComponent() {
   const [clues, setClues] = useState<ClueData[]>([]);
@@ -42,26 +43,33 @@ export default function CluesComponent() {
     }
   }, [userId, fetchClues]);
   return (
-    <main className='container mx-auto px-4 py-8'>
-      <h1 className='text-3xl font-bold text-center text-amber-800 mb-8'>
+    <main className='my-16 px-4 py-8'>
+      <h1 className='text-3xl font-bold text-center  mb-8'>
         Treasure Hunt Clues
       </h1>
-      {loading && <p className='text-center'>loading...</p>}
-      {error && <p className='text-center text-red-500'>{error}</p>}
-      <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
-        <div className='lg:col-span-1'>
-          <VerificationForm
-            clues={clues}
-            userClues={userClues}
-            userId={userId}
-            refetch={fetchClues}
-          />
+      {loading ? (
+        <div className='fixed inset-0 flex items-center justify-center'>
+          <LoadingSpinner size='xlarge' />
         </div>
+      ) : (
+        <>
+          {error && <p className='text-center text-red-500'>{error}</p>}
+          <div className='grid grid-cols-1 lg:grid-cols-3 gap-8'>
+            <div className='lg:col-span-1'>
+              <VerificationForm
+                clues={clues}
+                userClues={userClues}
+                userId={userId}
+                refetch={fetchClues}
+              />
+            </div>
 
-        <div className='lg:col-span-2'>
-          <CluesList clues={clues} />
-        </div>
-      </div>
+            <div className='lg:col-span-2'>
+              <CluesList clues={clues} userClues={userClues} />
+            </div>
+          </div>
+        </>
+      )}
     </main>
   );
 }

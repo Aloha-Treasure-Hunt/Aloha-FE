@@ -11,9 +11,11 @@ import {
 
 export interface ClueProps {
   data: ClueData;
+  // isSolved: boolean;
+  previousClueSolved: boolean;
 }
 
-export function Clue({ data }: ClueProps) {
+export function Clue({ data, previousClueSolved }: ClueProps) {
   const [showHint, setShowHint] = useState(false);
 
   // Function to get difficulty color
@@ -44,66 +46,82 @@ export function Clue({ data }: ClueProps) {
 
       <div className='flex flex-col md:flex-row gap-6'>
         <div className='md:w-full space-y-4'>
-          {/* Question with decorative quotation marks */}
-          <div className='relative pl-6 pr-2'>
-            <span className='absolute left-0 top-0 text-3xl text-blue-300'>
-              "
-            </span>
-            <p className='text-gray-800 font-medium py-2'>{data.question}</p>
-            <span className='absolute right-0 bottom-0 text-3xl text-blue-300'>
-              "
-            </span>
-          </div>
-
-          {/* Metadata section with badge styling */}
-          <div className='flex flex-wrap gap-3 mt-4'>
-            {data.destination && (
-              <div className='flex items-center gap-2 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm'>
-                <MapPin size={16} className='text-blue-500' />
-                <span className='font-medium'>Destination:</span>
-                <span>{data.destination}</span>
+          {previousClueSolved ? (
+            <>
+              {/* Question with decorative quotation marks */}
+              <div className='relative pl-6 pr-2'>
+                <span className='absolute left-0 top-0 text-3xl text-blue-300'>
+                  "
+                </span>
+                <p className='text-gray-800 font-medium py-2'>
+                  {data.question}
+                </p>
+                <span className='absolute right-0 bottom-0 text-3xl text-blue-300'>
+                  "
+                </span>
               </div>
-            )}
 
-            {data.difficulty && (
-              <div
-                className={`flex items-center gap-2 px-3 py-1 rounded-full text-sm ${getDifficultyColor(
-                  data.difficulty
-                )}`}
-              >
-                <BarChart2 size={16} />
-                <span className='font-medium'>Difficulty:</span>
-                <span>{data.difficulty}</span>
-              </div>
-            )}
-          </div>
-
-          {/* Hint section with improved animation */}
-          <div className='relative mt-4'>
-            <Button
-              onClick={() => setShowHint(!showHint)}
-              variant='outline'
-              className='text-sm px-4 py-2 rounded-full flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-600 hover:text-white border-none transition-all shadow-sm hover:shadow'
-            >
-              <Lightbulb size={18} className='text-yellow-200' />
-              {showHint ? 'Hide Hint' : 'Show Hint'}
-              {showHint ? <ChevronUp size={16} /> : <ChevronDown size={16} />}
-            </Button>
-
-            {showHint && (
-              <div className='mt-4 p-4 rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 shadow-inner animate-fadeIn'>
-                <div className='flex gap-2 items-start'>
-                  <div className='h-6 w-6 rounded-full bg-yellow-400 flex items-center justify-center mt-0.5'>
-                    <Lightbulb size={14} className='text-white' />
+              {/* Metadata section with badge styling */}
+              <div className='flex flex-wrap gap-3 mt-4'>
+                {data.destination && (
+                  <div className='flex items-center gap-2 bg-blue-100 text-blue-700 px-3 py-1 rounded-full text-sm'>
+                    <MapPin size={16} className='text-blue-500' />
+                    <span className='font-medium'>Destination:</span>
+                    <span>{data.destination}</span>
                   </div>
-                  <p className='text-sm text-blue-700 flex-1'>
-                    <span className='font-bold text-indigo-600'>Hint: </span>
-                    {data.hint}
-                  </p>
-                </div>
+                )}
+
+                {data.difficulty && (
+                  <div
+                    className={`flex items-center gap-2 px-3 py-1 rounded-full text-sm ${getDifficultyColor(
+                      data.difficulty
+                    )}`}
+                  >
+                    <BarChart2 size={16} />
+                    <span className='font-medium'>Difficulty:</span>
+                    <span>{data.difficulty}</span>
+                  </div>
+                )}
               </div>
-            )}
-          </div>
+
+              {/* Hint section with improved animation */}
+              <div className='relative mt-4'>
+                <Button
+                  onClick={() => setShowHint(!showHint)}
+                  variant='outline'
+                  className='text-sm px-4 py-2 rounded-full flex items-center gap-2 bg-blue-600 text-white hover:bg-blue-600 hover:text-white border-none transition-all shadow-sm hover:shadow'
+                >
+                  <Lightbulb size={18} className='text-yellow-200' />
+                  {showHint ? 'Hide Hint' : 'Show Hint'}
+                  {showHint ? (
+                    <ChevronUp size={16} />
+                  ) : (
+                    <ChevronDown size={16} />
+                  )}
+                </Button>
+
+                {showHint && (
+                  <div className='mt-4 p-4 rounded-lg bg-gradient-to-r from-blue-50 to-indigo-50 border border-blue-200 shadow-inner animate-fadeIn'>
+                    <div className='flex gap-2 items-start'>
+                      <div className='h-6 w-6 rounded-full bg-yellow-400 flex items-center justify-center mt-0.5'>
+                        <Lightbulb size={14} className='text-white' />
+                      </div>
+                      <p className='text-sm text-blue-700 flex-1'>
+                        <span className='font-bold text-indigo-600'>
+                          Hint:{' '}
+                        </span>
+                        {data.hint}
+                      </p>
+                    </div>
+                  </div>
+                )}
+              </div>
+            </>
+          ) : (
+            <p className='text-gray-500 italic text-center'>
+              Complete the previous clue to unlock this one!
+            </p>
+          )}
         </div>
       </div>
     </div>
