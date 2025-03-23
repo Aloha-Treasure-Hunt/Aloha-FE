@@ -17,6 +17,7 @@ import { useParams, useRouter } from "next/navigation";
 import { getPackageApi } from "@/components/api/packageApi";
 import AnnualOrderPage from "../annual/AnnualPayment";
 import { postPaymentApi } from "@/components/api/paymentApi";
+import Link from "next/link";
 
 export default function DaysOrderPage() {
   const { id } = useParams();
@@ -304,7 +305,9 @@ export default function DaysOrderPage() {
           <div className="flex flex-col sm:flex-row gap-3">
             <button className="bg-gray-200 text-gray-700 px-6 py-3 rounded-xl font-bold sm:w-1/3 flex items-center justify-center order-2 sm:order-1">
               <ChevronLeft size={20} className="mr-1" />
-              <span>Back</span>
+              <span>
+                <Link href={"/homepage"}>Back</Link>
+              </span>
             </button>
             <button
               onClick={handlePayment}

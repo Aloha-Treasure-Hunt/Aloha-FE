@@ -58,7 +58,7 @@ export default function AnnualOrderPage() {
         Number(Array.isArray(id) ? id[0] : id) || 0,
         2
       );
-      router.push(`${response.data.paymentUrl}`)
+      router.push(`${response.data.paymentUrl}`);
     } catch (error) {
       console.error("Error when process payment:", error);
     }
@@ -305,9 +305,14 @@ export default function AnnualOrderPage() {
           <div className="flex flex-col sm:flex-row gap-3">
             <button className="bg-gray-200 text-gray-700 px-6 py-3 rounded-xl font-bold sm:w-1/3 flex items-center justify-center order-2 sm:order-1">
               <ChevronLeft size={20} className="mr-1" />
-              <span>Back</span>
+              <span>
+                <Link href={"/homepage"}>Back</Link>
+              </span>
             </button>
-            <button onClick={handlePayment} className="btn-for-app px-6 py-3 rounded-xl font-bold sm:w-2/3 shadow-md order-1 sm:order-2 mb-2 sm:mb-0">
+            <button
+              onClick={handlePayment}
+              className="btn-for-app px-6 py-3 rounded-xl font-bold sm:w-2/3 shadow-md order-1 sm:order-2 mb-2 sm:mb-0"
+            >
               Continue
             </button>
           </div>
