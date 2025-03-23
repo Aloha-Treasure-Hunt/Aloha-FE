@@ -1,5 +1,5 @@
 "use client";
-import React, { useEffect } from "react";
+import React, { useEffect, useState } from "react";
 import {
   ChevronLeft,
   Clock,
@@ -13,14 +13,31 @@ import {
 } from "lucide-react";
 import Link from "next/link";
 import { getPackageApi } from "@/components/api/packageApi";
-import { useParams } from "next/navigation";
+import { useParams, useRouter } from "next/navigation";
 import DaysOrderPage from "@/components/orderPayment/days/DaysPayment";
-import { RiHandHeartLine } from "react-icons/ri";
-import { PiHandCoinsFill } from "react-icons/pi";
 import ProgressBar from "../progressBar/ProgressBar";
+import { jwtDecode } from "jwt-decode";
+import { postPaymentApi } from "@/components/api/paymentApi";
 
 export default function AnnualOrderPage() {
   const { id } = useParams();
+  const [userId, setUserId] = useState("");
+  const router = useRouter();
+
+  useEffect(() => {
+    const token = localStorage.getItem("token");
+
+    try {
+      if (token) {
+        const decode = jwtDecode(token);
+        setUserId(decode?.sub ?? ""); // Use optional chaining and nullish coalescing
+      }
+    } catch (error) {
+      console.error("Error decoding token:", error);
+      setUserId("");
+    }
+  }, []);
+
   useEffect(() => {
     const fetchData = async () => {
       const res = await getPackageApi();
@@ -33,6 +50,19 @@ export default function AnnualOrderPage() {
   if (id === "2") {
     return <DaysOrderPage />;
   }
+
+  const handlePayment = async () => {
+    try {
+      const response = await postPaymentApi(
+        userId,
+        Number(Array.isArray(id) ? id[0] : id) || 0,
+        2
+      );
+      router.push(`${response.data.paymentUrl}`);
+    } catch (error) {
+      console.error("Error when process payment:", error);
+    }
+  };
 
   return (
     <div className="min-h-screen mt-20">
@@ -275,10 +305,15 @@ export default function AnnualOrderPage() {
           <div className="flex flex-col sm:flex-row gap-3">
             <button className="bg-gray-200 text-gray-700 px-6 py-3 rounded-xl font-bold sm:w-1/3 flex items-center justify-center order-2 sm:order-1">
               <ChevronLeft size={20} className="mr-1" />
-              <span>Back</span>
+              <span>
+                <Link href={"/homepage"}>Back</Link>
+              </span>
             </button>
-            <button className="btn-for-app px-6 py-3 rounded-xl font-bold sm:w-2/3 shadow-md order-1 sm:order-2 mb-2 sm:mb-0">
-              <Link href={"/payment-status"}>Continue</Link>
+            <button
+              onClick={handlePayment}
+              className="btn-for-app px-6 py-3 rounded-xl font-bold sm:w-2/3 shadow-md order-1 sm:order-2 mb-2 sm:mb-0"
+            >
+              Continue
             </button>
           </div>
         </div>

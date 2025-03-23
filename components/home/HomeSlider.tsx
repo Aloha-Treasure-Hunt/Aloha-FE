@@ -6,10 +6,10 @@ import { RxDotFilled } from 'react-icons/rx'
 
 export default function ImageSlider() {
   const slides = [
+    { url: '/assets/Side_Image/hcm.jpg' },
     { url: '/assets/Side_Image/hanoi.jpg' },
     { url: '/assets/Side_Image/danang.jpg' },
     { url: '/assets/Side_Image/hue.jpg' },
-    { url: '/assets/Side_Image/hcm.jpg' },
     { url: '/assets/Side_Image/halong.jpg' }
   ]
 
