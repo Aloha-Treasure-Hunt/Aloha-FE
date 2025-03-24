@@ -161,7 +161,7 @@ export default function DaysOrderPage() {
               </li>
               <li className="flex items-start">
                 <div className="h-5 w-1 bg-blue-400 rounded mr-2 mt-0.5"></div>
-                <span>Cancel before Apr 08, 2026 to avoid getting billed</span>
+                <span>Cancel before Apr 08, 2025 to avoid getting billed</span>
               </li>
               <li className="flex items-start">
                 <div className="h-5 w-1 bg-blue-400 rounded mr-2 mt-0.5"></div>
@@ -211,7 +211,7 @@ export default function DaysOrderPage() {
                     </div>
                     <div className="flex items-center">
                       <span className="text-gray-600 text-xs font-medium">
-                        March 23, 2024
+                        March 24, 2025
                       </span>
                     </div>
                   </div>
@@ -263,8 +263,7 @@ export default function DaysOrderPage() {
                       <span className="text-teal-600 font-bold">TO</span>
                     </div>
                     <div className="flex items-center text-gray-600 text-sm">
-                      <span className="font-medium">March 23, 2025</span>
-                      <Clock size={14} className="ml-1 text-gray-400" />
+                      <span className="font-medium">April 8, 2025</span>
                     </div>
                   </div>
                   <div className="mt-2 text-gray-600 text-sm">
@@ -299,7 +298,7 @@ export default function DaysOrderPage() {
                   <span className="text-gray-600 text-xs">•••• 4242</span>
                 </div>
                 <span className="text-xs text-gray-500">
-                  Next charge: April 23, 2024
+                  Next charge: April 24, 2025
                 </span>
               </div>
             </div>
