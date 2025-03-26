@@ -21,6 +21,7 @@ export default function LoginRegister() {
   const router = useRouter();
   const [isLogin, setIsLogin] = useState(true);
   const [loading, setLoading] = useState(false);
+  const [isLoading, setIsLoading] = useState(false);
 
   // Login form state
   const [email, setEmail] = useState('');
@@ -79,7 +80,7 @@ export default function LoginRegister() {
       toast.error('Passwords do not match!');
       return;
     }
-    setLoading(true);
+    setIsLoading(true);
     try {
       await registerApi(email, name, password, confirmPassword);
 
@@ -89,7 +90,7 @@ export default function LoginRegister() {
       console.error('Registration failed:', err);
       toast.error('Registration failed. Please try again.');
     } finally {
-      setLoading(false);
+      setIsLoading(false);
     }
   };
 
@@ -172,7 +173,7 @@ export default function LoginRegister() {
                 className='text-[#4aa7e5] underline'
                 onClick={() => setIsLogin(false)}
               >
-                {loading ? <ClipLoader size={15} color='#fff' /> : 'Register'}
+                {isLoading ? <ClipLoader size={15} color='#fff' /> : 'Register'}
               </button>
             </div>
 

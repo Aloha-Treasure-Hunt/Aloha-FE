@@ -18,12 +18,14 @@ import { getPackageApi } from "@/components/api/packageApi";
 import AnnualOrderPage from "../annual/AnnualPayment";
 import { postPaymentApi } from "@/components/api/paymentApi";
 import Link from "next/link";
+import ClipLoader from "react-spinners/ClipLoader";
 
 export default function DaysOrderPage() {
   const { id } = useParams();
   const [userId, setUserId] = useState("");
   const router = useRouter();
   const [origin, setOrigin] = useState<string | null>(null);
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     setOrigin(window.location.origin);
@@ -57,6 +59,7 @@ export default function DaysOrderPage() {
   }
 
   const handlePayment = async () => {
+    setIsLoading(true)
     try {
       const response = await postPaymentApi(
         userId,
@@ -67,6 +70,8 @@ export default function DaysOrderPage() {
       router.push(`${response.data.paymentUrl}`);
     } catch (error) {
       console.error("Error when process payment:", error);
+    }finally{
+      setIsLoading(false)
     }
   };
 
@@ -318,7 +323,7 @@ export default function DaysOrderPage() {
               onClick={handlePayment}
               className="btn-for-app px-6 py-3 rounded-xl font-bold sm:w-2/3 shadow-md order-1 sm:order-2 mb-2 sm:mb-0"
             >
-              Continue
+              {isLoading ? <ClipLoader size={15} color='#fff' /> : 'Continue'}
             </button>
           </div>
         </div>

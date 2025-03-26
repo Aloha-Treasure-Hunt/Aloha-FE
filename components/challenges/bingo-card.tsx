@@ -6,6 +6,7 @@ import { Challenge, TreasureHuntItem } from "@/types/challenges.types";
 import { jwtDecode } from "jwt-decode";
 import { submitQuestsApi } from "../api/questsApi";
 import { useRouter } from "next/navigation";
+import ClipLoader from "react-spinners/ClipLoader";
 
 interface BingoCardProps {
   challenges: TreasureHuntItem[];
@@ -25,6 +26,7 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
   const [previewUrl, setPreviewUrl] = useState<string | null>(null);
   const [error, setError] = useState<string | null>(null);
   const router = useRouter();
+  const [isLoading, setIsLoading] = useState(false);
 
   useEffect(() => {
     const token = localStorage.getItem("token");
@@ -71,7 +73,7 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
       alert("Please choose your file!");
       return;
     }
-
+    setIsLoading(true)
     try {
       const response = await submitQuestsApi(
         userId,
@@ -81,6 +83,8 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
       );
     } catch (error) {
       console.error("Error when submit side quest:", error);
+    }finally{
+      setIsLoading(false)
     }
   };
 
@@ -205,7 +209,7 @@ export function BingoCard({ challenges, bonusChallenge }: BingoCardProps) {
               onClick={() => handleFileSubmit(selectedChallenge.id)}
               className="w-full bg-amber-400 hover:bg-amber-500 text-amber-800 py-2 rounded-lg mt-4"
             >
-              Submit
+              {isLoading ? <ClipLoader size={15} color='#fff' /> : 'Submit'}
             </button>
             <button
               onClick={() => setSelectedChallenge(null)}
