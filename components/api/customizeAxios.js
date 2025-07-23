@@ -1,7 +1,7 @@
 import axios from "axios";
 
 const instance = axios.create({
-  baseURL: "https://aloha-vietnam.azurewebsites.net/api/",
+  baseURL: "https://aloha-h7ahbsgdhxedatax.southeastasia-01.azurewebsites.net/api/",
 });
 
 // Add a response interceptor
